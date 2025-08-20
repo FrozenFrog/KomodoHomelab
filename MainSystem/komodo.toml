@@ -17,8 +17,9 @@ auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["adguard_home.yaml"]
+additional_env_files = ["../../MainSystem/.env"]
 environment = """
-APP_NAME = [[adguardhome-config]]
+APP_CONFIG_PATH=adguardhome-config
 """
 
 ##
@@ -32,10 +33,25 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/Karakeep"
+additional_env_files = ["../../MainSystem/.env"]
 environment = """
 MEILI_MASTER_KEY = [[ask-tick-any-gavel]]
 NEXTAUTH_SECRET = [[storming-flapping-topped-maris]]
 """
+
+##
+
+[[stack]]
+name = "template"
+template = true
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks"
+additional_env_files = ["../../MainSystem/.env"]
 
 ##
 
@@ -46,10 +62,6 @@ server = "HomeLab"
 builder = "Local"
 git_account = "FrozenFrog"
 repo = "FrozenFrog/KomodoHomelab"
-environment = """
-TZ = [[Asia/Ho_Chi_Minh]]
-BASEPATH = [[/mnt/Application/config/]]
-"""
 
 ##
 
