@@ -7,6 +7,32 @@ enabled = true
 
 ##
 
+[[stack]]
+name = "karakeep"
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/Karakeep"
+environment = """
+MEILI_MASTER_KEY = [[ask-tick-any-gavel]]
+NEXTAUTH_SECRET = [[storming-flapping-topped-maris]]
+"""
+
+##
+
+[[repo]]
+name = "Komodo-Github"
+[repo.config]
+server = "HomeLab"
+builder = "Local"
+git_account = "FrozenFrog"
+repo = "FrozenFrog/KomodoHomelab"
+
+##
+
 [[procedure]]
 name = "Backup Core Database"
 description = "Triggers the Core database backup at the scheduled time."
