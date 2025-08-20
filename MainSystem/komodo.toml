@@ -8,6 +8,22 @@ enabled = true
 ##
 
 [[stack]]
+name = "adguard-home"
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["adguard_home.yaml"]
+environment = """
+APP_NAME = [[adguardhome-config]]
+"""
+
+##
+
+[[stack]]
 name = "karakeep"
 [stack.config]
 server = "HomeLab"
@@ -30,6 +46,10 @@ server = "HomeLab"
 builder = "Local"
 git_account = "FrozenFrog"
 repo = "FrozenFrog/KomodoHomelab"
+environment = """
+TZ = [[Asia/Ho_Chi_Minh]]
+BASEPATH = [[/mnt/Application/config/]]
+"""
 
 ##
 
