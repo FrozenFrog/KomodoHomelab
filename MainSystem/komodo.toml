@@ -6,10 +6,6 @@ region = "Vietnam"
 enabled = true
 
 ##
-[[repo]]
-name = "KomodoGithub"
-template = false
-[repo.config]
 
 [[procedure]]
 name = "Backup Core Database"
