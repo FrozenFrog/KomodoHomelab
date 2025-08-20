@@ -2,9 +2,23 @@ name: karakeep
 services:
   web:
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
-    restart: unless-stopped
+    network_mode: bridge
     container_name: karakeep_web
-    hostname: web
+    hostname: karakeep_web
+    environment:
+      MEILI_ADDR: http://meilisearch:7700
+      BROWSER_WEB_URL: http://chrome:9222
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: http://karakeep_web:3000
+      # OPENAI_API_KEY: ...
+
+      # You almost never want to change the value of the DATA_DIR variable.
+      # If you want to mount a custom directory, change the volume mapping above instead.
+      DATA_DIR: /data # DON'T CHANGE THIS
+    ports:
+      - target: "3000"
+        published: "20300"
+        protocol: tcp
     volumes:
       - type: bind
         source: /mnt/Data/karakeep
@@ -12,23 +26,10 @@ services:
       # By default, the data is stored in a docker volume called "data".
       # If you want to mount a custom directory, change the volume mapping to:
       # - /path/to/your/directory:/data
-    ports:
-      - target: "3000"
-        published: "20300"
-        protocol: tcp
-    environment:
-      MEILI_ADDR: http://meilisearch:7700
-      BROWSER_WEB_URL: http://chrome:9222
-      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
-      NEXTAUTH_URL: http://web:3000
-      # OPENAI_API_KEY: ...
-
-      # You almost never want to change the value of the DATA_DIR variable.
-      # If you want to mount a custom directory, change the volume mapping above instead.
-      DATA_DIR: /data # DON'T CHANGE THIS
+    restart: unless-stopped
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
-    restart: unless-stopped
+    network_mode: bridge
     container_name: karakeep_chrome
     hostname: chrome
     command:
@@ -39,10 +40,10 @@ services:
       - --remote-debugging-port=9222
       - --hide-scrollbars
   meilisearch:
+    image: getmeili/meilisearch:v1.13.3
+    network_mode: bridge
     container_name: karakeep_meilisearch
     hostname: meilisearch
-    image: getmeili/meilisearch:v1.13.3
-    restart: unless-stopped
     environment:
       MEILI_NO_ANALYTICS: true
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
@@ -50,3 +51,8 @@ services:
       - type: bind
         source: /mnt/Data/meilisearch
         target: /meili_data
+    restart: unless-stopped
+
+networks:
+  default:
+    name: karakeep

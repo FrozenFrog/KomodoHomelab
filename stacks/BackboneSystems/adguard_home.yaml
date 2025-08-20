@@ -1,0 +1,38 @@
+name: adguard-home
+
+services:
+  adguard-home:
+    image: adguard/adguardhome:latest
+    network_mode: bridge
+    container_name: adguard-home
+    hostname: adguard-home
+    environment:
+      TZ: ${TZ}
+    ports:
+      - target: 53
+        published: "53"
+        protocol: tcp
+      - target: 53
+        published: "53"
+        protocol: udp
+      - target: 3000
+        published: "5123"
+        protocol: tcp
+      - target: 853
+        published: "853"
+        protocol: tcp
+      - target: 784
+        published: "784"
+        protocol: udp
+    volumes:
+      - type: bind
+        source: "${HOST_BASE}/${APP_NAME}/work"
+        target: /opt/adguardhome/work
+      - type: bind
+        source: "${HOST_BASE}/${APP_NAME}/conf"
+        target: /opt/adguardhome/conf
+    restart: unless-stopped
+
+networks:
+  default:
+    name: adguard-home
