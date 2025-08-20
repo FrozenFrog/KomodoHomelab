@@ -7,14 +7,6 @@ enabled = true
 
 ##
 
-[[repo]]
-name = "KomodoGithub"
-template = false
-[repo.config]
-
-
-##
-
 [[procedure]]
 name = "Backup Core Database"
 description = "Triggers the Core database backup at the scheduled time."
