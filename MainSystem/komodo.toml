@@ -1,1 +1,71 @@
-## Add resources to get started
+[[server]]
+name = "HomeLab"
+[server.config]
+address = "https://host.docker.internal:8120"
+region = "Vietnam"
+enabled = true
+
+##
+
+[[repo]]
+name = "KomodoGithub"
+template = true
+[repo.config]
+
+
+##
+
+[[procedure]]
+name = "Backup Core Database"
+description = "Triggers the Core database backup at the scheduled time."
+tags = ["system"]
+config.schedule = "Every day at 23:00"
+
+[[procedure.config.stage]]
+name = "Stage 1"
+enabled = true
+executions = [
+  { execution.type = "BackupCoreDatabase", execution.params = {}, enabled = true }
+]
+
+##
+
+[[procedure]]
+name = "Global Auto Update"
+description = "Pulls and auto updates Stacks and Deployments using 'poll_for_updates' or 'auto_update'."
+tags = ["system"]
+config.schedule = "Every day at 23:00"
+
+[[procedure.config.stage]]
+name = "Stage 1"
+enabled = true
+executions = [
+  { execution.type = "GlobalAutoUpdate", execution.params = {}, enabled = true }
+]
+
+##
+
+[[alerter]]
+name = "Alert"
+[alerter.config]
+
+
+##
+
+[[builder]]
+name = "Local"
+[builder.config]
+type = "Server"
+params.server_id = "HomeLab"
+
+##
+
+[[resource_sync]]
+name = "HomeLab-Github-Sync"
+[resource_sync.config]
+repo = "FrozenFrog/KomodoHomelab"
+git_account = "FrozenFrog"
+resource_path = ["MainSystem/komodo.toml"]
+managed = true
+delete = true
+include_variables = true
