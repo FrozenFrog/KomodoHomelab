@@ -26,10 +26,10 @@ services:
         protocol: udp
     volumes:
       - type: bind
-        source: "${BASEPATH}/${APP_NAME}/work"
+        source: "${BASEPATH}/${APP_CONFIG_PATH}/work"
         target: /opt/adguardhome/work
       - type: bind
-        source: "${BASEPATH}/${APP_NAME}/conf"
+        source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
     restart: unless-stopped
 
