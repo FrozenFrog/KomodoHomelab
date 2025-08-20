@@ -9,7 +9,7 @@ enabled = true
 
 [[repo]]
 name = "KomodoGithub"
-template = true
+template = false
 [repo.config]
 
 
