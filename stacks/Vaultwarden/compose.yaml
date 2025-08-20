@@ -1,0 +1,19 @@
+name: vaultwarden
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    network_mode: bridge
+    container_name: vaultwarden
+    hostname: vaultwarden
+    environment:
+      TZ: ${TZ}
+      DATABASE_URL: postgresql://vaultwarden:vaultwarden@192.168.1.3:5432/vaultwarden
+    ports:
+      - target: 80
+        published: "10380"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /data
+    restart: unless-stopped
