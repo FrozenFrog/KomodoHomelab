@@ -11,7 +11,8 @@ services:
     expose:
       - 80
     labels:
-      proxy.#1.port: 10380:80
+      proxy.aliases: vaultwarden
+      proxy.vaultwarden.port: 10380:80
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
