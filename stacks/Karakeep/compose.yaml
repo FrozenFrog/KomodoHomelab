@@ -19,7 +19,7 @@ services:
     expose:
       - 3000
     labels:
-      proxy.#1.aliases: karakeep
+      proxy.#1.alias: karakeep
       proxy.#1.scheme: tcp
       proxy.#1.port: 20300:3000
     volumes:
