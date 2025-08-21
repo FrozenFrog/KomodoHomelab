@@ -33,8 +33,11 @@ services:
         source: "${APPLICATION_STORAGE_PATH}"
         target: /downloads
     restart: unless-stopped
-    # labels:
-      ## route file later on godoxy when have free time
+    labels:
+      proxy.aliases: alist, s3-alist, sftp-alist
+      proxy.#1.port: 5244
+      proxy.#2.port: 5246
+      proxy.#3.port: 5222
 
   rclone:
     image: rclone/rclone:latest
