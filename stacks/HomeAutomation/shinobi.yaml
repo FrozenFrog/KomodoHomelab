@@ -24,7 +24,7 @@ services:
         source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/database"
         target: /var/lib/mysql
       - type: bind
-        source: "${BASEPATH}/${SHINOBI_STORAGE_PATH}"
+        source: "${SHINOBI_STORAGE_PATH}"
         target: /home/Shinobi/videos
       - type: bind
         source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/plugins"
