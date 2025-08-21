@@ -1,0 +1,19 @@
+services:
+  homebridge:
+    image: homebridge/homebridge:latest
+    network_mode: host
+    container_name: homebridge
+    hostname: homebridge
+    environment:
+      TZ: ${TZ}
+    expose:
+      - 8581
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${HOMEBRIDGE_CONFIG_PATH}"
+        target: /homebridge
+        bind:
+          create_host_path: true
+    restart: always
+    labels:
+      proxy.#1.port: 8581

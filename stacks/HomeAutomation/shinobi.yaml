@@ -1,0 +1,32 @@
+services:
+  shinobi:
+    image: registry.gitlab.com/shinobi-systems/shinobi:dev
+    network_mode: bridge
+    container_name: shinobi
+    hostname: shinobi
+    environment:
+      TZ: ${TZ}
+    ports:
+      - target: 8080
+        published: "12080"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /dev/shm/Shinobi/streams
+        target: /dev/shm/streams
+      - type: bind
+        source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/customAutoLoad"
+        target: /home/Shinobi/libs/customAutoLoad
+      - type: bind
+        source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/database"
+        target: /var/lib/mysql
+      - type: bind
+        source: "${BASEPATH}/${SHINOBI_STORAGE_PATH}"
+        target: /home/Shinobi/videos
+      - type: bind
+        source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/plugins"
+        target: /home/Shinobi/plugins
+    restart: unless-stopped
