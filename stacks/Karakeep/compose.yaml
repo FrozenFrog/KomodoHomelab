@@ -20,6 +20,7 @@ services:
       - 3000
     labels:
       proxy.aliases: karakeep
+      proxy.karakeep.scheme: tcp
       proxy.karakeep.port: 20300:3000
     volumes:
       - type: bind
