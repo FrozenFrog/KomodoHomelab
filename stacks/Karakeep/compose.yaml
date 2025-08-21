@@ -29,7 +29,7 @@ services:
       # - /path/to/your/directory:/data
     restart: unless-stopped
     labels:
-      proxy.aliases: karakeep
+      proxy.aliases: karakeep, karakeep.nextmeats.asia
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
