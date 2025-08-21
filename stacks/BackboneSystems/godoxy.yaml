@@ -47,9 +47,6 @@ services:
       # - /path/to/certs/priv.key:/app/certs/priv.key
     restart: always
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
-    depends_on:
-      socket-proxy:
-        condition: service_started
     security_opt:
       - no-new-privileges:true
     cap_drop:
