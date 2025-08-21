@@ -19,7 +19,7 @@ services:
     expose:
       - 3000
     labels:
-      proxy.aliases: karakeep
+      proxy.alias: karakeep
       proxy.karakeep_web.scheme: tcp
       proxy.karakeep_web.port: 20300:3000
     volumes:
