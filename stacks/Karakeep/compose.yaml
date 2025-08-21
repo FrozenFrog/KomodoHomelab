@@ -29,7 +29,7 @@ services:
       # - /path/to/your/directory:/data
     restart: unless-stopped
     labels:
-      proxy.aliases: karakeep, karakeep.nextmeats.asia
+      proxy.aliases: karakeep
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
@@ -44,6 +44,8 @@ services:
       - --remote-debugging-address=0.0.0.0
       - --remote-debugging-port=9222
       - --hide-scrollbars
+    labels:
+      proxy.homepage.show: false
   meilisearch:
     image: getmeili/meilisearch:v1.13.3
     network_mode: bridge
@@ -58,3 +60,5 @@ services:
         source: /mnt/Data/meilisearch
         target: /meili_data
     restart: unless-stopped
+    labels:
+      proxy.homepage.show: false
