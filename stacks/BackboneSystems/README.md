@@ -24,17 +24,6 @@ Việc tách **Backbone System** gồm các container riêng ra khỏi một fil
 
 ---
 
-## 📂 Cấu trúc  
-```
-stacks/
-├── compose.yaml # Compose template cho Komodo khi khai báo các compose mới
-└── BackboneSystem/
-    ├────── adguard_home.yaml # Compose cho adguard home
-    ├────── godoxy.yaml # Compose cho adguard home
-    └────── README.md # Tài liệu mô tả Backbone System
-```
----
-
 ## 🌱 Nguyên tắc  
 
 - Backbone System chỉ chứa **các dịch vụ quan trọng nhất**.  

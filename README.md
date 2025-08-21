@@ -28,8 +28,17 @@ Repo này đóng vai trò **backup cấu hình, script, và tài liệu liên qu
 ## 📂 Cấu trúc repo  
 ```
 komodo-homelab/
-├── MainSystem/ # File cấu hình backup và enviroment
-├── stacks/ # Định nghĩa các stack (docker compose)
+|── MainSystem/ # File cấu hình backup và enviroment
+|── stacks/ # Định nghĩa các stack (docker compose)
+|    ├── compose.yaml # Compose template cho Komodo khi khai báo các compose mới
+|    ├── BackboneSystem/
+|    ├   ├────── adguard_home.yaml # Compose cho adguard home
+|    ├   ├────── cloudflared.yaml # Compose cho cloudflare tunnel
+|    ├   ├────── godoxy.yaml # Compose cho godoxy
+|    ├   └────── README.md # Tài liệu mô tả Backbone System
+|    └── HomeAutomation/
+|        ├────── homebridge.yaml # Compose cho homebrigde (AppleTV Homekit)
+|        └────── shinobi.yaml # Compose cho Shinobi CCTV (Camera)
 └── README.md # File mô tả repo
 ```
 
