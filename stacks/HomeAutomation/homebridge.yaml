@@ -13,7 +13,6 @@ services:
         source: "${BASEPATH}/${HOMEBRIDGE_CONFIG_PATH}"
         target: /homebridge
         bind:
-          create_host_path: true
     restart: always
     labels:
       proxy.#1.port: 8581
