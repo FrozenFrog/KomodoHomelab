@@ -1,0 +1,17 @@
+services:
+  cloudflared:
+    image: wisdomsky/cloudflared-web:latest
+    network_mode: host
+    container_name: cloudflared
+    hostname: cloudflared
+    environment:
+      TZ: ${TZ}
+    expose:
+      - 14333
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /config
+    restart: unless-stopped
+    labels:
+      proxy.#1.port: 14333

@@ -20,8 +20,6 @@ services:
       - target: "3000"
         published: "20300"
         protocol: tcp
-    labels:
-      proxy.aliases: karakeep
     volumes:
       - type: bind
         source: /mnt/Data/karakeep
@@ -30,6 +28,8 @@ services:
       # If you want to mount a custom directory, change the volume mapping to:
       # - /path/to/your/directory:/data
     restart: unless-stopped
+    labels:
+      proxy.aliases: karakeep
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
