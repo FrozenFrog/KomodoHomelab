@@ -37,9 +37,6 @@ services:
     environment:
       DOCKER_HOST: "tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}"
       TZ: ${TZ}
-    expose:
-      - 80
-      - 443
     volumes:
       - ${BASEPATH}/${APP_CONFIG_PATH}/config:/app/config
       - ${BASEPATH}/${APP_CONFIG_PATH}/logs:/app/logs
