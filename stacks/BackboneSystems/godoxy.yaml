@@ -1,4 +1,27 @@
 services:
+  socket-proxy:
+    image: ghcr.io/yusing/socket-proxy:latest
+    network_mode: bridge
+    container_name: socket-proxy
+    hostname: socket-proxy
+    environment:
+      - ALLOW_START=1
+      - ALLOW_STOP=1
+      - ALLOW_RESTARTS=1
+      - CONTAINERS=1
+      - EVENTS=1
+      - INFO=1
+      - PING=1
+      - POST=1
+      - VERSION=1
+    ports:
+      - ${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:23751}:2375
+    volumes:
+      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock
+    restart: unless-stopped
+    tmpfs:
+      - /run
+
   frontend:
     image: ghcr.io/yusing/godoxy-frontend:${TAG:-latest}
     network_mode: host # do not change this
