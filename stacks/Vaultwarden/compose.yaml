@@ -2,6 +2,7 @@ name: vaultwarden
 services:
   vaultwarden:
     image: vaultwarden/server:latest
+    network_mode: bridge
     container_name: vaultwarden
     hostname: vaultwarden
     environment:
@@ -11,6 +12,7 @@ services:
       - 80
     labels:
       proxy.aliases: vaultwarden
+      proxy.network: bridge
       proxy.#1.scheme: tcp
       proxy.#1.port: 10380:80
     volumes:
