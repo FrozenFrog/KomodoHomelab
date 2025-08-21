@@ -44,8 +44,6 @@ services:
       - --remote-debugging-address=0.0.0.0
       - --remote-debugging-port=9222
       - --hide-scrollbars
-    labels:
-      proxy.karakeep_chrome.homepage.show: false
   meilisearch:
     image: getmeili/meilisearch:v1.13.3
     network_mode: bridge
@@ -60,5 +58,3 @@ services:
         source: /mnt/Data/meilisearch
         target: /meili_data
     restart: unless-stopped
-    labels:
-      proxy.karakeep_meilisearch.homepage.show: false
