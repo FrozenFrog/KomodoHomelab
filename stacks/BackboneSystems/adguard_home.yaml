@@ -32,7 +32,3 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
     restart: unless-stopped
-
-networks:
-  default:
-    name: adguard-home

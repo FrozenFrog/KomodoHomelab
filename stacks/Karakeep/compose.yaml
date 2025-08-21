@@ -56,7 +56,3 @@ services:
         source: /mnt/Data/meilisearch
         target: /meili_data
     restart: unless-stopped
-
-networks:
-  default:
-    name: karakeep
