@@ -1,27 +1,4 @@
 services:
-  socket-proxy:
-    image: ghcr.io/yusing/socket-proxy:latest
-    network_mode: bridge
-    container_name: socket-proxy
-    hostname: socket-proxy
-    environment:
-      - ALLOW_START=1
-      - ALLOW_STOP=1
-      - ALLOW_RESTARTS=1
-      - CONTAINERS=1
-      - EVENTS=1
-      - INFO=1
-      - PING=1
-      - POST=1
-      - VERSION=1
-    ports:
-      - ${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}:2375
-    volumes:
-      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock
-    restart: unless-stopped
-    tmpfs:
-      - /run
-
   frontend:
     image: ghcr.io/yusing/godoxy-frontend:${TAG:-latest}
     network_mode: host # do not change this
@@ -30,6 +7,7 @@ services:
     environment:
       HOSTNAME: 127.0.0.1
       PORT: ${GODOXY_FRONTEND_PORT}
+      TZ: ${TZ}
     restart: unless-stopped
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
@@ -57,7 +35,8 @@ services:
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
-      - DOCKER_HOST=tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}
+      DOCKER_HOST: "tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}"
+      TZ: ${TZ}
     volumes:
       - ${BASEPATH}/${APP_CONFIG_PATH}/config:/app/config
       - ${BASEPATH}/${APP_CONFIG_PATH}/logs:/app/logs
