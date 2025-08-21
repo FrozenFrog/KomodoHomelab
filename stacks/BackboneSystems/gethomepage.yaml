@@ -1,0 +1,25 @@
+services:
+  gethomepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    network_mode: bridge
+    container_name: homepage
+    hostname: homepage
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: picityvietnam.com,nextmeats.asia
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    ports:
+      - target: 3000
+        published: "3000"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /app/config
+      - type: bind
+        source: /mnt
+        target: /mnt
+    restart: unless-stopped
+    labels:
+      proxy.#1.port: 80:3000
