@@ -1,6 +1,6 @@
 name: karakeep
 services:
-  karakeep_web:
+  web:
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
     network_mode: bridge
     container_name: karakeep_web
@@ -16,10 +16,15 @@ services:
       # You almost never want to change the value of the DATA_DIR variable.
       # If you want to mount a custom directory, change the volume mapping above instead.
       DATA_DIR: /data # DON'T CHANGE THIS
+    expose:
+      - 3000
     labels:
-      proxy.aliases: karakeep
-      proxy.karakeep_web.scheme: tcp
-      proxy.karakeep_web.port: 20300:3000
+      proxy.#1.scheme: tcp
+      proxy.#1.port: 20300:3000
+    ports:
+      - target: "3000"
+        published: "20300"
+        protocol: tcp
     volumes:
       - type: bind
         source: /mnt/Data/karakeep
