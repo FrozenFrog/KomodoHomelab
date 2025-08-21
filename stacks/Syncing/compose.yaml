@@ -33,7 +33,7 @@ services:
         source: "${APPLICATION_STORAGE_PATH}"
         target: /downloads
     restart: unless-stopped
-    labels:
+    # labels:
       ## route file later on godoxy when have free time
 
   rclone:
