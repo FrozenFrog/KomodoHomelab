@@ -32,3 +32,5 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
     restart: unless-stopped
+    labels:
+      proxy.aliases: adguardhome
