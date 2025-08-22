@@ -14,6 +14,5 @@ services:
         target: /config
     restart: unless-stopped
     labels:
-      proxy.#1.port: 14333
-      proxy.#1.homepage.name: Cloudflared Tunnel
-      proxy.#1.homepage.group: System
+      - homepage.name: Cloudflared Tunnel
+      - homepage.group: System
