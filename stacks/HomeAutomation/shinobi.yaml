@@ -12,8 +12,10 @@ services:
       DB_PASSWORD: "${DB_PASSWORD:-}"
       DB_DATABASE: "${DB_DATABASE:-ccio}"
       SHINOBI_UPDATE: false
-    expose:
-      - 8080
+    ports:
+      - target: 8080
+        published: "12080"
+        protocol: tcp
     volumes:
       - type: bind
         source: /dev/shm/Shinobi/streams
@@ -31,5 +33,3 @@ services:
         source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/plugins"
         target: /home/Shinobi/plugins
     restart: unless-stopped
-    labels:
-      proxy.#1.port: 12080:8080
