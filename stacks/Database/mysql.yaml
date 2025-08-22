@@ -17,6 +17,7 @@ services:
       - type: bind
         source: "${BASEPATH}/${MYSQL_CONFIG_PATH}/data"
         target: /var/lib/mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     labels:
       icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
