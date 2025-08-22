@@ -1,14 +1,6 @@
-[[server]]
-name = "HomeLab"
-[server.config]
-address = "https://host.docker.internal:8120"
-region = "Vietnam"
-enabled = true
-
-##
-
 [[stack]]
 name = "adguard-home"
+tags = ["system"]
 [stack.config]
 server = "HomeLab"
 poll_for_updates = true
@@ -27,6 +19,7 @@ APP_CONFIG_PATH=adguardhome-config
 
 [[stack]]
 name = "cloudflared"
+tags = ["system"]
 [stack.config]
 server = "HomeLab"
 poll_for_updates = true
@@ -44,40 +37,8 @@ APP_CONFIG_PATH=cloudflared-config
 ##
 
 [[stack]]
-name = "database"
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks/Database"
-file_paths = [
-  "mariadb.yaml",
-  "mongodb.yaml",
-  "mysql.yaml",
-  "postgres.yaml",
-  "redis.yaml"
-]
-env_file_path = "database.env"
-additional_env_files = ["../../MainSystem/.env"]
-environment = """
-MONGO_INITDB_ROOT_PASSWORD=mongodb
-MONGO_INITDB_ROOT_USERNAME=mongodb
-MONGODB_CONFIG_PATH=mongodb-config
-MYSQL_ROOT_PASSWORD=mysql
-MYSQL_CONFIG_PATH=mysql-config
-MARIADB_ROOT_PASSWORD=mariadb
-MARIADB_CONFIG_PATH=mariadb-config
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-POSTGRES_CONFIG_PATH=postgresql-config
-"""
-
-##
-
-[[stack]]
 name = "godoxy"
+tags = ["system"]
 [stack.config]
 server = "HomeLab"
 poll_for_updates = true
@@ -169,33 +130,8 @@ GODOXY_DEBUG=false
 ##
 
 [[stack]]
-name = "home-automation"
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks/HomeAutomation"
-file_paths = [
-  "homebridge.yaml",
-  "shinobi.yaml"
-]
-env_file_path = "HomeAutomation.env"
-additional_env_files = ["../../MainSystem/.env"]
-environment = """
-HOMEBRIDGE_CONFIG_PATH=homebridge-config
-SHINOBI_CONFIG_PATH=shinobi-config
-DB_HOST=192.168.1.3
-DB_USER=majesticflame
-DB_PASSWORD=
-DB_DATABASE=ccio
-"""
-
-##
-
-[[stack]]
 name = "homepage"
+tags = ["system"]
 [stack.config]
 server = "HomeLab"
 poll_for_updates = true
@@ -209,83 +145,6 @@ additional_env_files = ["../../MainSystem/.env"]
 environment = """
 APP_CONFIG_PATH=gethomepage-config
 """
-
-##
-
-[[stack]]
-name = "karakeep"
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks/Karakeep"
-additional_env_files = ["../../MainSystem/.env"]
-environment = """
-MEILI_MASTER_KEY = [[ask-tick-any-gavel]]
-NEXTAUTH_SECRET = [[storming-flapping-topped-maris]]
-"""
-
-##
-
-[[stack]]
-name = "syncing-center"
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks/Syncing"
-additional_env_files = ["../../MainSystem/.env"]
-environment = """
-ALIST_CONFIG_PATH=alist-config
-RClONE_CONFIG_PATH=rclone-config
-INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
-APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
-MISC_STORAGE_PATH=/mnt/Storage
-"""
-
-##
-
-[[stack]]
-name = "template"
-template = true
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks"
-additional_env_files = ["../../MainSystem/.env"]
-
-##
-
-[[stack]]
-name = "vaultwarden"
-[stack.config]
-server = "HomeLab"
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "Komodo-Github"
-run_directory = "stacks/Vaultwarden"
-additional_env_files = ["../../MainSystem/.env"]
-environment = """
-APP_CONFIG_PATH=vaultwarden-config
-"""
-
-##
-
-[[repo]]
-name = "Komodo-Github"
-[repo.config]
-server = "HomeLab"
-builder = "Local"
-git_account = "FrozenFrog"
-repo = "FrozenFrog/KomodoHomelab"
 
 ##
 
@@ -316,42 +175,3 @@ enabled = true
 executions = [
   { execution.type = "GlobalAutoUpdate", execution.params = {}, enabled = true }
 ]
-
-##
-
-[[alerter]]
-name = "Alert"
-[alerter.config]
-
-
-##
-
-[[builder]]
-name = "Local"
-[builder.config]
-type = "Server"
-params.server_id = "HomeLab"
-
-##
-
-[[resource_sync]]
-name = "sync-stack"
-[resource_sync.config]
-repo = "FrozenFrog/KomodoHomelab"
-git_account = "FrozenFrog"
-resource_path = ["MainSystem/komodo.toml"]
-managed = true
-delete = true
-
-##
-
-[[resource_sync]]
-name = "sync-vars"
-[resource_sync.config]
-repo = "FrozenFrog/KomodoHomelab"
-git_account = "FrozenFrog"
-resource_path = ["MainSystem/variable.toml"]
-managed = true
-delete = true
-include_resources = false
-include_variables = true
