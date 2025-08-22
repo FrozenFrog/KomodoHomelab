@@ -12,7 +12,6 @@ services:
       - type: bind
         source: "${BASEPATH}/${HOMEBRIDGE_CONFIG_PATH}"
         target: /homebridge
-        bind:
     restart: always
     labels:
       proxy.#1.port: 8581
