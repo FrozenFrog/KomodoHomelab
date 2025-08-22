@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0
+    network_mode: bridge
+    container_name: mysql
+    hostname: mysql
+    environment:
+      MYSQL_DATABASE: sample
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql}
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - 3306
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${MYSQL_CONFIG_PATH}/data"
+        target: /var/lib/mysql
+    restart: unless-stopped
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png

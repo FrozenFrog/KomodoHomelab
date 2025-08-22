@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:14.17
+    network_mode: bridge
+    container_name: postgres
+    hostname: postgres
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      PGID: "13000"
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PUID: "1000"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - 5432
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${POSTGRES_CONFIG_PATH}/data"
+        target: /var/lib/postgresql/data
+    restart: unless-stopped
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png

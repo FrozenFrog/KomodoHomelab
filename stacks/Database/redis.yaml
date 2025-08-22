@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:latest
+    network_mode: bridge
+    container_name: redis
+    hostname: redis
+    environment: {}
+    ports:
+      - 6379
+    volumes: []
+    command:
+      - redis-server
+      - --save
+      - ""
+      - --maxmemory
+      - 128mb
+      - --maxmemory-policy
+      - allkeys-lru
+    restart: unless-stopped
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png

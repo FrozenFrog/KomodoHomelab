@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo:6-jammy
+    network_mode: bridge
+    container_name: mongodb
+    hostname: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongodb}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongodb}
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - 27017
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${MONGODB_CONFIG_PATH}/data"
+        target: /data/db
+    restart: unless-stopped
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
