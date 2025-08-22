@@ -124,7 +124,7 @@ DOCKER_SOCKET=/var/run/docker.sock
 SOCKET_PROXY_LISTEN_ADDR=192.168.1.3:2375
 
 # Debug mode
-GODOXY_DEBUG=false
+GODOXY_DEBUG=true
 """
 
 ##
