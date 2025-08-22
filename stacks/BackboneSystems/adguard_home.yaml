@@ -33,4 +33,5 @@ services:
         target: /opt/adguardhome/conf
     restart: unless-stopped
     labels:
-      proxy.aliases: adguardhome
+      - homepage.name: Godoxy
+      - homepage.group: System

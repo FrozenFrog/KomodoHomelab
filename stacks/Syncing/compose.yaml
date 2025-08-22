@@ -31,9 +31,8 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist, s3-alist
-      proxy.#1.port: 5244
-      proxy.#2.port: 5246
+      - homepage.name: Alist
+      - homepage.group: Storage
 
   rclone:
     image: rclone/rclone:latest
@@ -95,3 +94,6 @@ services:
         limits:
           memory: "7212105728"
     restart: unless-stopped
+    labels:
+      - homepage.name: rclone
+      - homepage.group: Storage

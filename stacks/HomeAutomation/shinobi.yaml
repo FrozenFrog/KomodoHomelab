@@ -7,7 +7,7 @@ services:
     environment:
       TZ: ${TZ}
       HOME: /home/Shinobi
-      DB_HOST: "${DB_HOST:-192.168.1.3:3306}"
+      DB_HOST: "${DB_HOST:-192.168.1.3}"
       DB_USER: "${DB_USER:-majesticflame}"
       DB_PASSWORD: "${DB_PASSWORD:-}"
       DB_DATABASE: "${DB_DATABASE:-ccio}"
@@ -33,3 +33,6 @@ services:
         source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/plugins"
         target: /home/Shinobi/plugins
     restart: unless-stopped
+    labels:
+      - homepage.name: Shinobi
+      - homepage.group: Home Automation
