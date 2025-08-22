@@ -1,11 +1,17 @@
 services:
   shinobi:
-    image: registry.gitlab.com/shinobi-systems/shinobi:dev
+    image: registry.gitlab.com/shinobi-systems/shinobidocker:dev
     network_mode: bridge
     container_name: shinobi
     hostname: shinobi
     environment:
       TZ: ${TZ}
+      HOME: /home/Shinobi
+      DB_HOST: "${DB_HOST:-192.168.1.3}"
+      DB_USER: "${DB_USER:-majesticflame}"
+      DB_PASSWORD: "${DB_PASSWORD:-}"
+      DB_DATABASE: "${DB_PASSWORD:-ccio}"
+      SHINOBI_UPDATE: false
     ports:
       - target: 8080
         published: "12080"
@@ -20,9 +26,6 @@ services:
       - type: bind
         source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/customAutoLoad"
         target: /home/Shinobi/libs/customAutoLoad
-      - type: bind
-        source: "${BASEPATH}/${SHINOBI_CONFIG_PATH}/database"
-        target: /var/lib/mysql
       - type: bind
         source: "${SHINOBI_STORAGE_PATH}"
         target: /home/Shinobi/videos
