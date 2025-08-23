@@ -1,0 +1,205 @@
+services:
+  gluetun_pf:
+    image: qmcgaw/gluetun:latest
+    network_mode: bridge
+    container_name: gluetun_pf
+    hostname: gluetun_pf
+    environment:
+      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      VPN_SERVICE_PROVIDER: custom
+      VPN_TYPE: wireguard
+      WIREGUARD_ENDPOINT_IP: 173.239.247.173
+      WIREGUARD_ENDPOINT_PORT: 1337
+      WIREGUARD_ADDRESSES: 10.19.219.243
+      WIREGUARD_PRIVATE_KEY: yH0cgQlWswV89MOya9MlTwf+x86znoF2Ui3kfA5Mcmc=
+      WIREGUARD_PUBLIC_KEY: tJ9qYDVzAei15fYzzkdoWQvyajNZeE3I7ViBMOH2kE4=
+      VPN_PORT_FORWARDING: on
+      VPN_PORT_FORWARDING_PROVIDER: "private internet access"
+      VPN_PORT_FORWARDING_USERNAME: "p8001972"
+      VPN_PORT_FORWARDING_PASSWORD: "e8*Vu8GeMFZBS*"
+      SERVER_NAMES: "vietnam404"
+      HEALTH_SUCCESS_WAIT_DURATION: 180s
+      HEALTH_VPN_DURATION_ADDITION: 20s
+      FIREWALL_OUTBOUND_SUBNETS: "192.168.9.0/24,192.168.1.0/24"
+      VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
+      VPN_PORT_FORWARDING_UP_COMMAND: "/bin/sh -c '/usr/bin/wget -O- --retry-connrefused --post-data \"json={\\\"listen_port\\\":{{PORTS}}}\" http://127.0.0.1:8081/api/v2/app/setPreferences 2>&1'"
+      TZ: ${TZ}
+    ports:
+      - target: 8081
+        published: "8081"
+        protocol: tcp
+      - target: 8080
+        published: "8080"
+        protocol: tcp
+      - target: 8000
+        published: "17888"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+        target: /gluetun
+    restart: on-failure:10
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    labels:
+      icon: https://github.com/walkxcode/dashboard-icons/blob/main/png/gluetun.png?raw=true
+
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    network_mode: "service:gluetun_pf"
+    container_name: qbittorrent
+    hostname: qbittorrent
+    environment:
+      PGID: "13000"
+      PUID: "13007"
+      TZ: ${TZ}
+      UMASK: "002"
+      WEBUI_PORT: "8081"
+    ports: []
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
+        target: /data/incomplete
+      - type: bind
+        source: "${DATA_STORAGE_PATH}/torrents"
+        target: /data/torrents
+    restart: unless-stopped
+    labels:
+      proxy.depends_on: |
+        - gluetun_pf: service_healthy
+
+  vuetorrent-backend:
+    image: ghcr.io/vuetorrent/vuetorrent-backend:latest
+    network_mode: "service:gluetun_pf"
+    container_name: vuetorrent-backend
+    hostname: vuetorrent-backend
+    environment:
+      PORT: "8080"
+      QBIT_BASE: http://gluetun_pf:8081
+      RELEASE_TYPE: stable
+      UPDATE_VT_CRON: 0 * * * *
+    ports: []
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
+        target: /config
+    restart: unless-stopped
+    labels:
+      proxy.depends_on: |
+        - gluetun_pf: service_healthy
+
+  pyload:
+    image: linuxserver/pyload-ng:latest
+    network_mode: bridge
+    container_name: pyload
+    hostname: pyload
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    ports:
+      - target: 8000
+        published: "8000"
+        protocol: tcp
+      - target: 9666
+        published: "9666"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${PYLOAD_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${DATA_STORAGE_PATH}/Downloads"
+        target: /downloads
+    restart: unless-stopped
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+
+  metube:
+    image: ghcr.io/alexta69/metube
+    network_mode: bridge
+    container_name: metube
+    hostname: metube
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+      DELETE_FILE_ON_TRASHCAN: true
+    ports:
+      - target: 8081
+        published: "12081"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${DATA_STORAGE_PATH}/Downloads"
+        target: /downloads
+    restart: unless-stopped
+
+  geoip_updater:
+    image: crazymax/geoip-updater:latest
+    network_mode: bridge
+    container_name: geoip_updater
+    hostname: geoip_updater
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
+        target: /data
+    env_file:
+      - "/mnt/Application/config/rtorrent-config/geoip-updater.env"
+    restart: unless-stopped
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+
+  rtorrent_rutorrent:
+    image: crazymax/rtorrent-rutorrent:latest
+    network_mode: bridge
+    container_name: rtorrent_rutorrent
+    hostname: rtorrent_rutorrent
+    environment:
+      PGID: "13000"
+      PUID: "13007"
+      TZ: ${TZ}
+    ports:
+      - target: 26881
+        published: 26881
+        protocol: udp
+      - target: 28000
+        published: 28000
+        protocol: tcp
+      - target: 29000
+        published: 29000
+        protocol: tcp
+      - target: 50000
+        published: 50000
+        protocol: tcp
+      - target: 28080
+        published: 28080
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}"
+        target: /data
+      - type: bind
+        source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
+        target: /downloads/temp
+      - type: bind
+        source: "${DATA_STORAGE_PATH}/torrents"
+        target: /downloads/complete
+      - type: bind
+        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/passwd"
+        target: /passwd
+    restart: unless-stopped
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+
+

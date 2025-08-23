@@ -1,0 +1,239 @@
+services:
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    network_mode: bridge
+    container_name: lidarr
+    hostname: lidarr
+    environment:
+      PGID: "13000"
+      PUID: "13003"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - target: 8686
+        published: "8686"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${LIDARR_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${DATA_STORAGE_PATH}"
+        target: /data
+    restart: unless-stopped
+    
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    network_mode: bridge
+    container_name: radarr
+    hostname: radarr
+    environment:
+      PGID: "13000"
+      PUID: "13002"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - target: 7878
+        published: "7878"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${RADARR_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${DATA_STORAGE_PATH}"
+        target: /data
+    restart: unless-stopped
+    
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    network_mode: bridge
+    container_name: sonarr
+    hostname: sonarr
+    environment:
+      PGID: "13000"
+      PUID: "13001"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - target: 8989
+        published: "8989"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${SONARR_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${DATA_STORAGE_PATH}"
+        target: /data
+    restart: unless-stopped
+    
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    network_mode: bridge
+    container_name: prowlarr
+    hostname: prowlarr
+    environment:
+      PGID: "13000"
+      PUID: "13006"
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - target: 9696
+        published: "9696"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${PROWLARR_CONFIG_PATH}"
+        target: /config
+    restart: unless-stopped
+    
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    network_mode: bridge
+    container_name: bazarr
+    hostname: bazarr
+    environment:
+      PGID: "13000"
+      PUID: "13013"
+      TZ: ${TZ}
+    ports:
+      - target: 6767
+        published: "6767"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${BAZARR_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${INFUSE_MEDIA_STORAGE_PATH}/movies"
+        target: /movies
+      - type: bind
+        source: "${INFUSE_MEDIA_STORAGE_PATH}/tv"
+        target: /tv
+    restart: unless-stopped
+    
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    network_mode: bridge
+    container_name: audiobookshelf
+    hostname: audiobookshelf
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    ports:
+      - target: 80
+        published: "13387"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${DATA_STORAGE_PATH}audiobookshelf/audiobooks"
+        target: /audiobooks
+      - type: bind
+        source: "${DATA_STORAGE_PATH}audiobookshelf/podcasts"
+        target: /podcasts
+      - type: bind
+        source: "${BASEPATH}/${AUDIOBOOKSHELF_CONFIG_PATH}/config"
+        target: /config
+      - type: bind
+        source: "${BASEPATH}/${AUDIOBOOKSHELF_CONFIG_PATH}/metadata"
+        target: /metadata
+    restart: unless-stopped
+    
+  calibre:
+    image: crocodilestick/calibre-web-automated:latest
+    network_mode: bridge
+    container_name: calibre
+    hostname: calibre
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    ports:
+      - target: 8083
+        published: "8083"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${CALIBRE_CONFIG_PATH}/config"
+        target: /config
+      - type: bind
+        source: "${BASEPATH}/${CALIBRE_CONFIG_PATH}/book-ingest"
+        target: /cwa-book-ingest
+      - type: bind
+        source: "${BASEPATH}/${CALIBRE_CONFIG_PATH}/library"
+        target: /calibre-library
+      - type: bind
+        source: "${BASEPATH}/${CALIBRE_CONFIG_PATH}/config/gmail.json"
+        target: /app/calibre-web-automated/gmail.json
+    restart: unless-stopped
+  
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:latest
+    network_mode: bridge
+    container_name: recyclarr
+    hostname: recyclarr
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+      UMASK: "002"
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${RECYCLARR_CONFIG_PATH}"
+        target: /config
+    restart: unless-stopped
+    
+  unpackerr:
+    image: ghcr.io/hotio/unpackerr:latest
+    network_mode: bridge
+    container_name: unpackerr
+    hostname: unpackerr
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+      UMASK: "002"
+      UN_DEBUG: "false"
+      UN_DIR_MODE: "0755"
+      UN_FILE_MODE: "0644"
+      UN_INTERVAL: 2m
+      UN_LIDARR_0_API_KEY: 491b7c77b2bf438f91c6b928f829861f
+      UN_LIDARR_0_DELETE_DELAY: 5m
+      UN_LIDARR_0_DELETE_ORIG: "false"
+      UN_LIDARR_0_PATHS_0: /data/music
+      UN_LIDARR_0_PROTOCOLS: torrent
+      UN_LIDARR_0_TIMEOUT: 10s
+      UN_LIDARR_0_URL: http://192.168.1.3:8686
+      UN_LOG_FILE: ""
+      UN_LOG_FILE_MB: "10"
+      UN_LOG_FILES: "10"
+      UN_MAX_RETRIES: "3"
+      UN_PARALLEL: "1"
+      UN_RADARR_0_API_KEY: 4c170e4bcc584985a37b1783ededa9a4
+      UN_RADARR_0_DELETE_DELAY: 5m
+      UN_RADARR_0_DELETE_ORIG: "false"
+      UN_RADARR_0_PATHS_0: /data/movies
+      UN_RADARR_0_PROTOCOLS: torrent
+      UN_RADARR_0_TIMEOUT: 10s
+      UN_RADARR_0_URL: http://192.168.1.3:7878
+      UN_RETRY_DELAY: 5m
+      UN_SONARR_0_API_KEY: 009d6a39baac4724a2d4af1f03ee528a
+      UN_SONARR_0_DELETE_DELAY: 5m
+      UN_SONARR_0_DELETE_ORIG: "false"
+      UN_SONARR_0_PATHS_0: /data/tv
+      UN_SONARR_0_PROTOCOLS: torrent
+      UN_SONARR_0_TIMEOUT: 10s
+      UN_SONARR_0_URL: http://192.168.1.3:8989
+      UN_START_DELAY: 1m
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${UNPACKERR_CONFIG_PATH}"
+        target: /config
+      - type: bind
+        source: "${INFUSE_MEDIA_STORAGE_PATH}"
+        target: /data
+    restart: unless-stopped
+    
