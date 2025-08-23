@@ -43,10 +43,11 @@ services:
         source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
         target: /config
     restart: unless-stopped
+    depends_on:
+      gluetun_pf:
+        condition: service_healthy
     labels:
       proxy.exclude: true
-      proxy.depends_on: |
-        - gluetun_pf: service_healthy
 
   pyload:
     image: linuxserver/pyload-ng:latest
