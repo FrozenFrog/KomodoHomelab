@@ -107,8 +107,9 @@ services:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
         target: /data
-    env_file:
-      - "/mnt/Application/config/rtorrent-config/geoip-updater.env"
+      - type: bind
+        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip-updater.env"
+        target: /geoip-updater.env
     restart: unless-stopped
     labels:
       icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
