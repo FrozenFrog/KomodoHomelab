@@ -112,7 +112,7 @@ services:
         target: /geoip-updater.env
     restart: unless-stopped
     labels:
-      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+      proxy.exclude: true
 
   rtorrent_rutorrent:
     image: crazymax/rtorrent-rutorrent:latest
