@@ -28,8 +28,7 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/MediaCenter"
 file_paths = [
   "streaming.yaml",
-  "downloader.yaml",
-  "arr-apps.yaml"
+  "downloader.yaml"
 ]
 env_file_path = "mediacenter.env"
 additional_env_files = ["../../MainSystem/.env"]
