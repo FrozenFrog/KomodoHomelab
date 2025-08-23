@@ -73,7 +73,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
-      proxy.exclude: true
+      proxy.aliases: torrents
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
