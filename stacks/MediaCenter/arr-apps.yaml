@@ -1,5 +1,4 @@
 services:
-
   lidarr:
     image: lscr.io/linuxserver/lidarr:latest
     network_mode: bridge
@@ -123,8 +122,8 @@ services:
       PGID: "13000"
       PUID: "1000"
       TZ: ${TZ}
-    ports:
-      - 13387:80
+    expose:
+      - 80
     volumes:
       - type: bind
         source: "${DATA_STORAGE_PATH}audiobookshelf/audiobooks"
@@ -141,6 +140,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: audiobook
+      proxy.#1.port: 12378:80
     
   calibre:
     image: crocodilestick/calibre-web-automated:latest
