@@ -151,7 +151,7 @@ APP_CONFIG_PATH=gethomepage-config
 [[procedure]]
 name = "Backup Core Database"
 description = "Triggers the Core database backup at the scheduled time."
-tags = ["system"]
+tags = ["system", "automation"]
 config.schedule = "Every day at 23:00"
 
 [[procedure.config.stage]]
@@ -166,7 +166,7 @@ executions = [
 [[procedure]]
 name = "Global Auto Update"
 description = "Pulls and auto updates Stacks and Deployments using 'poll_for_updates' or 'auto_update'."
-tags = ["system"]
+tags = ["system", "automation"]
 config.schedule = "Every day at 23:00"
 
 [[procedure.config.stage]]
