@@ -22,4 +22,4 @@ services:
         target: /mnt
     restart: unless-stopped
     labels:
-      proxy.aliases: nextmeats.asia, osce.lan
+      proxy.exclude
