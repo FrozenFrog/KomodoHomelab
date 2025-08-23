@@ -1,7 +1,7 @@
 services:
   shinobi:
     image: registry.gitlab.com/shinobi-systems/shinobidocker:dev
-    network_mode: host
+    network_mode: bridge
     container_name: shinobi
     hostname: shinobi
     environment:
