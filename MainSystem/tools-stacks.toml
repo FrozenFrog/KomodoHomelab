@@ -32,7 +32,11 @@ file_paths = [
   "downloader.yaml"
 ]
 env_file_path = "mediacenter.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  "../../MainSystem/.env",
+  "geoip-updater.env",
+  "rtorrent-rutorrent.env"
+]
 environment = """
 ALIST_CONFIG_PATH=alist-config
 RClONE_CONFIG_PATH=rclone-config
