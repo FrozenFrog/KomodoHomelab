@@ -124,9 +124,7 @@ services:
       PUID: "1000"
       TZ: ${TZ}
     ports:
-      - target: 80
-        published: "13387"
-        protocol: tcp
+      - 13387:80
     volumes:
       - type: bind
         source: "${DATA_STORAGE_PATH}audiobookshelf/audiobooks"
