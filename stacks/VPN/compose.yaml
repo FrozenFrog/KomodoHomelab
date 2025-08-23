@@ -73,7 +73,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
-      - proxy.exclude: true
+      proxy.exclude: true
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
