@@ -155,5 +155,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: rtorrent
+      proxy.rtorrent.port: 28080
 
 
