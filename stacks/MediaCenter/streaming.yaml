@@ -1,12 +1,3 @@
-name: mediacenter
-networks:
-  mediacenter:
-    name: mediacenter_network
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.9.0/24
-
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
