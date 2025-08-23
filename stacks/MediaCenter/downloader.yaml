@@ -23,6 +23,7 @@ services:
         target: /data/torrents
     restart: unless-stopped
     labels:
+      proxy.exclude: true
       proxy.depends_on: |
         - gluetun_pf: service_healthy
 
@@ -42,7 +43,7 @@ services:
         target: /config
     restart: unless-stopped
     labels:
-      proxy.aliases: torrents
+      proxy.exclude: true
       proxy.depends_on: |
         - gluetun_pf: service_healthy
 
@@ -153,6 +154,6 @@ services:
         target: /passwd
     restart: unless-stopped
     labels:
-      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+      proxy.aliases: rtorrent
 
 
