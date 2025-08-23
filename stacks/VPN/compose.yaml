@@ -29,7 +29,8 @@ services:
   gluetun_pf:
     image: qmcgaw/gluetun:latest
     networks:
-      - vpn
+      vpn:
+        ipv4_address: 192.168.3.150
     container_name: gluetun_pf
     hostname: gluetun_pf
     environment:
