@@ -17,16 +17,15 @@ services:
         target: /config
       - type: bind
         source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
-       target: /data/incomplete
+        target: /data/incomplete
       - type: bind
         source: "${DATA_STORAGE_PATH}/torrents"
         target: /data/torrents
     restart: unless-stopped
-    depends_on:
-      gluetun_pf:
-        condition: service_healthy
     labels:
       proxy.exclude: true
+      proxy.depends_on: |
+        gluetun_pf: service_healthy
 
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
@@ -43,11 +42,10 @@ services:
         source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
         target: /config
     restart: unless-stopped
-    depends_on:
-      gluetun_pf:
-        condition: service_healthy
     labels:
       proxy.exclude: true
+      proxy.depends_on: |
+        gluetun_pf: service_healthy
 
   pyload:
     image: linuxserver/pyload-ng:latest
