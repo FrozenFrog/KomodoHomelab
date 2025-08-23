@@ -185,6 +185,8 @@ services:
         source: "${BASEPATH}/${RECYCLARR_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
+    labels:
+      proxy.excludes: "true"
     
   unpackerr:
     image: ghcr.io/hotio/unpackerr:latest
@@ -236,4 +238,6 @@ services:
         source: "${INFUSE_MEDIA_STORAGE_PATH}"
         target: /data
     restart: unless-stopped
+    labels:
+      proxy.excludes: "true"
     
