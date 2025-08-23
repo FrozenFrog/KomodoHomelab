@@ -2,9 +2,7 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: "service:gluetun_pf"
-    networks:
-      - vpn
+    network_mode: "container:gluetun_pf"
     container_name: qbittorrent
     hostname: qbittorrent
     environment:
@@ -31,9 +29,7 @@ services:
 
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
-    network_mode: "service:gluetun_pf"
-    networks:
-      - vpn
+    network_mode: "container:gluetun_pf"
     container_name: vuetorrent-backend
     hostname: vuetorrent-backend
     environment:
