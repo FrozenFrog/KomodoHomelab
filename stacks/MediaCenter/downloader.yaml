@@ -22,10 +22,11 @@ services:
         source: "${DATA_STORAGE_PATH}/torrents"
         target: /data/torrents
     restart: unless-stopped
+    depends_on:
+      gluetun_pf:
+        condition: service_healthy
     labels:
       proxy.exclude: true
-      proxy.depends_on: |
-        gluetun_pf: service_healthy
 
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
