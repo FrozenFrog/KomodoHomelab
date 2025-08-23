@@ -124,7 +124,7 @@ services:
       PUID: "1000"
       TZ: ${TZ}
     ports:
-      - target: 80
+      - target: 13387
         published: "13387"
         protocol: tcp
     volumes:
