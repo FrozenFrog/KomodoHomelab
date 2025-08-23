@@ -42,6 +42,7 @@ services:
         target: /config
     restart: unless-stopped
     labels:
+      proxy.aliases: torrents
       proxy.depends_on: |
         - gluetun_pf: service_healthy
 
