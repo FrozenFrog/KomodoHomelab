@@ -1,51 +1,51 @@
 services:
 
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: "service:gluetun_pf"
-    container_name: qbittorrent
-    hostname: qbittorrent
-    environment:
-      PGID: "13000"
-      PUID: "13007"
-      TZ: ${TZ}
-      UMASK: "002"
-      WEBUI_PORT: "8081"
-    ports: []
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}"
-        target: /config
-      - type: bind
-        source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
-        target: /data/incomplete
-      - type: bind
-        source: "${DATA_STORAGE_PATH}/torrents"
-        target: /data/torrents
-    restart: unless-stopped
-    labels:
-      proxy.depends_on: |
-        - gluetun_pf: service_healthy
+  # qbittorrent:
+  #   image: lscr.io/linuxserver/qbittorrent:latest
+  #   network_mode: "service:gluetun_pf"
+  #   container_name: qbittorrent
+  #   hostname: qbittorrent
+  #   environment:
+  #     PGID: "13000"
+  #     PUID: "13007"
+  #     TZ: ${TZ}
+  #     UMASK: "002"
+  #     WEBUI_PORT: "8081"
+  #   ports: []
+  #   volumes:
+  #     - type: bind
+  #       source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}"
+  #       target: /config
+  #     - type: bind
+  #       source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
+  #       target: /data/incomplete
+  #     - type: bind
+  #       source: "${DATA_STORAGE_PATH}/torrents"
+  #       target: /data/torrents
+  #   restart: unless-stopped
+  #   labels:
+  #     proxy.depends_on: |
+  #       - gluetun_pf: service_healthy
 
-  vuetorrent-backend:
-    image: ghcr.io/vuetorrent/vuetorrent-backend:latest
-    network_mode: "service:gluetun_pf"
-    container_name: vuetorrent-backend
-    hostname: vuetorrent-backend
-    environment:
-      PORT: "8080"
-      QBIT_BASE: http://192.168.1.3:8081
-      RELEASE_TYPE: stable
-      UPDATE_VT_CRON: 0 * * * *
-    ports: []
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
-        target: /config
-    restart: unless-stopped
-    labels:
-      proxy.depends_on: |
-        - gluetun_pf: service_healthy
+  # vuetorrent-backend:
+  #   image: ghcr.io/vuetorrent/vuetorrent-backend:latest
+  #   network_mode: "service:gluetun_pf"
+  #   container_name: vuetorrent-backend
+  #   hostname: vuetorrent-backend
+  #   environment:
+  #     PORT: "8080"
+  #     QBIT_BASE: http://192.168.1.3:8081
+  #     RELEASE_TYPE: stable
+  #     UPDATE_VT_CRON: 0 * * * *
+  #   ports: []
+  #   volumes:
+  #     - type: bind
+  #       source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
+  #       target: /config
+  #   restart: unless-stopped
+  #   labels:
+  #     proxy.depends_on: |
+  #       - gluetun_pf: service_healthy
 
   pyload:
     image: linuxserver/pyload-ng:latest
