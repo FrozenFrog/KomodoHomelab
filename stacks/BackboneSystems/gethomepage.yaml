@@ -11,7 +11,7 @@ services:
       TZ: ${TZ}
     ports:
       - target: 3000
-        published: "3000"
+        published: "3020"
         protocol: tcp
     volumes:
       - type: bind
