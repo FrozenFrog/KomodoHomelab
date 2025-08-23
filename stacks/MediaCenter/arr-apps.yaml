@@ -128,10 +128,10 @@ services:
         protocol: tcp
     volumes:
       - type: bind
-        source: "${DATA_STORAGE_PATH}audiobookshelf/audiobooks"
+        source: "${DATA_STORAGE_PATH}/audiobookshelf/audiobooks"
         target: /audiobooks
       - type: bind
-        source: "${DATA_STORAGE_PATH}audiobookshelf/podcasts"
+        source: "${DATA_STORAGE_PATH}/audiobookshelf/podcasts"
         target: /podcasts
       - type: bind
         source: "${BASEPATH}/${AUDIOBOOKSHELF_CONFIG_PATH}/config"
