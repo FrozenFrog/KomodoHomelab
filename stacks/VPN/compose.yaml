@@ -73,7 +73,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
-      icon: https://github.com/walkxcode/dashboard-icons/blob/main/png/gluetun.png?raw=true
+      - proxy.exclude: true
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
