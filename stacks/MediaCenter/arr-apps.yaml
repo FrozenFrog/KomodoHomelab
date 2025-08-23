@@ -186,7 +186,7 @@ services:
         target: /config
     restart: unless-stopped
     labels:
-      proxy.excludes: "true"
+      proxy.exclude: "true"
     
   unpackerr:
     image: ghcr.io/hotio/unpackerr:latest
@@ -239,5 +239,5 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.excludes: "true"
+      proxy.exclude: "true"
     
