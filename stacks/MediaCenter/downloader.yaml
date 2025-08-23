@@ -25,7 +25,7 @@ services:
     labels:
       proxy.exclude: true
       proxy.depends_on: |
-        - gluetun_pf: service_healthy
+        gluetun_pf: service_healthy
 
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
