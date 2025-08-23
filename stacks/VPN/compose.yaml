@@ -111,7 +111,7 @@ services:
         target: /gluetun
     restart: on-failure
     labels:
-      icon: https://github.com/walkxcode/dashboard-icons/blob/main/png/gluetun.png?raw=true
+      proxy.exclude: true
     cap_add:
       - NET_ADMIN
     networks:
@@ -146,7 +146,7 @@ services:
         target: /gluetun
     restart: on-failure
     labels:
-      icon: https://github.com/walkxcode/dashboard-icons/blob/main/png/gluetun.png?raw=true
+      proxy.exclude: true
     cap_add:
       - NET_ADMIN
     networks:
