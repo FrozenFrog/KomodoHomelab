@@ -105,9 +105,6 @@ services:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
         target: /data
-      - type: bind
-        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip-updater.env"
-        target: /geoip-updater.env
     restart: unless-stopped
     labels:
       proxy.exclude: true
