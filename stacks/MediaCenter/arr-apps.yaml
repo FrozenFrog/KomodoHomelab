@@ -113,34 +113,7 @@ services:
         target: /tv
     restart: unless-stopped
     
-  audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:latest
-    network_mode: bridge
-    container_name: audiobookshelf
-    hostname: audiobookshelf
-    environment:
-      PGID: "13000"
-      PUID: "1000"
-      TZ: ${TZ}
-    expose:
-      - 80
-    volumes:
-      - type: bind
-        source: "${DATA_STORAGE_PATH}audiobookshelf/audiobooks"
-        target: /audiobooks
-      - type: bind
-        source: "${DATA_STORAGE_PATH}audiobookshelf/podcasts"
-        target: /podcasts
-      - type: bind
-        source: "${BASEPATH}/${AUDIOBOOKSHELF_CONFIG_PATH}/config"
-        target: /config
-      - type: bind
-        source: "${BASEPATH}/${AUDIOBOOKSHELF_CONFIG_PATH}/metadata"
-        target: /metadata
-    restart: unless-stopped
-    labels:
-      proxy.aliases: audiobook
-      proxy.#1.port: 12378:80
+
     
   calibre:
     image: crocodilestick/calibre-web-automated:latest
