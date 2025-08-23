@@ -109,6 +109,7 @@ services:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
         target: /data
+    command: "--edition-ids=GeoLite2-City,GeoLite2-Country --license-key=${LICENSE_KEY}"
     restart: unless-stopped
     labels:
       proxy.exclude: true
