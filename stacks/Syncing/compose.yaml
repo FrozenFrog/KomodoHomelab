@@ -43,7 +43,7 @@ services:
       proxy.#2: |
         port: 5246
         homepage.show: false
-      proxy.#2: |
+      proxy.#3: |
         port: 5222
         homepage.show: false
 
