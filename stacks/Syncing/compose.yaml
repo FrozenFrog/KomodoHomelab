@@ -21,9 +21,6 @@ services:
         source: "${BASEPATH}/${ALIST_CONFIG_PATH}"
         target: /opt/alist/data
       - type: bind
-        source: "${BASEPATH}"
-        target: /application_rev
-      - type: bind
         source: "${INFUSE_MEDIA_STORAGE_PATH}"
         target: /media
       - type: bind
