@@ -110,7 +110,7 @@ services:
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
         target: /data
     env_file:
-      - "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip/geoip-updater.env"
+      - "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip-updater.env"
     command: "--edition-ids=GeoLite2-City,GeoLite2-Country --license-key=${LICENSE_KEY}"
     restart: unless-stopped
     labels:
