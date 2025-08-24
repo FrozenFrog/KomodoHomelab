@@ -100,7 +100,7 @@ services:
       PGID: "13000"
       PUID: "1000"
       TZ: ${TZ}
-      LICENSE_KEY: ${LICENSE_KEY-''}
+      LICENSE_KEY: ${LICENSE_KEY-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}
       DOWNLOAD_PATH: ${DOWNLOAD_PATH}
       SCHEDULE: ${SCHEDULE}
       LOG_LEVEL: ${LOG_LEVEL}
