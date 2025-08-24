@@ -34,7 +34,6 @@ file_paths = [
 env_file_path = "mediacenter.env"
 additional_env_files = [
   "../../MainSystem/.env",
-  "geoip-updater.env",
   "rtorrent-rutorrent.env"
 ]
 environment = """
