@@ -74,6 +74,11 @@ services:
       - /dev/net/tun:/dev/net/tun
     labels:
       proxy.aliases: torrent
+      proxy.torrent.homepage: |
+        name: "Porfording PIA"
+        icon: "@walkxcode/gluetun"
+        description: "Qbitorrent PIA"
+        category: "Networking"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
@@ -117,6 +122,11 @@ services:
     networks:
       vpn:
         ipv4_address: 192.168.3.100
+    labels:
+      proxy.gluetun_tokyo.homepage: |
+        name: "Gluetun Tokyo"
+        icon: "@walkxcode/gluetun"
+        category: "Networking"
 
   SurfsharkHongKong:
     image: qmcgaw/gluetun:latest
@@ -152,6 +162,11 @@ services:
     networks:
       vpn:
         ipv4_address: 192.168.3.101
+    labels:
+      proxy.gluetun_hongkong.homepage: |
+        name: "Gluetun HongKong"
+        icon: "@walkxcode/gluetun"
+        category: "Networking"
 
   # NordVietnam:
   #   cap_add:
