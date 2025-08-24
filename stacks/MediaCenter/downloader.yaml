@@ -109,11 +109,8 @@ services:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip"
         target: /data
-      - type: bind
-        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip/geoip-updater.env"
-        target: /geoip-updater.env
     env_file:
-      - "/geoip-updater.env"
+      - "${BASEPATH}/${RTORRENT_CONFIG_PATH}/geoip/geoip-updater.env"
     command: "--edition-ids=GeoLite2-City,GeoLite2-Country --license-key=${LICENSE_KEY}"
     restart: unless-stopped
     labels:
