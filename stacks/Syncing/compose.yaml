@@ -31,7 +31,7 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist, alist-s3, alist-ftp
+      proxy.aliases: alist, alist-s3
       proxy.alist: |
         port: 5244
         homepage.name: "Alist"
