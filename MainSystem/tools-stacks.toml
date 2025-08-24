@@ -10,8 +10,8 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Karakeep"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
-MEILI_MASTER_KEY = [[ask-tick-any-gavel]]
-NEXTAUTH_SECRET = [[storming-flapping-topped-maris]]
+MEILI_MASTER_KEY=ask-tick-any-gavel
+NEXTAUTH_SECRET=storming-flapping-topped-maris
 """
 
 ##
