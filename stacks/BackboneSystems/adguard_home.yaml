@@ -34,3 +34,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: adguard
+      proxy.#1.homepage.name: "Adguard Home"
+      proxy.#1.homepage.icon: "@walkxcode/adguard-home.svg"
