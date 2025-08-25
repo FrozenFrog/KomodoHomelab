@@ -76,7 +76,7 @@ services:
       proxy.aliases: torrent
       proxy.#1.homepage: |
         name: "Porfording PIA"
-        icon: "@walkxcode/gluetun.svg"
+        icon: "@selfhst/gluetun.svg"
         description: "Qbitorrent PIA"
         category: "Networking"
 
@@ -125,7 +125,7 @@ services:
       proxy.#1.port: 16806
       proxy.#1.homepage: |
         name: "Gluetun Tokyo"
-        icon: "@walkxcode/gluetun.svg"
+        icon: "@selfhst/gluetun.svg"
         category: "Networking"
 
   SurfsharkHongKong:
@@ -165,7 +165,7 @@ services:
       proxy.#1.port: 16807
       proxy.#1.homepage: |
         name: "Gluetun HongKong"
-        icon: "@walkxcode/gluetun.svg"
+        icon: "@selfhst/gluetun.svg"
         category: "Networking"
 
   # NordVietnam:
