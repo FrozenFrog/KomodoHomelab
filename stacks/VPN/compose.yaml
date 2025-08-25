@@ -125,9 +125,9 @@ services:
         ipv4_address: 192.168.3.100
     labels:
       proxy.aliases: gluetun_tokyo
-      proxy.#1.port: 8886
-      proxy.#1.port: 16806
-      proxy.#1.homepage: |
+      proxy.gluetun_tokyo.port: 8886
+      proxy.gluetun_tokyo.port: 16806
+      proxy.gluetun_tokyo.homepage: |
         name: "Gluetun Tokyo"
         icon: "@selfhst/gluetun.svg"
         category: "Networking"
@@ -162,9 +162,9 @@ services:
         ipv4_address: 192.168.3.101
     labels:
       proxy.aliases: gluetun_hongkong
-      proxy.#1.port: 8887:8888
-      proxy.#1.port: 16807:8000
-      proxy.#1.homepage: |
+      proxy.gluetun_hongkong.port: 8887:8888
+      proxy.gluetun_hongkong.port: 16807:8000
+      proxy.gluetun_korean.homepage: |
         name: "Gluetun HongKong"
         icon: "@selfhst/gluetun.svg"
         category: "Networking"
