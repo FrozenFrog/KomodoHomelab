@@ -35,9 +35,9 @@ services:
       proxy.alist: |
         port: 5244
         homepage.name: "Alist"
-        homepage.icon: "@walkxcode/alist"
+        homepage.icon: "@walkxcode/alist.svg"
         homepage.category: "Storage"
-      proxy.#2: |
+      proxy.alist-s3: |
         port: 5246
         homepage.show: false
 
