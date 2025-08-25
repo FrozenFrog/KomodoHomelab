@@ -32,11 +32,11 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: alist, alist-s3
-      proxy.alist: |
-        port: 5244
-        homepage.name: "Alist"
-        homepage.icon: "@walkxcode/alist.svg"
-        homepage.category: "Storage"
+      proxy.alist.port: 5244
+      proxy.alist.homepage: |
+        name: "Alist"
+        icon: "@walkxcode/alist.svg"
+        category: "Storage"
       proxy.alist-s3: |
         port: 5246
         homepage.show: false
