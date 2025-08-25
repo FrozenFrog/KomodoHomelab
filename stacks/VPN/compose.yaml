@@ -124,6 +124,7 @@ services:
       vpn:
         ipv4_address: 192.168.3.100
     labels:
+      proxy.aliases: gluetun_tokyo
       proxy.#1.port: 8886
       proxy.#1.port: 16806
       proxy.#1.homepage: |
@@ -164,6 +165,7 @@ services:
       vpn:
         ipv4_address: 192.168.3.101
     labels:
+      proxy.aliases: gluetun_hongkong
       proxy.#1.port: 8887
       proxy.#1.port: 16807
       proxy.#1.homepage: |
