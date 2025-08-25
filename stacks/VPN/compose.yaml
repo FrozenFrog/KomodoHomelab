@@ -147,13 +147,9 @@ services:
       WIREGUARD_PUBLIC_KEY: JYHdktdtuM7inbtsxRKSDpnBVTWQ5+QLZ/cWWmf4VRg=
       FIREWALL_OUTBOUND_SUBNETS: 192.168.0.0/24
       TZ: ${TZ}
-    ports:
-      - target: 8888
-        published: "8887"
-        protocol: tcp
-      - target: 8000
-        published: "16807"
-        protocol: tcp
+    expose:
+      - 8000
+      - 8888
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
@@ -166,8 +162,8 @@ services:
         ipv4_address: 192.168.3.101
     labels:
       proxy.aliases: gluetun_hongkong
-      proxy.#1.port: 8887
-      proxy.#1.port: 16807
+      proxy.#1.port: 8887:8888
+      proxy.#1.port: 16807:8000
       proxy.#1.homepage: |
         name: "Gluetun HongKong"
         icon: "@selfhst/gluetun.svg"
