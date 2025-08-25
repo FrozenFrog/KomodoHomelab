@@ -74,10 +74,10 @@ services:
       - /dev/net/tun:/dev/net/tun
     labels:
       proxy.aliases: torrent
-      proxy.#1.port: 8080
-      proxy.#1.port: 8081
-      proxy.#1.port: 17888
-      proxy.#1.homepage: |
+      proxy.torrent.port: 8080
+      proxy.torrent.port: 8081
+      proxy.torrent.port: 17888
+      proxy.torrent.homepage: |
         name: "Qbittorent with PF PIA"
         icon: "@selfhst/qbitorrent.svg"
         description: "Qbitorrent PIA"
