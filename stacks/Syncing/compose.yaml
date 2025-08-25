@@ -32,14 +32,14 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: alist, alist-s3
-      proxy.alist.port: 5244
-      proxy.alist.homepage: |
+      proxy.#1.port: 5244
+      proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
         category: "Storage"
-      proxy.alist-s3: |
-        port: 5246
-        homepage.show: false
+      proxy.#2.port: 5246
+      proxy.#2.homepage: |
+        show: false
 
   rclone:
     image: rclone/rclone:latest
