@@ -63,4 +63,5 @@ services:
         target: /meili_data
     restart: unless-stopped
     labels:
+      proxy.aliases: meilisearch
       proxy.#1.port: 7700
