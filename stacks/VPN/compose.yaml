@@ -160,7 +160,6 @@ services:
     labels:
       proxy.aliases: gluetun_hongkong
       proxy.#1.port: 8887:8888
-      proxy.#1.port: 16807:8000
       proxy.#1.homepage: |
         name: "Gluetun HongKong"
         icon: "@selfhst/gluetun.svg"
