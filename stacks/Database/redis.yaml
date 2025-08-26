@@ -18,4 +18,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: redis
+      proxy.#1.scheme: http
       proxy.#1.port: ${REDIS_PORT:-6379}

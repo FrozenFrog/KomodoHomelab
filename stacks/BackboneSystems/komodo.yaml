@@ -36,4 +36,5 @@ services:
     labels:
       komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       proxy.aliases: komodo # For godoxy
+      proxy.#1.scheme: http
       proxy.#1.port: 9120

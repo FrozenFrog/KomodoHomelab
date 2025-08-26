@@ -21,4 +21,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: postgres
+      proxy.#1.scheme: http
       proxy.#1.port: ${POSTGRES_PORT:-5432}

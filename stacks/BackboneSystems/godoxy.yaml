@@ -5,7 +5,7 @@ services:
     container_name: godoxy-frontend
     hostname: godoxy-frontend
     environment:
-      HOSTNAME: 192.168.1.3
+      HOSTNAME: ${LOCALHOST}
       PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
     restart: unless-stopped
@@ -39,10 +39,9 @@ services:
       LEGO_DISABLE_CNAME_SUPPORT: 1
       GODOXY_API_USER: ${GODOXY_API_USER:-admin}
       GODOXY_API_PASSWORD: ${GODOXY_API_PASSWORD:-password}
+      SOCKET_PROXY_LISTEN_ADDR: "${LOCALHOST}:2375"
+      GODOXY_API_ADDR: "${LOCALHOST}:8888"
       TZ: ${TZ}
-    dns:
-      - 192.168.1.3
-      - 1.1.1.1
     volumes:
       - ${BASEPATH}/${APP_CONFIG_PATH}/config:/app/config
       - ${BASEPATH}/${APP_CONFIG_PATH}/logs:/app/logs
