@@ -18,5 +18,3 @@ services:
         source: "${BASEPATH}/${MONGODB_CONFIG_PATH}/data"
         target: /data/db
     restart: unless-stopped
-    labels:
-      proxy.aliases: mongodb

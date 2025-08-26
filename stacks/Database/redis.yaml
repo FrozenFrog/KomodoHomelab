@@ -4,7 +4,6 @@ services:
     network_mode: bridge
     container_name: redis
     hostname: redis
-    environment: {}
     ports:
       - ${REDIS_PORT:-6379}
     command:
@@ -16,5 +15,3 @@ services:
       - --maxmemory-policy
       - allkeys-lru
     restart: unless-stopped
-    labels:
-      proxy.aliases: redis

@@ -19,5 +19,3 @@ services:
         source: "${BASEPATH}/${POSTGRES_CONFIG_PATH}/data"
         target: /var/lib/postgresql/data
     restart: unless-stopped
-    labels:
-      proxy.aliases: postgres
