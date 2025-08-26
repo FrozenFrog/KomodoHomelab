@@ -8,13 +8,12 @@ services:
     environment:
       TZ: ${TZ}
       DATABASE_URL: "postgresql://${VAULTWARDEN_DB_NAME}:${VAULTWARDEN_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${VAULTWARDEN_DB_NAME}"
-    expose:
-      - 80
+    ports:
+      - target: 80
+        published: "10380"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
         target: /data
     restart: unless-stopped
-    labels:
-      proxy.aliases: vaultwarden
-      proxy.#1.port: 13080:80

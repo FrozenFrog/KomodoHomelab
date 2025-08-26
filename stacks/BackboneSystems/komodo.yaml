@@ -13,8 +13,8 @@ services:
     hostname: komodo
     container_name: komodo
     restart: unless-stopped
-    expose:
-      - 9120
+    ports:
+      - 9120:9120
     environment:
       KOMODO_DATABASE_ADDRESS: "${LOCALHOST}:27017"
       KOMODO_DATABASE_USERNAME: "${KOMODO_DATABASE_USERNAME:-mongodb}"
@@ -36,5 +36,3 @@ services:
     labels:
       komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       proxy.aliases: komodo # For godoxy
-      proxy.#1.scheme: http
-      proxy.#1.port: 9120
