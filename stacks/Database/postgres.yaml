@@ -13,7 +13,7 @@ services:
       TZ: ${TZ}
       UMASK: "002"
     ports:
-      - ${POSTGRES_PORT:-5432}
+      - ${POSTGRES_PORT:-5432}:5432
     volumes:
       - type: bind
         source: "${BASEPATH}/${POSTGRES_CONFIG_PATH}/data"

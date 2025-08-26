@@ -11,7 +11,7 @@ services:
       TZ: ${TZ}
       UMASK: "002"
     ports:
-      - "${MARIADB_PORT}:3306"
+      - "${MARIADB_PORT-3406}:3306"
     volumes:
       - type: bind
         source: "${BASEPATH}/${MARIADB_CONFIG_PATH}/data"

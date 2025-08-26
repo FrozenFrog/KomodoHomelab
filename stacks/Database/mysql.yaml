@@ -12,7 +12,7 @@ services:
       TZ: ${TZ}
       UMASK: "002"
     ports:
-      - ${MYSQL_PORT:-3306}
+      - ${MYSQL_PORT:-3306}:3306
     volumes:
       - type: bind
         source: "${BASEPATH}/${MYSQL_CONFIG_PATH}/data"
