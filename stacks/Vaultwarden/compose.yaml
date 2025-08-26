@@ -8,6 +8,8 @@ services:
     environment:
       TZ: ${TZ}
       DATABASE_URL: "postgresql://${VAULTWARDEN_DB_NAME}:${VAULTWARDEN_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${VAULTWARDEN_DB_NAME}"
+    expose:
+      - 80
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
