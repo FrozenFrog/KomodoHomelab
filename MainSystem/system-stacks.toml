@@ -120,7 +120,6 @@ GODOXY_FRONTEND_ALIASES=godoxy
 # /var/run/podman/podman.sock for podman
 DOCKER_SOCKET=/var/run/docker.sock
 
-
 # Debug mode
 GODOXY_DEBUG=true
 """
