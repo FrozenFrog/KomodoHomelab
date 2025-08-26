@@ -20,5 +20,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: mongodb
-      proxy.#1.scheme: http
-      proxy.#1.port: ${MONGODB_PORT:-27017}
