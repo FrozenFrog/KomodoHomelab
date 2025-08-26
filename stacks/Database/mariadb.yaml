@@ -10,7 +10,7 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "002"
-    expose:
+    ports:
       - 3306
     volumes:
       - type: bind

@@ -11,7 +11,7 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "002"
-    expose:
+    ports:
       - ${MONGODB_PORT:-27017}
     volumes:
       - type: bind

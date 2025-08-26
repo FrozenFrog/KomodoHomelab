@@ -5,7 +5,7 @@ services:
     container_name: redis
     hostname: redis
     environment: {}
-    expose:
+    ports:
       - ${REDIS_PORT:-6379}
     command:
       - redis-server
