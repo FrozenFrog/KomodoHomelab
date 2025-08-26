@@ -16,5 +16,4 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.#1.scheme: tcp
       proxy.#1.port: 10380:80
