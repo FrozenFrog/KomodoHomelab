@@ -17,5 +17,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: vaultwarden
-      proxy.#1.scheme: http
-      proxy.#1.port: 13080:80
