@@ -11,8 +11,8 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "002"
-    ports:
-      - 3306:3306
+    expose:
+      - ${MYSQL_PORT:-3306}
     volumes:
       - type: bind
         source: "${BASEPATH}/${MYSQL_CONFIG_PATH}/data"
@@ -20,4 +20,5 @@ services:
     command: --mysql-native-password=ON
     restart: unless-stopped
     labels:
-      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
+      proxy.aliases: mysql
+      proxy.#1.port: ${MYSQL_PORT:-3306}

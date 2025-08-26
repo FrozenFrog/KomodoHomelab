@@ -7,7 +7,7 @@ services:
     environment:
       TZ: ${TZ}
       HOME: /home/Shinobi
-      DB_HOST: "${DB_HOST:-192.168.1.3}"
+      DB_HOST: "${LOCALHOST}"
       DB_USER: "${DB_USER:-majesticflame}"
       DB_PASSWORD: "${DB_PASSWORD:-}"
       DB_DATABASE: "${DB_DATABASE:-ccio}"

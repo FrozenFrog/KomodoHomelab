@@ -10,12 +10,13 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "002"
-    ports:
-      - 3406:3306
+    expose:
+      - 3306
     volumes:
       - type: bind
         source: "${BASEPATH}/${MARIADB_CONFIG_PATH}/data"
         target: /var/lib/mysql
     restart: unless-stopped
     labels:
-      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
+      proxy.aliases: mariadb
+      proxy.#1.port: "${MARIADB_PORT}:3306"

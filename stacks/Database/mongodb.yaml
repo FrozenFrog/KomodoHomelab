@@ -11,12 +11,13 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "002"
-    ports:
-      - 27017:27017
+    expose:
+      - ${MONGODB_PORT:-27017}
     volumes:
       - type: bind
         source: "${BASEPATH}/${MONGODB_CONFIG_PATH}/data"
         target: /data/db
     restart: unless-stopped
     labels:
-      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
+      proxy.aliases: mongodb
+      proxy.#1.port: ${MONGODB_PORT:-27017}

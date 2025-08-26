@@ -17,7 +17,6 @@ additional_env_files = ["../../MainSystem/.env"]
 environment = """
 HOMEBRIDGE_CONFIG_PATH=homebridge-config
 SHINOBI_CONFIG_PATH=shinobi-config
-DB_HOST=192.168.1.3
 DB_USER=majesticflame
 DB_PASSWORD=
 DB_DATABASE=ccio

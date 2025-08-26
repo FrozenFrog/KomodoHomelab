@@ -5,9 +5,8 @@ services:
     container_name: redis
     hostname: redis
     environment: {}
-    ports:
-      - 6379:6379
-    volumes: []
+    expose:
+      - ${REDIS_PORT:-6379}
     command:
       - redis-server
       - --save
@@ -18,4 +17,5 @@ services:
       - allkeys-lru
     restart: unless-stopped
     labels:
-      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Adminer/icon.png
+      proxy.aliases: redis
+      proxy.#1.port: ${REDIS_PORT:-6379}
