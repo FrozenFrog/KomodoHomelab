@@ -78,6 +78,7 @@ run_directory = "stacks/Vaultwarden"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
 APP_CONFIG_PATH=vaultwarden-config
+VAULTWARDEN_DB_NAME=vaultwarden
 """
 
 ##
