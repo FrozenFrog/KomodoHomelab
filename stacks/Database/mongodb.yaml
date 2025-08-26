@@ -12,7 +12,7 @@ services:
       TZ: ${TZ}
       UMASK: "002"
     ports:
-      - ${MONGODB_PORT:-27017}
+      - ${MONGODB_PORT:-27017}:27017
     volumes:
       - type: bind
         source: "${BASEPATH}/${MONGODB_CONFIG_PATH}/data"
