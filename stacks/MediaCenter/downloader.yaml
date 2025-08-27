@@ -149,5 +149,6 @@ services:
     labels:
       proxy.aliases: rutorrent
       proxy.#1.port: ${RUTORRENT_PORT}
+      proxy.#1.no_tls_verify: true
 
 
