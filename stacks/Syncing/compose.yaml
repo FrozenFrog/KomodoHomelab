@@ -1,6 +1,6 @@
 services:
   alist:
-    image: xhofe/alist-aria2:latest
+    image: xhofe/alist:latest-aria2
     network_mode: bridge
     container_name: alist
     hostname: alist
@@ -9,15 +9,14 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "022"
+    expose:
+      - 6800
     ports:
       - target: 5244
         published: "5244"
         protocol: tcp
       - target: 5246
         published: "5246"
-        protocol: tcp
-      - target: 6800
-        published: "6800"
         protocol: tcp
     volumes:
       - type: bind
