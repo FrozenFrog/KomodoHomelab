@@ -79,7 +79,7 @@ services:
         name: "Qbittorent with PF PIA"
         icon: "@selfhst/qbitorrent.svg"
         description: "Qbitorrent PIA"
-        category: "Networking"
+        category: "Media"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
