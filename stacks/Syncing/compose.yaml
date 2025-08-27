@@ -9,6 +9,8 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "022"
+    expose:
+      - 6800
     ports:
       - target: 5244
         published: "5244"
