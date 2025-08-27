@@ -146,5 +146,7 @@ services:
       nofile:
         soft: 32000
         hard: 40000
+    labels:
+      proxy.aliases: rutorrent
 
 
