@@ -68,8 +68,6 @@ services:
         source: "${DATA_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
-    labels:
-      proxy.idle_timeout: 1h
 
   metube:
     image: ghcr.io/alexta69/metube
