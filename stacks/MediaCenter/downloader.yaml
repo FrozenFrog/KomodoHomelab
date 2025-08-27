@@ -148,5 +148,6 @@ services:
         hard: 40000
     labels:
       proxy.aliases: rutorrent
+      proxy.#1.port: ${RUTORRENT_PORT}
 
 
