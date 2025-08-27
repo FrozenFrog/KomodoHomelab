@@ -33,16 +33,11 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist, aria2c
+      proxy.aliases: alist
       proxy.#1.port: 5244
       proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
-        category: "Storage"
-      proxy.#2.port: 6800
-      proxy.#2.homepage: |
-        name: "Aria2"
-        icon: "@walkxcode/aria2.svg"
         category: "Storage"
         
   rclone:
