@@ -132,6 +132,9 @@ services:
       - target: ${RT_INC_PORT}
         published: ${RT_INC_PORT}
         protocol: tcp
+      - target: ${RUTORRENT_PORT}
+        published: ${RUTORRENT_PORT}
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}"
