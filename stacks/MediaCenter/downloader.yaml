@@ -117,15 +117,21 @@ services:
       PGID: "13000"
       PUID: "13007"
       TZ: ${TZ}
-    expose:
-      - "${RT_DHT_PORT}/udp"
-      - "${XMLRPC_PORT}"
-      - "${RUTORRENT_PORT}"
-      - "${WEBDAV_PORT}"
-      - "${RT_INC_PORT}"
     ports:
-      - target: ${RUTORRENT_PORT}
-        published: ${RUTORRENT_PORT}
+      - target: 26881
+        published: 26881
+        protocol: udp
+      - target: 28000
+        published: 28000
+        protocol: tcp
+      - target: 29000
+        published: 29000
+        protocol: tcp
+      - target: 50000
+        published: 50000
+        protocol: tcp
+      - target: 28080
+        published: 28080
         protocol: tcp
     volumes:
       - type: bind
