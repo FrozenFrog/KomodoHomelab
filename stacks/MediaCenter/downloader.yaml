@@ -154,9 +154,14 @@ services:
         hard: 40000
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
-      proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.middlewares.redirectHTTP.priority: 1
-      proxy.#1.middlewares.cidrWhiteList.allow: 0.0.0.0/32
+      proxy.#1.middlewares: |
+        - use: real_ip
+          header: X-Forwarded-For
+          from:
+            - 127.0.0.1
+            - 192.168.0.0/16
+            - 10.0.0.0/8
+          recursive: true
       proxy.#2.port: ${RUTORRENT_PORT}
 
 
