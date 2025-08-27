@@ -9,14 +9,15 @@ services:
       PUID: "1000"
       TZ: ${TZ}
       UMASK: "022"
-    expose:
-      - 6800
     ports:
       - target: 5244
         published: "5244"
         protocol: tcp
       - target: 5246
         published: "5246"
+        protocol: tcp
+      - target: 6800
+        published: "6800"
         protocol: tcp
     volumes:
       - type: bind
@@ -33,11 +34,16 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist
+      proxy.aliases: alist, aria2c
       proxy.#1.port: 5244
       proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
+        category: "Storage"
+      proxy.#2.port: 6800
+      proxy.#2.homepage: |
+        name: "Aria2"
+        icon: "@walkxcode/aria2.svg"
         category: "Storage"
         
   rclone:
