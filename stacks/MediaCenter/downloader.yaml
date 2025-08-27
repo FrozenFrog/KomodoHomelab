@@ -152,7 +152,7 @@ services:
         soft: 32000
         hard: 40000
     labels:
-      proxy.aliases: rutorrent
+      proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
 
 
