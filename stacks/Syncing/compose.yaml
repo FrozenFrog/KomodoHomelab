@@ -31,16 +31,13 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist, alist-s3
+      proxy.aliases: alist
       proxy.#1.port: 5244
       proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
         category: "Storage"
-      proxy.#2.port: 5246
-      proxy.#2.homepage: |
-        show: false
-
+        
   rclone:
     image: rclone/rclone:latest
     network_mode: bridge
