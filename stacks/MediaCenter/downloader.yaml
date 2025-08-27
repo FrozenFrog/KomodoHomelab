@@ -156,7 +156,7 @@ services:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
       proxy.#1.middlewares.redirectHTTP.priority: 1
-      proxy.#1.middlewares.real_ip.header: "X-Forwarded-For"          # tương đương @REAL_IP_HEADER@
+      proxy.#1.middlewares.cidrWhiteList.allow: 0.0.0.0/32
       proxy.#2.port: ${RUTORRENT_PORT}
 
 
