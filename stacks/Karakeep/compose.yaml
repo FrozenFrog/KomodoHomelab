@@ -30,6 +30,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: karakeep
+      proxy.idle_timeout: 30m
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
