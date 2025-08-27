@@ -69,7 +69,7 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
+      proxy.idle_timeout: 1h
 
   metube:
     image: ghcr.io/alexta69/metube
