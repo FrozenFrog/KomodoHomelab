@@ -124,14 +124,8 @@ services:
       - "${WEBDAV_PORT}"
       - "${RT_INC_PORT}"
     ports:
-      - target: ${RT_DHT_PORT}
-        published: ${RT_DHT_PORT}
-        protocol: udp
       - target: ${RUTORRENT_PORT}
         published: ${RUTORRENT_PORT}
-        protocol: tcp
-      - target: ${RT_INC_PORT}
-        published: ${RT_INC_PORT}
         protocol: tcp
     volumes:
       - type: bind
@@ -152,10 +146,5 @@ services:
       nofile:
         soft: 32000
         hard: 40000
-    labels:
-      proxy.aliases: rutorrent
-      proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.host: 192.168.1.3
-      proxy.#1.scheme: http
 
 
