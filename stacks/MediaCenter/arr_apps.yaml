@@ -171,8 +171,6 @@ services:
         source: "${BASEPATH}/${CALIBRE_CONFIG_PATH}/config/gmail.json"
         target: /app/calibre-web-automated/gmail.json
     restart: unless-stopped
-    labels:
-      proxy.idle_timeout: 15m
   
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr:latest
