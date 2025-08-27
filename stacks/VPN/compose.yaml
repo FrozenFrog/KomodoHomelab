@@ -75,11 +75,6 @@ services:
     labels:
       proxy.aliases: torrent
       proxy.#1.port: 8080
-      proxy.#1.homepage: |
-        name: "Qbittorent with PF PIA"
-        icon: "@selfhst/qbitorrent.svg"
-        description: "Qbitorrent PIA"
-        category: "Media"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
