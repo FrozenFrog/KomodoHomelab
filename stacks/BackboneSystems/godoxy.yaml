@@ -35,10 +35,11 @@ services:
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
-      DOCKER_HOST: "tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}"
+      DOCKER_HOST: "tcp://${LOCALHOST:-127.0.0.1}:2375"
       LEGO_DISABLE_CNAME_SUPPORT: 1
       GODOXY_API_USER: ${GODOXY_API_USER:-admin}
       GODOXY_API_PASSWORD: ${GODOXY_API_PASSWORD:-password}
+      GODOXY_API_ADDR: "${LOCALHOST}:8888"
       TZ: ${TZ}
     volumes:
       - ${BASEPATH}/${APP_CONFIG_PATH}/config:/app/config
