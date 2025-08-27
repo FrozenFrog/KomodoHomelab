@@ -146,6 +146,11 @@ services:
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/passwd"
         target: /passwd
     restart: unless-stopped
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
     labels:
       proxy.aliases: rutorrent
       proxy.#1.port: ${RUTORRENT_PORT}
