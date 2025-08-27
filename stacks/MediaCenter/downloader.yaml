@@ -154,6 +154,7 @@ services:
         hard: 40000
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
+      proxy.#1.port: ${RUTORRENT_PORT}
       proxy.#1.middlewares: |
         - use: real_ip
           header: X-Forwarded-For
