@@ -119,16 +119,16 @@ services:
       PGID: "13000"
       PUID: "13007"
       TZ: ${TZ}
+    expose:
+      - "${RT_DHT_PORT}/udp"
+      - "${XMLRPC_PORT}"
+      - "${RUTORRENT_PORT}"
+      - "${WEBDAV_PORT}"
+      - "${RT_INC_PORT}"
     ports:
       - target: ${RT_DHT_PORT}
         published: ${RT_DHT_PORT}
         protocol: udp
-      - target: ${RUTORRENT_PORT}
-        published: ${RUTORRENT_PORT}
-        protocol: tcp
-      - target: ${WEBDAV_PORT}
-        published: ${WEBDAV_PORT}
-        protocol: tcp
       - target: ${RT_INC_PORT}
         published: ${RT_INC_PORT}
         protocol: tcp
@@ -147,7 +147,7 @@ services:
         target: /passwd
     restart: unless-stopped
     labels:
-      proxy.aliases: rtorrent
+      proxy.aliases: rutorrent
       proxy.#1.port: ${RUTORRENT_PORT}
 
 
