@@ -46,5 +46,6 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.middlewares.set_x_forwarded: "X-Forwarded-For"
+      proxy.#1.middlewares.set_x_forwarded: |
+        x_forwarded_for: true
       proxy.#2.port: ${RUTORRENT_PORT}
