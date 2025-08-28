@@ -10,7 +10,6 @@ services:
       PUID: ${PUID}
       TRUST_PROXY: "true"
       ENCRYPTION_KEY: ${SECRET}
-      ALLOW_USER_SIGNUPS: "open"
       DB_PROVIDER: "postgres"
       APP_URL: "https://pocketid.${CF_DOMAIN}"
       DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
