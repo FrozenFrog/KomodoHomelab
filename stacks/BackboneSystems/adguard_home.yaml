@@ -32,3 +32,7 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
     restart: unless-stopped
+    labels:
+      traefik.enable: true
+      traefik.http.routers.whoami.rule: Host(`tinyauth.osce.lan`)
+      traefik.http.routers.whoami.middlewares: tinyauth
