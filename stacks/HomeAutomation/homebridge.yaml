@@ -15,3 +15,4 @@ services:
     restart: always
     labels:
       proxy.#1.port: 8581
+      proxy.#1.middlewares.oidc:
