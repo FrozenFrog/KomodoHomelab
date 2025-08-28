@@ -49,6 +49,7 @@ RClONE_CONFIG_PATH=rclone-config
 INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
 APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
+RUN_ARIA2=true
 """
 
 ##
