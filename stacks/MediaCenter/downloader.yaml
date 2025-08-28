@@ -123,6 +123,16 @@ services:
       - "${RUTORRENT_PORT}"
       - "${WEBDAV_PORT}"
       - "${RT_INC_PORT}"
+    ports:
+      - target: ${RT_DHT_PORT}
+        published: ${RT_DHT_PORT}
+        protocol: udp
+      - target: ${RUTORRENT_PORT}
+        published: ${RUTORRENT_PORT}
+        protocol: tcp
+      - target: ${RT_INC_PORT}
+        published: ${RT_INC_PORT}
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}"
@@ -145,6 +155,9 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
+      proxy.#1..middlewares.hide_x_forwarded:
+      proxy.#1.modify_request.set_headers: |
+        X-Real-IP: $$remote_host
       proxy.#2.port: ${RUTORRENT_PORT}
 
 
