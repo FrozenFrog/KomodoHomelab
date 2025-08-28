@@ -10,6 +10,7 @@ services:
       PUID: ${PUID}
       TRUST_PROXY: "true"
       ENCRYPTION_KEY: ${SECRET}
+      APP_URL: "https://pocketid.${CF_DOMAIN}"
       DB_PROVIDER: "postgres"
       DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
       MAXMIND_LICENSE_KEY_FILE: "/app/data/${MAXMIND_LICENSE_KEY_FILE}"
