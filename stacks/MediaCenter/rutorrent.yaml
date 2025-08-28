@@ -1,3 +1,4 @@
+services:
   rtorrent_rutorrent:
     image: crazymax/rtorrent-rutorrent:latest
     network_mode: host
