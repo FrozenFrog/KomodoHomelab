@@ -108,56 +108,6 @@ services:
     labels:
       proxy.exclude: true
 
-  rtorrent_rutorrent:
-    image: crazymax/rtorrent-rutorrent:latest
-    network_mode: host
-    container_name: rtorrent_rutorrent
-    hostname: rtorrent_rutorrent
-    environment:
-      PGID: "13000"
-      PUID: "13007"
-      TZ: ${TZ}
-    expose:
-      - "${RT_DHT_PORT}/udp"
-      - "${XMLRPC_PORT}"
-      - "${RUTORRENT_PORT}"
-      - "${WEBDAV_PORT}"
-      - "${RT_INC_PORT}"
-    ports:
-      - target: ${RT_DHT_PORT}
-        published: ${RT_DHT_PORT}
-        protocol: udp
-      - target: ${RUTORRENT_PORT}
-        published: ${RUTORRENT_PORT}
-        protocol: tcp
-      - target: ${RT_INC_PORT}
-        published: ${RT_INC_PORT}
-        protocol: tcp
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}"
-        target: /data
-      - type: bind
-        source: "${APPLICATION_STORAGE_PATH}/torrents/incomplete"
-        target: /downloads/temp
-      - type: bind
-        source: "${DATA_STORAGE_PATH}/torrents"
-        target: /downloads/complete
-      - type: bind
-        source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}/passwd"
-        target: /passwd
-    restart: unless-stopped
-    ulimits:
-      nproc: 65535
-      nofile:
-        soft: 32000
-        hard: 40000
-    labels:
-      proxy.aliases: rutorrent, rutorrent.picityvietnam.com
-      proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.middlewares.hide_x_forwarded:
-      proxy.#1.middlewares.modify_request.set_headers: |
-        X-Real-IP: $$remote_host
-      proxy.#2.port: ${RUTORRENT_PORT}
+
 
 
