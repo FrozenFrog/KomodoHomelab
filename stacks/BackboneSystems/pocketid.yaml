@@ -12,7 +12,7 @@ services:
       ENCRYPTION_KEY: ${SECRET}
       ALLOW_USER_SIGNUPS: "open"
       DB_PROVIDER: "postgres"
-      APP_URL: "https://pocketid.${CF_DOMAIN}"
+      APP_URL: "https://pocketid.osce.lan"
       DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
       MAXMIND_LICENSE_KEY_FILE: "/app/data/${MAXMIND_LICENSE_KEY_FILE}"
     ports:
