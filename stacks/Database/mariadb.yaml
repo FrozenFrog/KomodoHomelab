@@ -6,8 +6,8 @@ services:
     hostname: mariadb
     environment:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-mariadb}
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:

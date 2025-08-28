@@ -5,8 +5,8 @@ services:
     container_name: jellyfin
     hostname: jellyfin
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:
@@ -31,7 +31,7 @@ services:
     container_name: ombi
     hostname: ombi
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13009"
       TZ: ${TZ}
       UMASK: "002"
@@ -54,7 +54,7 @@ services:
     hostname: plex
     environment:
       ADVERTISE_IP: "http://${LOCALHOST}:32400"
-      PGID: "13000"
+      PGID: ${PGID}
       PLEX_CLAIM: ${PLEX_CLAIM}
       PUID: "13010"
       TZ: ${TZ}
@@ -109,8 +109,8 @@ services:
     container_name: tautulli
     hostname: tautulli
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:

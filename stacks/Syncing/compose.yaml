@@ -5,8 +5,8 @@ services:
     container_name: alist
     hostname: alist
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "022"
     expose:
@@ -46,8 +46,8 @@ services:
     container_name: rclone
     hostname: rclone
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "022"
     ports:

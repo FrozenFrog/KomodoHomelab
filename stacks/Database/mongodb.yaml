@@ -7,8 +7,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongodb}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongodb}
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:

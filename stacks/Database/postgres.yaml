@@ -6,10 +6,10 @@ services:
     hostname: postgres
     environment:
       PGDATA: /var/lib/postgresql/data
-      PGID: "13000"
+      PGID: ${PGID}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      PUID: "1000"
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:

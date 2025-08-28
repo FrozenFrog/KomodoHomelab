@@ -5,7 +5,7 @@ services:
     container_name: lidarr
     hostname: lidarr
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13003"
       TZ: ${TZ}
       UMASK: "002"
@@ -28,7 +28,7 @@ services:
     container_name: radarr
     hostname: radarr
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13002"
       TZ: ${TZ}
       UMASK: "002"
@@ -51,7 +51,7 @@ services:
     container_name: sonarr
     hostname: sonarr
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13001"
       TZ: ${TZ}
       UMASK: "002"
@@ -74,7 +74,7 @@ services:
     container_name: prowlarr
     hostname: prowlarr
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13006"
       TZ: ${TZ}
       UMASK: "002"
@@ -94,7 +94,7 @@ services:
     container_name: bazarr
     hostname: bazarr
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13013"
       TZ: ${TZ}
     ports:
@@ -119,8 +119,8 @@ services:
     container_name: audiobookshelf
     hostname: audiobookshelf
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     ports:
       - target: 80
@@ -150,8 +150,8 @@ services:
     container_name: calibre
     hostname: calibre
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     ports:
       - target: 8083
@@ -178,8 +178,8 @@ services:
     container_name: recyclarr
     hostname: recyclarr
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     volumes:
@@ -194,8 +194,8 @@ services:
     container_name: unpackerr
     hostname: unpackerr
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
       UN_DEBUG: "false"

@@ -5,7 +5,7 @@
     container_name: rtorrent_rutorrent
     hostname: rtorrent_rutorrent
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13007"
       TZ: ${TZ}
     expose:

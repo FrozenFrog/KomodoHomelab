@@ -7,8 +7,8 @@ services:
     environment:
       MYSQL_DATABASE: sample
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql}
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "002"
     ports:

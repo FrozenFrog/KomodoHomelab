@@ -6,8 +6,8 @@ services:
     hostname: homepage
     environment:
       HOMEPAGE_ALLOWED_HOSTS: picityvietnam.com,nextmeats.asia
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     ports:
       - target: 3000

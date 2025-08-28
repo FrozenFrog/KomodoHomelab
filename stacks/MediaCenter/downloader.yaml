@@ -4,7 +4,7 @@ services:
     network_mode: "container:gluetun_pf"
     container_name: qbittorrent
     environment:
-      PGID: "13000"
+      PGID: ${PGID}
       PUID: "13007"
       TZ: ${TZ}
       UMASK: "002"
@@ -50,8 +50,8 @@ services:
     container_name: pyload
     hostname: pyload
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     ports:
       - target: 8000
@@ -75,8 +75,8 @@ services:
     container_name: metube
     hostname: metube
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
       DELETE_FILE_ON_TRASHCAN: true
     ports:
@@ -95,8 +95,8 @@ services:
     container_name: geoip_updater
     hostname: geoip_updater
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     volumes:
       - type: bind
