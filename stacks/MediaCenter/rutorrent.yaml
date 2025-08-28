@@ -1,7 +1,7 @@
 services:
   rtorrent_rutorrent:
     image: crazymax/rtorrent-rutorrent:latest
-    network_mode: host
+    network_mode: bridge
     container_name: rtorrent_rutorrent
     hostname: rtorrent_rutorrent
     environment:
@@ -46,4 +46,5 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
+      proxy.#1.middlewares.hide_x_forwarded:
       proxy.#2.port: ${RUTORRENT_PORT}
