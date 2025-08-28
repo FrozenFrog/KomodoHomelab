@@ -35,5 +35,5 @@ services:
     labels:
       proxy.#1.port: 5123
       traefik.enable: true
-      traefik.http.routers.whoami.rule: Host(`tinyauth.osce.lan`)
+      traefik.http.routers.whoami.rule: Host(`adguard-home.osce.lan`)
       traefik.http.routers.whoami.middlewares: tinyauth
