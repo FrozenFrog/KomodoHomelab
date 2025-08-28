@@ -110,29 +110,19 @@ services:
 
   rtorrent_rutorrent:
     image: crazymax/rtorrent-rutorrent:latest
-    network_mode: bridge
+    network_mode: host
     container_name: rtorrent_rutorrent
     hostname: rtorrent_rutorrent
     environment:
       PGID: "13000"
       PUID: "13007"
       TZ: ${TZ}
-    ports:
-      - target: 26881
-        published: 26881
-        protocol: udp
-      - target: 28000
-        published: 28000
-        protocol: tcp
-      - target: 29000
-        published: 29000
-        protocol: tcp
-      - target: 50000
-        published: 50000
-        protocol: tcp
-      - target: 28080
-        published: 28080
-        protocol: tcp
+    expose:
+      - "${RT_DHT_PORT}/udp"
+      - "${XMLRPC_PORT}"
+      - "${RUTORRENT_PORT}"
+      - "${WEBDAV_PORT}"
+      - "${RT_INC_PORT}"
     volumes:
       - type: bind
         source: "${BASEPATH}/${RTORRENT_CONFIG_PATH}"
