@@ -46,4 +46,5 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
+      proxy.#1.scheme: http
       proxy.#2.port: ${RUTORRENT_PORT}
