@@ -14,10 +14,10 @@ services:
       - target: 10000
         published: "10000"
         protocol: tcp
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: tinyauth
+    # volumes:
+    #   - type: bind
+    #     source: "${BASEPATH}/${APP_CONFIG_PATH}"
+    #     target: tinyauth
     restart: unless-stopped
     labels:
       proxy.#1.port: 10000
