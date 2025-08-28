@@ -10,6 +10,7 @@ services:
       COOKIE_SECURE: "true"
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
       LOG_LEVEL: 0
+      SECRET: some-random-32-chars-string
     ports:
       - target: 10000
         published: "10000"
