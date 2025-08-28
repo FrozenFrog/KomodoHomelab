@@ -1,0 +1,23 @@
+services:
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:v3
+    network_mode: bridge
+    hostname: tinyauth
+    container_name: tinyauth
+    environment:
+      TZ: ${TZ}
+      PORT: 10000
+      COOKIE_SECURE: "true"
+      APP_URL: ${APP_URL}
+      LOG_LEVEL: 0
+    ports:
+      - target: 10000
+        published: "10000"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /tinyauth
+    restart: unless-stopped
+    labels:
+      proxy.#1.port: 10000
