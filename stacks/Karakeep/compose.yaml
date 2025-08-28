@@ -11,6 +11,7 @@ services:
       BROWSER_WEB_URL: http://chrome:9222
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       NEXTAUTH_URL: http://karakeep_web:3000
+      DISABLE_PASSWORD_AUTH: true
       # OPENAI_API_KEY: ...
 
       # You almost never want to change the value of the DATA_DIR variable.
