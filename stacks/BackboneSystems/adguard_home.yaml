@@ -33,5 +33,4 @@ services:
         target: /opt/adguardhome/conf
     restart: unless-stopped
     labels:
-      tinyauth.basic.username: "mahdi"
-      tinyauth.basic.password.plain: "bV|it=SS/F'Zfw2+"
+      proxy.#1.middlewares: tinyauth
