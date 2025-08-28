@@ -17,7 +17,7 @@ services:
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: /tinyauth
+        target: tinyauth
     restart: unless-stopped
     labels:
       proxy.#1.port: 10000
