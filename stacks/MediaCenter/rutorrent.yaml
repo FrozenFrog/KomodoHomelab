@@ -46,7 +46,6 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.middlewares.hide_x_forwarded:
       proxy.#1.request.set_headers: |
         X-Real-IP: $$remote_host
       proxy.#2.port: ${RUTORRENT_PORT}
