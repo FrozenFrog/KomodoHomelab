@@ -32,3 +32,6 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
     restart: unless-stopped
+    labels:
+      tinyauth.basic.username: "mahdi"
+      tinyauth.basic.password.plain: "bV|it=SS/F'Zfw2+"
