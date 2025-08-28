@@ -1,0 +1,27 @@
+services:
+  pocketid:
+    image: ghcr.io/pocket-id/pocket-id:v1
+    network_mode: bridge
+    hostname: pocketid
+    container_name: pocketid
+    environment:
+      TZ: ${TZ}
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TRUST_PROXY: "true"
+      ENCRYPTION_KEY: ${SECRET}
+      DB_PROVIDER: "postgres"
+      APP_URL: "https://pocketid.${CF_DOMAIN}"
+      DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
+      MAXMIND_LICENSE_KEY_FILE: ${MAXMIND_LICENSE_KEY_FILE}
+    ports:
+      - target: 1411
+        published: 1411
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /app/data
+    restart: unless-stopped
+    labels:
+      proxy.#1.port: 1411
