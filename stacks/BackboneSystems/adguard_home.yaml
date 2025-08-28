@@ -31,9 +31,8 @@ services:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}/conf"
         target: /opt/adguardhome/conf
+    command: ["--no-auth"]   # <--- tắt yêu cầu user/pass
     restart: unless-stopped
     labels:
       proxy.#1.port: 5123
-      traefik.enable: true
-      traefik.http.routers.whoami.rule: Host(`adguard-home.osce.lan`)
-      traefik.http.routers.whoami.middlewares: tinyauth
+      proxy.#1.middlewares.oidc:
