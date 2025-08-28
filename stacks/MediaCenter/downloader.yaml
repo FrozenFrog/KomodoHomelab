@@ -155,8 +155,8 @@ services:
     labels:
       proxy.aliases: rutorrent, rutorrent.picityvietnam.com
       proxy.#1.port: ${RUTORRENT_PORT}
-      proxy.#1.middlewares.request.set_headers: |
-        - X-Forwarded-For: $$remote_host
+      proxy.#1.middlewares.request.add_headers: |
+        X-Forwarded-For: $$remote_addr
       proxy.#2.port: ${RUTORRENT_PORT}
 
 
