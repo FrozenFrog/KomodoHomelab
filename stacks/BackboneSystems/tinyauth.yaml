@@ -23,3 +23,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10000
+      traefik.enable: true
+      traefik.http.routers.tinyauth.rule: Host(`tinyauth.osce.lan`)
+      traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth.osce.lan/api/auth/traefik
