@@ -17,3 +17,11 @@ services:
     restart: unless-stopped
     labels:
       tinyauth.allowed: ^\/api
+      proxy.#1.port: 10380
+      proxy.#1.rules: |
+        - name: default
+          do: |
+            redirect "https://tinyauth.${CF_DOMAIN}"
+        - name: websocket
+          on: cookie tinyauth-session*
+          do: pass
