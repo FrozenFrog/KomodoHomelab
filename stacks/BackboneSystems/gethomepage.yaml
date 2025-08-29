@@ -24,4 +24,3 @@ services:
     labels:
       proxy.exclude: true
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s

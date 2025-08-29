@@ -71,7 +71,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
 
   metube:
     image: ghcr.io/alexta69/metube
@@ -94,7 +93,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
 
   geoip_updater:
     image: crazymax/geoip-updater:latest

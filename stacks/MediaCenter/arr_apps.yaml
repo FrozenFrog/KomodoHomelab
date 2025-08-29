@@ -24,7 +24,6 @@ services:
     labels:
       proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -51,7 +50,6 @@ services:
     labels:
       proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
@@ -78,7 +76,6 @@ services:
     labels:
       proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -102,7 +99,6 @@ services:
     labels:
       proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -131,7 +127,6 @@ services:
     labels:
       proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:latest
@@ -162,7 +157,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
     
     
   calibre:
@@ -194,7 +188,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.idle_timeout: 30m
-      proxy.wake_timeout: 5s
   
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr:latest
