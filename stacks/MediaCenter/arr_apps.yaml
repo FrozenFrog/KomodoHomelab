@@ -156,6 +156,7 @@ services:
         target: /metadata
     restart: unless-stopped
     labels:
+      proxy.aliases: audiobook
       proxy.idle_timeout: 30m
     
     
