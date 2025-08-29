@@ -24,7 +24,7 @@ services:
         target: /app/data
     restart: unless-stopped
     labels:
-      proxy.aliases: pocketid, "pocketid.${CF_DOMAIN}"
+      proxy.aliases: pocketid
       proxy.#1.port: 1411
   tinyauth:
     image: ghcr.io/steveiliop56/tinyauth:v3
@@ -55,5 +55,5 @@ services:
         protocol: tcp
     restart: unless-stopped
     labels:
-      proxy.aliases: tinyauth, "tinyauth.${CF_DOMAIN}"
+      proxy.aliases: tinyauth
       proxy.#1.port: 10000
