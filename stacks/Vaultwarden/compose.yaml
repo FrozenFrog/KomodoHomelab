@@ -25,5 +25,5 @@ services:
           on: cookie tinyauth-session-3a045e90
           do: pass
         - name: api
-          on: path \/api
+          on: path api
           do: pass
