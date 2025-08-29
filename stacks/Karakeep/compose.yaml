@@ -33,6 +33,7 @@ services:
     labels:
       proxy.aliases: karakeep
       proxy.#1.port: 20300
+      proxy.#1.middlewares.oidc:
       proxy.idle_timeout: 30m
       proxy.wake_timeout: 5s
   chrome:
