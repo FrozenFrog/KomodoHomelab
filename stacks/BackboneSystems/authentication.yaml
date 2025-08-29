@@ -37,6 +37,7 @@ services:
       COOKIE_SECURE: "true"
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
       LOG_LEVEL: 0
+      APP_TITLE: "OSCE HomeLab"
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
       GENERIC_NAME: "Pocket ID"
       GENERIC_AUTH_URL: "${POCKETID_OIDC_ISSUER_URL}/authorize"
