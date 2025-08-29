@@ -22,6 +22,6 @@ services:
         - name: default
           do: |
             redirect "https://tinyauth.${CF_DOMAIN}"
-        - name: websocket
+        - name: has been signed in
           on: cookie tinyauth-session*
           do: pass
