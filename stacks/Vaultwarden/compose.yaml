@@ -20,8 +20,8 @@ services:
       proxy.#1.port: 10380
       proxy.#1.rules: |
         - name: default
-          on: header Cookie
-          do: pass
-        - name: has not been signed in
           do: |
             redirect "https://tinyauth.${CF_DOMAIN}"
+        - name: has not been signed in
+          on: header Cookie
+          do: pass
