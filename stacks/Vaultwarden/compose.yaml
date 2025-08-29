@@ -16,7 +16,6 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      tinyauth.allowed: ^\/api
       proxy.#1.port: 10380
       proxy.#1.rules: |
         - name: default
@@ -24,4 +23,7 @@ services:
             redirect "https://tinyauth.${CF_DOMAIN}"
         - name: has not been signed in
           on: cookie tinyauth-session-3a045e90
+          do: pass
+        - name: api
+          on: path \/api
           do: pass
