@@ -23,5 +23,5 @@ services:
           do: |
             redirect "https://tinyauth.${CF_DOMAIN}"
         - name: has been signed in
-          on: cookie "tinyauth-session-*"
+          on: cookie tinyauth-session-*
           do: pass
