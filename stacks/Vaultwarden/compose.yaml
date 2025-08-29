@@ -17,13 +17,4 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
-      proxy.#1.rules: |
-        - name: default
-          do: |
-            redirect "https://tinyauth.${CF_DOMAIN}"
-        - name: has not been signed in
-          on: cookie tinyauth-session-3a045e90
-          do: pass
-        - name: api
-          on: path api
-          do: pass
+      proxy.#1.middlewares.oidc.bypass: path /api/* 
