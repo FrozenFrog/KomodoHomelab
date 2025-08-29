@@ -10,11 +10,11 @@ services:
       MEILI_ADDR: http://meilisearch:7700
       BROWSER_WEB_URL: http://chrome:9222
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
-      NEXTAUTH_URL: http://karakeep_web:3000
+      NEXTAUTH_URL: "https://karakeep.${CF_DOMAIN}"
       OAUTH_WELLKNOWN_URL: "${POCKETID_OIDC_ISSUER_URL}/.well-known/openid-configuration"
       OAUTH_CLIENT_SECRET: ${POCKETID_OIDC_CLIENT_SECRET}
       OAUTH_CLIENT_ID: ${POCKETID_OIDC_CLIENT_ID}
-      OAUTH_PROVIDER_NAME: Pocket-ID
+      OAUTH_PROVIDER_NAME: Pocket ID
       DISABLE_PASSWORD_AUTH: true
       OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: true
       # OPENAI_API_KEY: ...
