@@ -15,3 +15,5 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
         target: /data
     restart: unless-stopped
+    labels:
+      tinyauth.allowed: ^\/api
