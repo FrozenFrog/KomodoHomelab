@@ -38,7 +38,7 @@ services:
     labels:
       proxy.aliases: karakeep
       proxy.#1.port: 20300
-        chrome:
+  chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
     container_name: karakeep_chrome
