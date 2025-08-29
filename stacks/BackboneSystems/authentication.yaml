@@ -40,6 +40,7 @@ services:
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
       OAUTH_AUTO_REDIRECT: generic
+      DISABLE_CONTINUE: true
       GENERIC_NAME: "Pocket ID"
       GENERIC_AUTH_URL: "${POCKETID_OIDC_ISSUER_URL}/authorize"
       GENERIC_TOKEN_URL: "${POCKETID_OIDC_ISSUER_URL}/api/oidc/token"
