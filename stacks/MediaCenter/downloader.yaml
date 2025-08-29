@@ -69,6 +69,8 @@ services:
         source: "${DATA_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
+    labels:
+      proxy.#1.middlewares.oidc.bypass: path /api/*
       
   metube:
     image: ghcr.io/alexta69/metube
