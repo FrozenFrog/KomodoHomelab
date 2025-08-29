@@ -37,7 +37,7 @@ services:
       COOKIE_SECURE: "true"
       LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
-      APP_URL: "https://pocketid.osce.lan"
+      APP_URL: "https://pocketid.${CF_DOMAIN}"
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
       GENERIC_NAME: "Pocket ID"
       GENERIC_AUTH_URL: "${POCKETID_OIDC_ISSUER_URL}/authorize"
