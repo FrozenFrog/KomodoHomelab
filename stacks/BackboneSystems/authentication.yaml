@@ -53,4 +53,5 @@ services:
         protocol: tcp
     restart: unless-stopped
     labels:
+      proxy.aliases: tinyauth, "tinyauth.${CF_DOMAIN}"
       proxy.#1.port: 10000
