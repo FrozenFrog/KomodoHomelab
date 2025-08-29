@@ -35,7 +35,6 @@ services:
       TZ: ${TZ}
       PORT: 10000
       COOKIE_SECURE: "true"
-      APP_URL: "https://tinyauth.${CF_DOMAIN}"
       LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
