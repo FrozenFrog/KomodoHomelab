@@ -23,4 +23,4 @@ services:
     restart: unless-stopped
     labels:
       proxy.exclude: true
-      proxy.idle_timeout: 30m
+      

@@ -23,8 +23,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.middlewares.oidc:
-      proxy.idle_timeout: 30m
-    
+          
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     network_mode: bridge
@@ -49,8 +48,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.middlewares.oidc:
-      proxy.idle_timeout: 30m
-    
+          
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     network_mode: bridge
@@ -75,8 +73,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.middlewares.oidc:
-      proxy.idle_timeout: 30m
-    
+          
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     network_mode: bridge
@@ -98,8 +95,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.middlewares.oidc:
-      proxy.idle_timeout: 30m
-    
+          
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     network_mode: bridge
@@ -126,8 +122,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.middlewares.oidc:
-      proxy.idle_timeout: 30m
-    
+          
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:latest
     network_mode: bridge
@@ -157,8 +152,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: audiobook
-      proxy.idle_timeout: 30m
-    
+          
     
   calibre:
     image: crocodilestick/calibre-web-automated:latest
@@ -188,8 +182,7 @@ services:
         target: /app/calibre-web-automated/gmail.json
     restart: unless-stopped
     labels:
-      proxy.idle_timeout: 30m
-  
+        
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr:latest
     network_mode: bridge

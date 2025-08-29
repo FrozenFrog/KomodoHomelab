@@ -70,8 +70,7 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.idle_timeout: 30m
-
+      
   metube:
     image: ghcr.io/alexta69/metube
     network_mode: bridge
@@ -92,8 +91,7 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.idle_timeout: 30m
-
+      
   geoip_updater:
     image: crazymax/geoip-updater:latest
     network_mode: bridge
