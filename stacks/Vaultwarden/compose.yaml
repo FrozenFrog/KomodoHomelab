@@ -20,5 +20,8 @@ services:
       proxy.#1.middlewares.oidc.bypass: path /* #path /api/* | path /identity/*
       proxy.#1.middlewares.set_x_forwarded:
       proxy.#1.rules: |
+        - name: test header
+          header: remote-user mahdi
+          do: pass
         - name: default
-          do: proxy http://tinyauth.osce.lan/api/auth/nginx
+          do: redirect "https://tinyauth.${CF_DOMAIN}"
