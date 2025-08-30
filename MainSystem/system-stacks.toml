@@ -69,16 +69,16 @@ GODOXY_API_JWT_TOKEN_TTL=
 
 # API/WebUI user password login credentials (optional)
 # These fields are not required for OIDC authentication
-GODOXY_API_USER=mahdi
-GODOXY_API_PASSWORD=quadong
+# GODOXY_API_USER=admin
+# GODOXY_API_PASSWORD=password
 
 # OIDC Configuration (optional)
 # Uncomment and configure these values to enable OIDC authentication.
 #
-# GODOXY_OIDC_ISSUER_URL=https://accounts.google.com
-# GODOXY_OIDC_CLIENT_ID=your-client-id
-# GODOXY_OIDC_CLIENT_SECRET=your-client-secret
-# GODOXY_OIDC_SCOPES=openid, profile, email, groups # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
+GODOXY_OIDC_ISSUER_URL=https://pocketid.nextmeats.asia
+GODOXY_OIDC_CLIENT_ID=264ecfd6-5d55-45ce-adfb-8302067f7388
+GODOXY_OIDC_CLIENT_SECRET=KaIZXzRFdOoYpzMpnYmmmpjVYGGuhHzd
+GODOXY_OIDC_SCOPES=openid, profile, email, groups, offline_access # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
 #
 # User definitions: Uncomment and configure these values to restrict access to specific users or groups.
 # These two fields act as a logical AND operator. For example, given the following membership:
@@ -91,9 +91,9 @@ GODOXY_API_PASSWORD=quadong
 #   # GODOXY_OIDC_ALLOWED_GROUPS=group1
 #
 # Comma-separated list of allowed users.
-# GODOXY_OIDC_ALLOWED_USERS=user1,user2
+GODOXY_OIDC_ALLOWED_USERS=mahdi
 # Optional: Comma-separated list of allowed groups.
-# GODOXY_OIDC_ALLOWED_GROUPS=group1,group2
+GODOXY_OIDC_ALLOWED_GROUPS=administrator
 
 # Proxy listening address
 GODOXY_HTTP_ADDR=:80
