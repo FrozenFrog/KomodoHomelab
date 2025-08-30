@@ -17,4 +17,8 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
-      proxy.#1.middlewares.oidc.bypass: path /api/* | path /identity/*
+      proxy.#1.middlewares.oidc.bypass: path /* #path /api/* | path /identity/*
+      proxy.#1.middlewares.set_x_forwarded:
+      proxy.#1.rules: |
+        - name: default
+          do: proxy tinyauth.osce.lan/api/auth/nginx
