@@ -21,4 +21,4 @@ services:
       proxy.#1.middlewares.set_x_forwarded:
       proxy.#1.rules: |
         - name: default
-          do: proxy tinyauth.osce.lan/api/auth/nginx
+          do: proxy http://tinyauth.osce.lan/api/auth/nginx
