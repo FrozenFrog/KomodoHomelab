@@ -21,7 +21,7 @@ services:
       proxy.#1.middlewares.set_x_forwarded:
       proxy.#1.rules: |
         - name: test header
-          header: remote-user mahdi
+          on: header remote-user mahdi
           do: pass
         - name: default
           do: redirect "https://tinyauth.${CF_DOMAIN}"
