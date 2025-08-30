@@ -98,6 +98,9 @@ auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/VPN"
 additional_env_files = ["../../MainSystem/.env"]
+post_deploy.command = """
+docker container restart qbittorrent vuetorrent-backend
+"""
 environment = """
 GLUETUN_CONFIG_PATH=/gluetun-config
 """
