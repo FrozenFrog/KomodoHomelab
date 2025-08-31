@@ -13,7 +13,7 @@ services:
         protocol: tcp
     volumes:
       - type: bind
-        source: "${BASEPATH}/${APP_CONFIG_PATH}/data"
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
         target: /home/filebrowser/data
       - type: bind
         source: "/"
