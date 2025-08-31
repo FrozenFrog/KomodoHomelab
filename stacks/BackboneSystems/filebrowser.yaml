@@ -6,12 +6,11 @@ services:
     hostname: filebrowser
     environment:
       FILEBROWSER_CONFIG: "data/config.yaml"
-      FILEBROWSER_ADMIN_PASSWORD: admin
       TZ: ${TZ}
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: /home/filebrowser/data
+        target: /home/filebrowser
       - type: bind
         source: "/"
         target: /server_folder
