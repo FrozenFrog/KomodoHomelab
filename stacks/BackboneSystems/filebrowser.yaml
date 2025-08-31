@@ -1,6 +1,6 @@
 services:
   filebrowser:
-    image: gtstef/filebrowser:beta-slim
+    image: gtstef/filebrowser
     network_mode: bridge
     container_name: filebrowser
     hostname: filebrowser
@@ -10,7 +10,7 @@ services:
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: /home/filebrowser/data
+        target: /home/filebrowser
       - type: bind
         source: "/"
         target: /server_folder
