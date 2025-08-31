@@ -16,6 +16,6 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
         target: /home/filebrowser/data
       - type: bind
-        source: "/"
-        target: /server_folder
+        source: "/mnt"
+        target: /mnt
     restart: unless-stopped
