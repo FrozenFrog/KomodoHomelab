@@ -1,6 +1,6 @@
 services:
   filebrowser:
-    image: gtstef/filebrowser
+    image: gtstef/filebrowser:beta-slim
     network_mode: bridge
     container_name: filebrowser
     hostname: filebrowser
@@ -19,3 +19,5 @@ services:
         source: "/"
         target: /homelab
     restart: unless-stopped
+    labels:
+      proxy.aliases: file
