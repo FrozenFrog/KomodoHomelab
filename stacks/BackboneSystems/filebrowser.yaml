@@ -7,6 +7,10 @@ services:
     environment:
       FILEBROWSER_CONFIG: "config.yaml"
       TZ: ${TZ}
+    ports:
+      - target: 80
+        published: "1480"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
