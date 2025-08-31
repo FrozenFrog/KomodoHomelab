@@ -1,0 +1,18 @@
+services:
+  filebrowser:
+    image: gtstef/filebrowser:beta-slim
+    network_mode: bridge
+    container_name: filebrowser
+    hostname: filebrowser
+    environment:
+      FILEBROWSER_CONFIG: "data/config.yaml"
+      FILEBROWSER_ADMIN_PASSWORD: admin
+      TZ: ${TZ}
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /home/filebrowser/data
+      - type: bind
+        source: "/"
+        target: /server_folder
+    restart: unless-stopped
