@@ -29,7 +29,13 @@ Việc tách **Backbone System** gồm các container riêng ra khỏi một fil
 - Backbone System chỉ chứa **các dịch vụ quan trọng nhất**.  
 - Các dịch vụ không ảnh hưởng trực tiếp đến hệ thống chính sẽ đặt ở **stack riêng**.  
 - Khi cần rollback, Backbone System sẽ là điểm tựa ổn định để khôi phục các phần khác.  
-
+- Trước tiên install Periphery agent - systemd cho komodo
+```
+curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-periphery.py | python3
+```
+- Copy file core.config.yaml và periphery.config.toml vào /etc/komodo/
+- Sau đó chạy periphery theo hướng dẫn tại https://komo.do/docs/setup/connect-servers
+- Tiếp theo mới start stack komodo
 ---
 
 ## ❤️ Ghi chú  

@@ -14,7 +14,9 @@ services:
     container_name: komodo
     restart: unless-stopped
     ports:
-      - 9120:9120
+      - target: "9120"
+        published: "9122"
+        protocol: tcp
     environment:
       KOMODO_DATABASE_ADDRESS: "${LOCALHOST}:27017"
       KOMODO_DATABASE_USERNAME: "${KOMODO_DATABASE_USERNAME:-mongodb}"
