@@ -5,12 +5,12 @@ services:
     container_name: filebrowser
     hostname: filebrowser
     environment:
-      FILEBROWSER_CONFIG: "data/config.yaml"
+      FILEBROWSER_CONFIG: "/home/filebrowser/data/config.yaml"
       TZ: ${TZ}
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: /home/filebrowser
+        target: /home/filebrowser/data
       - type: bind
         source: "/"
         target: /server_folder
