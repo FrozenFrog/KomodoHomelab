@@ -18,6 +18,30 @@ APP_CONFIG_PATH=adguardhome-config
 ##
 
 [[stack]]
+name = "authentication"
+tags = ["system"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["authentication.yaml"]
+env_file_path = "authentication.env"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+SECRET=buIAul6AlEKPsPZoUG2TrLhV1l4CW1YM
+APP_CONFIG_PATH=pocketid-config
+POCKETID_DB_NAME=pocketid
+MAXMIND_LICENSE_KEY_FILE=MAXMIND_LICENSE_KEY_FILE
+USERS==mahdi:$$2a$$10$$vrupZJayw7eBI/QPU2SFBu21S.ixmQB4b0nf7QHV6wbamLtvBxgyS #mahdi:quadong
+OAUTH_WHITELIST=jenny48074@gmail.com
+"""
+
+##
+
+[[stack]]
 name = "cloudflared"
 tags = ["system"]
 [stack.config]
@@ -143,6 +167,25 @@ env_file_path = "gethomepage.env"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
 APP_CONFIG_PATH=gethomepage-config
+"""
+
+##
+
+[[stack]]
+name = "komodo"
+tags = ["system"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems/Komodo"
+file_paths = ["komodo.yaml"]
+env_file_path = "komodo.env"
+additional_env_files = ["../../../MainSystem/.env"]
+environment = """
+KOMODO_PASSKEY=FXF7ngw5yuf_vje2vnv
 """
 
 ##
