@@ -10,7 +10,7 @@ services:
     volumes:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
-        target: /home/filebrowser/data
+        target: /home/filebrowser
       - type: bind
         source: "/"
         target: /server_folder
