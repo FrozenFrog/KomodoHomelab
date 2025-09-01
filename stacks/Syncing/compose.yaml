@@ -44,7 +44,7 @@ services:
     labels:
       proxy.aliases: alist
       proxy.#1.port: 5244
-      proxy.#1.middlewares.tinyauth.bypass:
+      proxy.#1.middlewares.forwardauth.bypass:
       proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"

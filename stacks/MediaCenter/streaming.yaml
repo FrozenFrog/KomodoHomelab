@@ -25,7 +25,7 @@ services:
         target: /pyload-downloads
     restart: unless-stopped
     labels:
-      proxy.#1.middlewares.tinyauth.bypass:
+      proxy.#1.middlewares.forwardauth.bypass:
 
   ombi:
     image: lscr.io/linuxserver/ombi:latest
@@ -100,10 +100,10 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: plex, plex.picityvietnam.com
-      proxy.#1.middlewares.tinyauth.bypass:
+      proxy.#1.middlewares.forwardauth.bypass:
       proxy.#1.port: 32400
       proxy.#2.port: 32400
-      proxy.#2.middlewares.tinyauth.bypass:
+      proxy.#2.middlewares.forwardauth.bypass:
 
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest

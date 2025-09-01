@@ -24,4 +24,4 @@ services:
     labels:
       proxy.aliases: file
       proxy.idle_timeout: 5m
-      proxy.#1.middlewares.tinyauth.bypass:
+      proxy.#1.middlewares.forwardauth.bypass:
