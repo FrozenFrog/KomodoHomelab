@@ -17,4 +17,4 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
-      proxy.#1.middlewares.tinyauth:
+      proxy.#1.middlewares.tinyauth.tinyauth_port: 10000
