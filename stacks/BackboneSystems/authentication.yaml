@@ -54,9 +54,9 @@ services:
       SECRET: ${SECRET}
     ports:
       - target: 10000
-        published: "3000"
+        published: "10000"
         protocol: tcp
     restart: unless-stopped
     labels:
       proxy.aliases: tinyauth
-      proxy.#1.port: 3000
+      proxy.#1.port: 10000
