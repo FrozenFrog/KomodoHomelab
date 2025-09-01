@@ -33,7 +33,7 @@ services:
     container_name: tinyauth
     environment:
       TZ: ${TZ}
-      PORT: 10000
+      PORT: 3000
       COOKIE_SECURE: "true"
       LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
@@ -53,7 +53,7 @@ services:
       GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
       SECRET: ${SECRET}
     ports:
-      - target: 10000
+      - target: 3000
         published: "3000"
         protocol: tcp
     restart: unless-stopped
