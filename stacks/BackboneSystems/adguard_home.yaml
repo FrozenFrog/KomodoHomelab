@@ -34,4 +34,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 5123
-      proxy.#1.middlewares.oidc:

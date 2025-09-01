@@ -75,7 +75,7 @@ services:
     labels:
       proxy.aliases: torrent
       proxy.#1.port: 8080
-      proxy.#1.middlewares.oidc.bypass: path /v1/* | path /api/*
+      proxy.#1.middlewares.tinyauth.bypass: path /v1/* | path /api/*
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest

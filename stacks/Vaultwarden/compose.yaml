@@ -17,3 +17,4 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
+      proxy.#1.middlewares.tinyauth.bypass: path /api/* | path /identity/*

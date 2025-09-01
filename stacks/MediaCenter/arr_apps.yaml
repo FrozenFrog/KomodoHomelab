@@ -21,8 +21,6 @@ services:
         source: "${DATA_STORAGE_PATH}"
         target: /data
     restart: unless-stopped
-    labels:
-      proxy.#1.middlewares.oidc:
           
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -46,8 +44,6 @@ services:
         source: "${DATA_STORAGE_PATH}"
         target: /data
     restart: unless-stopped
-    labels:
-      proxy.#1.middlewares.oidc:
           
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
@@ -71,8 +67,6 @@ services:
         source: "${DATA_STORAGE_PATH}"
         target: /data
     restart: unless-stopped
-    labels:
-      proxy.#1.middlewares.oidc:
           
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -93,8 +87,6 @@ services:
         source: "${BASEPATH}/${PROWLARR_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
-    labels:
-      proxy.#1.middlewares.oidc:
           
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -120,8 +112,6 @@ services:
         source: "${INFUSE_MEDIA_STORAGE_PATH}/tv"
         target: /tv
     restart: unless-stopped
-    labels:
-      proxy.#1.middlewares.oidc:
           
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:latest

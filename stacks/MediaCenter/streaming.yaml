@@ -24,6 +24,8 @@ services:
         source: "${MISC_STORAGE_PATH}/Downloads"
         target: /pyload-downloads
     restart: unless-stopped
+    labels:
+      proxy.#1.middlewares.tinyauth.bypass:
 
   ombi:
     image: lscr.io/linuxserver/ombi:latest
@@ -44,8 +46,6 @@ services:
         source: "${BASEPATH}/${OMBI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
-    labels:
-      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
 
   plex:
     image: plexinc/pms-docker:plexpass
@@ -100,8 +100,10 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: plex, plex.picityvietnam.com
+      proxy.#1.middlewares.tinyauth.bypass:
       proxy.#1.port: 32400
       proxy.#2.port: 32400
+      proxy.#2.middlewares.tinyauth.bypass:
 
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
