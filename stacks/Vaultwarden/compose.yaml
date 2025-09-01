@@ -17,4 +17,4 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
-      tinyauth.users: user1
+      tinyauth.oauth.groups: admin
