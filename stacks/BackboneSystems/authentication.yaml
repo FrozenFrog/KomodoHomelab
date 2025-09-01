@@ -52,7 +52,7 @@ services:
       SECRET: ${SECRET}
     ports:
       - target: 10000
-        published: "3000"
+        published: "10000"
         protocol: tcp
     restart: unless-stopped
     labels:
