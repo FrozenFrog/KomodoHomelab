@@ -33,6 +33,24 @@ POSTGRES_CONFIG_PATH=postgresql-config
 ##
 
 [[stack]]
+name = "karakeep"
+tags = ["tools", "data"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/Karakeep"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+MEILI_MASTER_KEY=ask-tick-any-gavel
+NEXTAUTH_SECRET=storming-flapping-topped-maris
+"""
+
+##
+
+[[stack]]
 name = "syncing-center"
 tags = ["data"]
 [stack.config]
