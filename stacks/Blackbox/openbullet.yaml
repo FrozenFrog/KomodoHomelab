@@ -1,0 +1,25 @@
+services:
+  openbullet:
+    image: openbullet/openbullet2:latest
+    network_mode: bridge
+    container_name: openbullet
+    hostname: openbullet
+    mem_limit: 1g   # RAM tối đa
+    cpus: "0.5"       # Tối đa
+    environment:
+      PGID: "13000"
+      PUID: "1000"
+      TZ: ${TZ}
+    ports:
+      - target: 5000
+        published: "4069"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /app/UserData
+    restart: unless-stopped
+    labels:
+      proxy.aliases: openbullet
+      proxy.idle_timeout: 5m
+    
