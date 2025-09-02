@@ -7,8 +7,8 @@ services:
     mem_limit: 1g   # RAM tối đa
     cpus: "0.5"       # Tối đa
     environment:
-      PGID: "13000"
-      PUID: "1000"
+      PGID: ${PGID}
+      PUID: ${PUID}
       TZ: ${TZ}
     ports:
       - target: 5000
