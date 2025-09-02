@@ -38,4 +38,3 @@ services:
     labels:
       komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       proxy.aliases: komodo # For godoxy
-      proxy.middlewares.forwardauth.bypass: path /read
