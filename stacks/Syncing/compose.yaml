@@ -43,10 +43,11 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: alist, alist-webdav
-      proxy.#2.scheme: fileserver
-      proxy.#2.port: 5244
-      proxy.#2.middlewares.forwardauth.forwardauth_headers: Authorization
-      proxy.#1.homepage: |
+      proxy.alist-webdav.scheme: fileserver
+      proxy.alist-webdav.port: 5244
+      proxy.alist-webdav.middlewares.forwardauth.forwardauth_headers: Authorization
+      proxy.alist.port: 5244
+      proxy.alist.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
         category: "Storage"
