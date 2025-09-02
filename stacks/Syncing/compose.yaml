@@ -43,6 +43,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: alist
+      proxy.#1.scheme: tcp, fileserver
       proxy.#1.port: 5244
       proxy.#1.middlewares.forwardauth.forwardauth_headers: Authorization
       proxy.#1.homepage: |
