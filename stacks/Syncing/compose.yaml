@@ -18,14 +18,8 @@ services:
       - target: 5246
         published: "5246"
         protocol: tcp
-      - target: 5221
-        published: "5221"
-        protocol: tcp
-      - target: 5222
-        published: "5222"
-        protocol: tcp
-      - target: 5223
-        published: "5223"
+      - target: 5240
+        published: "5240"
         protocol: tcp
     volumes:
       - type: bind
@@ -42,12 +36,10 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist, alist-webdav
-      proxy.alist-webdav.scheme: fileserver
-      proxy.alist-webdav.port: 5244
-      proxy.alist-webdav.middlewares.forwardauth.forwardauth_headers: Authorization
-      proxy.alist.port: 5244
-      proxy.alist.homepage: |
+      proxy.aliases: alist
+      proxy.#1.middlewares.forwardauth.forwardauth_headers: Authorization
+      proxy.#1.port: 5244
+      proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
         category: "Storage"
