@@ -33,7 +33,7 @@ services:
     container_name: tinyauth
     environment:
       TZ: ${TZ}
-      PORT: 3000
+      PORT: 10000
       COOKIE_SECURE: "true"
       LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
@@ -55,10 +55,10 @@ services:
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       SECRET: ${SECRET}
     ports:
-      - target: 3000
-        published: 3000
+      - target: 10000
+        published: 10000
         protocol: tcp
     restart: unless-stopped
     labels:
       proxy.aliases: tinyauth
-      proxy.#1.port: 3000
+      proxy.#1.port: 10000
