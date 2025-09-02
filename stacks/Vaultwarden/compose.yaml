@@ -18,4 +18,4 @@ services:
     labels:
       proxy.#1.port: 10380
       tinyauth.headers: my-header=cool
-      proxy.#1.middlewares.forwardauth.bypass: path /api/* | path /identity/*
+      proxy.#1.middlewares.forwardauth.forwardauth_headers: my-header, remote-user
