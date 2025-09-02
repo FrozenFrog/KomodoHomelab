@@ -18,9 +18,6 @@ services:
       - target: 5246
         published: "5246"
         protocol: tcp
-      - target: 5240
-        published: "5240"
-        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${ALIST_CONFIG_PATH}"
