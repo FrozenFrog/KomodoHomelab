@@ -209,46 +209,46 @@ services:
     
     
 
-  NordKorean:
-    image: qmcgaw/gluetun:latest
-    container_name: gluetun_korean
-    hostname: gluetun_korean
-    environment:
-        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-        HTTPPROXY: "on"
-        VPN_TYPE: wireguard
-        WIREGUARD_PRIVATE_KEY: uxBzA3uqUDPxPn9gbcKmrQq36ySpJSFE6ypiKOOOCzY=
-        WIREGUARD_PUBLIC_KEY: oHda+iKdBpSlsKzaxz8kiJ1SxXvD9YxzgxOtsNdLjUg=
-        VPN_SERVICE_PROVIDER: custom
-        WIREGUARD_ENDPOINT_IP: 89.147.101.124
-        WIREGUARD_ENDPOINT_PORT: 51820
-        WIREGUARD_ADDRESSES: 10.5.0.2/16
-        DOT: off
-        DNS_ADDRESS: 103.86.96.100
-        TZ: ${TZ}
-    ports:
-        - target: 8888
-          published: "8991"
-          protocol: tcp
-        - target: 8000
-          published: "16891"
-          protocol: tcp
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
-        target: /gluetun
-    restart: on-failure
-    cap_add:
-        - NET_ADMIN
-    networks:
-        - vpn
-    labels:
-      proxy.aliases: gluetun_korean
-      proxy.#1.port: 8991
-      proxy.#1.homepage: |
-        name: "Gluetun Seoul"
-        icon: "@selfhst/gluetun.svg"
-        category: "Networking"
+  # NordKorean:
+  #   image: qmcgaw/gluetun:latest
+  #   container_name: gluetun_korean
+  #   hostname: gluetun_korean
+  #   environment:
+  #       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+  #       HTTPPROXY: "on"
+  #       VPN_TYPE: wireguard
+  #       WIREGUARD_PRIVATE_KEY: uxBzA3uqUDPxPn9gbcKmrQq36ySpJSFE6ypiKOOOCzY=
+  #       WIREGUARD_PUBLIC_KEY: oHda+iKdBpSlsKzaxz8kiJ1SxXvD9YxzgxOtsNdLjUg=
+  #       VPN_SERVICE_PROVIDER: custom
+  #       WIREGUARD_ENDPOINT_IP: 89.147.101.124
+  #       WIREGUARD_ENDPOINT_PORT: 51820
+  #       WIREGUARD_ADDRESSES: 10.5.0.2/16
+  #       DOT: off
+  #       DNS_ADDRESS: 103.86.96.100
+  #       TZ: ${TZ}
+  #   ports:
+  #       - target: 8888
+  #         published: "8991"
+  #         protocol: tcp
+  #       - target: 8000
+  #         published: "16891"
+  #         protocol: tcp
+  #   volumes:
+  #     - type: bind
+  #       source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+  #       target: /gluetun
+  #   restart: on-failure
+  #   cap_add:
+  #       - NET_ADMIN
+  #   networks:
+  #       - vpn
+  #   labels:
+  #     proxy.aliases: gluetun_korean
+  #     proxy.#1.port: 8991
+  #     proxy.#1.homepage: |
+  #       name: "Gluetun Seoul"
+  #       icon: "@selfhst/gluetun.svg"
+  #       category: "Networking"
 
   # NordUK:
   #   cap_add:
