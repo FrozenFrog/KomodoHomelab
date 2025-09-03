@@ -50,8 +50,6 @@ services:
     depends_on:
       jellyfin:
         condition: service_started
-    labels:
-      proxy.idle_timeout: 45m
 
   plex:
     image: plexinc/pms-docker:plexpass
@@ -134,5 +132,3 @@ services:
     depends_on:
       plex:
         condition: service_started
-    labels:
-      proxy.idle_timeout: 45m
