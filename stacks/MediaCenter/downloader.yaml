@@ -69,6 +69,8 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
+      proxy.aliases: pyload
+      proxy.#1.port: 8000
       proxy.idle_timeout: 1h30m
       
   metube:
