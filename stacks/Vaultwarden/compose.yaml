@@ -17,5 +17,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.#1.port: 10380
-      proxy.#1.middlewares.forwardauth.auth_endpoint: /api/auth/nginx
-      proxy.#1.middlewares.forwardauth.bypass: path /api/* | path /identity/*
+      proxy.#1.middlewares.forward_auth.headers: remote-user
+      proxy.#1.middlewares.forward_auth.bypass: path /api/* | path /identity/*
