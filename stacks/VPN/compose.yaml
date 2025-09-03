@@ -58,7 +58,7 @@ services:
         published: "8081"
         protocol: tcp
       - target: 8080
-        published: "8080"
+        published: "10080"
         protocol: tcp
       - target: 8000
         published: "17888"
@@ -74,7 +74,7 @@ services:
       - /dev/net/tun:/dev/net/tun
     labels:
       proxy.aliases: torrent
-      proxy.#1.port: 8080
+      proxy.#1.port: 10080
       proxy.#1.middlewares.forwardauth.bypass: path /v1/* | path /api/*
 
   SurfsharkTokyo:
