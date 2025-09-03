@@ -209,7 +209,7 @@ services:
     
     
 
-  NordCanada:
+  NordKorean:
     image: qmcgaw/gluetun:latest
     container_name: gluetun_korean
     hostname: gluetun_korean
