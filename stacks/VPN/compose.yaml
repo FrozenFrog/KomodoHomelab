@@ -246,7 +246,7 @@ services:
       proxy.aliases: gluetun_canada
       proxy.#1.port: 8991
       proxy.#1.homepage: |
-        name: "Gluetun Vancouver"
+        name: "Gluetun Toronto"
         icon: "@selfhst/gluetun.svg"
         category: "Networking"
 
