@@ -21,5 +21,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: openbullet
-      proxy.idle_timeout: 5m
+      proxy.idle_timeout: 45m
     
