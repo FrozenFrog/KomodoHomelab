@@ -47,9 +47,9 @@ services:
         source: "${BASEPATH}/${OMBI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
-    depends_on:
-      jellyfin:
-        condition: service_started
+    labels:
+      proxy.depends_on: |
+        - jellyfin:service_started
 
   plex:
     image: plexinc/pms-docker:plexpass
@@ -129,6 +129,6 @@ services:
         source: "${BASEPATH}/${TAUTULLI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
-    depends_on:
-      plex:
-        condition: service_started
+    labels:
+      proxy.depends_on: |
+        - plex:service_started
