@@ -68,6 +68,8 @@ services:
         source: "${DATA_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
+    labels:
+      proxy.idle_timeout: 1h30m
       
   metube:
     image: ghcr.io/alexta69/metube
@@ -88,6 +90,8 @@ services:
         source: "${DATA_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
+    labels:
+      proxy.idle_timeout: 30m
       
   geoip_updater:
     image: crazymax/geoip-updater:latest
