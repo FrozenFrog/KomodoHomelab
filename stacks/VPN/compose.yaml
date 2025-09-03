@@ -235,7 +235,7 @@ services:
           protocol: tcp
     volumes:
       - type: bind
-        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}/canada"
         target: /gluetun
     restart: on-failure
     cap_add:
