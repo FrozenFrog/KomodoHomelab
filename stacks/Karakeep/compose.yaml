@@ -38,6 +38,7 @@ services:
     labels:
       proxy.aliases: karakeep
       proxy.#1.port: 20300
+      proxy.idle_timeout: 15m
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:124
     network_mode: bridge
@@ -72,4 +73,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.exclude: true
-      proxy.idle_timeout: 45m
