@@ -25,7 +25,8 @@ services:
         target: /pyload-downloads
     restart: unless-stopped
     labels:
-      proxy.#1.middlewares.forwardauth.bypass:
+      proxy.#1.middlewares.forward_auth.bypass: path /*
+      proxy.idle_timeout: 45m
 
   ombi:
     image: lscr.io/linuxserver/ombi:latest
@@ -46,6 +47,10 @@ services:
         source: "${BASEPATH}/${OMBI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
+    labels:
+      proxy.idle_timeout: 45m
+      proxy.depends_on: |
+        - jellyfin:service_healthy
 
   plex:
     image: plexinc/pms-docker:plexpass
@@ -100,6 +105,7 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: plex, plex.picityvietnam.com
+      proxy.idle_timeout: 45m
       proxy.#1.middlewares.forwardauth.bypass:
       proxy.#1.port: 32400
       proxy.#2.port: 32400
@@ -125,10 +131,8 @@ services:
         target: /config
     restart: unless-stopped
     labels:
-      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_lnYQ2ipJh0YhCaYfaRoYrmI0L2-OYTaFOiWPM9mfg&s
-    depends_on:
-      plex:
-        condition: service_started
-        required: true
+      proxy.idle_timeout: 45m
+      proxy.depends_on: |
+        - plex:service_healthy
 
 
