@@ -321,17 +321,17 @@ ssl_cert_file = "/config/ssl/cert.pem"
 ## Example: mongodb://username:password@localhost:27017
 ## Env: KOMODO_DATABASE_URI or KOMODO_DATABASE_URI_FILE
 ## Optional, can usually use `address`, `username`, `password` instead.
-#database.uri = ""
+database.uri = "mongodb://mongodb:mongodb@192.168.1.3:27017"
 
 ## ==== * OR * ==== ##
 
 # Construct the address as mongodb://{username}:{password}@{address}
 ## Env: KOMODO_DATABASE_ADDRESS
-database.address = "192.168.1.3:27017"
+#database.address = "192.168.1.3:27017"
 ## Env: KOMODO_DATABASE_USERNAME or KOMODO_DATABASE_USERNAME_FILE
-database.username = "mongodb"
+#database.username = "mongodb"
 ## Env: KOMODO_DATABASE_PASSWORD or KOMODO_DATABASE_PASSWORD_FILE
-database.password = "mongodb"
+#database.password = "mongodb"
 
 ## ==== other ====
 
