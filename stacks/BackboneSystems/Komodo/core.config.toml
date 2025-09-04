@@ -284,7 +284,7 @@ github_oauth.secret = ""
 ## Env: KOMODO_MONITORING_INTERVAL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 15-sec
-monitoring_interval = "15-sec"
+monitoring_interval = "10-sec"
 
 ## Interval at which to poll Resources for any updates / automated actions.
 ## Env: KOMODO_RESOURCE_POLL_INTERVAL
