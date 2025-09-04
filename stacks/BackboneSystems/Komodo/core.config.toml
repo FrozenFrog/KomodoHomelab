@@ -465,7 +465,7 @@ aws.secret_access_key = ""
 [[git_provider]]
 domain = "github.com"
 accounts = [
-     { username = "FrozenFrog", token = "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" },
+     { username = "FrozenFrog", token = "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" },
 ]
 
 # [[git_provider]]
