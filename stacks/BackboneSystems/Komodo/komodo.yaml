@@ -18,10 +18,6 @@ services:
         published: "9122"
         protocol: tcp
     environment:
-      KOMODO_DATABASE_ADDRESS: "${LOCALHOST}:27017"
-      KOMODO_DATABASE_USERNAME: "${KOMODO_DATABASE_USERNAME:-mongodb}"
-      KOMODO_DATABASE_PASSWORD: "${KOMODO_DATABASE_PASSWORD:-mongodb}"
-      KOMODO_PASSKEY: "${KOMODO_PASSKEY:-changeme}"
       TZ: Asia/Ho_Chi_Minh
     network_mode: bridge
     volumes:
