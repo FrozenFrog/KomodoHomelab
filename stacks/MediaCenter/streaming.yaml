@@ -25,7 +25,7 @@ services:
         target: /pyload-downloads
     restart: unless-stopped
     labels:
-      proxy.#1.middlewares.forward_auth.bypass: path /*
+      proxy.#1.middlewares.forwardauth.bypass: path /*
       proxy.idle_timeout: 45m
 
   ombi:
