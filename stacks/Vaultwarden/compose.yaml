@@ -16,6 +16,7 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.#1.port: 10380
-      proxy.#1.middlewares.forward_auth.bypass: path /*
+      proxy.aliases: vaultwarden
+      proxy.vaultwarden.port: 10380
+      proxy.vaultwarden.middlewares.forward_auth.bypass: path /*
       proxy.idle_timeout: 45m
