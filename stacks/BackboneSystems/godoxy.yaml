@@ -8,7 +8,7 @@ services:
       HOSTNAME: 127.0.0.1
       PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
-      GODOXY_API_ADDR: ${LOCALHOST}:8888
+      GODOXY_API_ADDR: 127.0.0.1:8888
     restart: unless-stopped
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
