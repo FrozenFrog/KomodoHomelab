@@ -25,7 +25,7 @@ services:
         target: /pyload-downloads
     restart: unless-stopped
     labels:
-      proxy.#1.middlewares.forwardauth.bypass: path /*
+      proxy.#1.middlewares.forward_auth.bypass: path /*
       proxy.idle_timeout: 45m
 
   ombi:
@@ -47,10 +47,10 @@ services:
         source: "${BASEPATH}/${OMBI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
+    depends_on:
+      - jellyfin
     labels:
       proxy.idle_timeout: 30m
-      proxy.depends_on: |
-        - jellyfin:service_started
 
   plex:
     image: plexinc/pms-docker:plexpass
@@ -128,7 +128,7 @@ services:
         source: "${BASEPATH}/${TAUTULLI_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
+    depends_on: 
+      - plex
     labels:
       proxy.idle_timeout: 30m
-      proxy.depends_on: |
-        - plex:service_started
