@@ -8,6 +8,7 @@ services:
       HOSTNAME: 192.168.1.3
       PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
+      GODOXY_API_ADDR: app:8888
     restart: unless-stopped
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
