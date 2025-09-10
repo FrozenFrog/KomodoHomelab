@@ -48,6 +48,7 @@ services:
         target: /config
     restart: unless-stopped
     labels:
+      proxy.idle_timeout: 30m
       proxy.depends_on: |
         - jellyfin:service_started
 
@@ -105,10 +106,8 @@ services:
     labels:
       proxy.aliases: plex, plex.picityvietnam.com
       proxy.idle_timeout: 45m
-      proxy.#1.middlewares.forwardauth.bypass:
       proxy.#1.port: 32400
       proxy.#2.port: 32400
-      proxy.#2.middlewares.forwardauth.bypass:
 
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
@@ -130,5 +129,6 @@ services:
         target: /config
     restart: unless-stopped
     labels:
+      proxy.idle_timeout: 30m
       proxy.depends_on: |
         - plex:service_started
