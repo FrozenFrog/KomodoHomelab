@@ -138,9 +138,9 @@ GODOXY_OIDC_SCOPES=openid, profile, email, groups, offline_access # you may also
 #   # GODOXY_OIDC_ALLOWED_GROUPS=group1
 #
 # Comma-separated list of allowed users.
-GODOXY_OIDC_ALLOWED_USERS=mahdi
+#GODOXY_OIDC_ALLOWED_USERS=mahdi
 # Optional: Comma-separated list of allowed groups.
-GODOXY_OIDC_ALLOWED_GROUPS=administrator
+#GODOXY_OIDC_ALLOWED_GROUPS=administrator
 
 # Proxy listening address
 GODOXY_HTTP_ADDR=:80
