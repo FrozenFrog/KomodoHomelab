@@ -10,3 +10,5 @@ services:
       NEWT_ID: ${NEWT_ID}
       NEWT_SECRET: ${NEWT_SECRET}
     restart: unless-stopped
+    labels:
+      proxy.exclude: true
