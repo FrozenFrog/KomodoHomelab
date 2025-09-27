@@ -3,6 +3,7 @@ services:
     image: fosrl/newt
     container_name: newt_pangolin
     hostname: newt_pangolin
+    network_mode: bridge
     environment:
       TZ: ${TZ}
       PANGOLIN_ENDPOINT: ${PANGOLIN_ENDPOINT}
