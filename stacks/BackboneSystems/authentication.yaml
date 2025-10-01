@@ -1,6 +1,6 @@
 services:
   pocketid:
-    image: ghcr.io/pocket-id/pocket-id:v1
+    image: ghcr.io/pocket-id/pocket-id
     network_mode: bridge
     hostname: pocketid
     container_name: pocketid
