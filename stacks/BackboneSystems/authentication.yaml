@@ -13,7 +13,7 @@ services:
       APP_URL: "https://pocketid.${CF_DOMAIN}"
       INTERNAL_APP_URL: "http://0.0.0.0:1411"
       DB_PROVIDER: "postgres"
-      DB_CONNECTION_STRING: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@0.0.0.0:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
+      DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@0.0.0.0:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
       MAXMIND_LICENSE_KEY_FILE: "/app/data/${MAXMIND_LICENSE_KEY_FILE}"
     ports:
       - target: 1411
