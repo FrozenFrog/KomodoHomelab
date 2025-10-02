@@ -62,4 +62,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: tinyauth
-      proxy.#1.port: 10000
