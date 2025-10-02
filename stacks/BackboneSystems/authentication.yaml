@@ -11,7 +11,7 @@ services:
       TRUST_PROXY: "true"
       ENCRYPTION_KEY: ${SECRET}
       APP_URL: "https://pocketid.${CF_DOMAIN}"
-      INTERNAL_APP_URL: "http://0.0.0.0:1411"
+      INTERNAL_APP_URL: "http://${LOCALHOST}:1411"
       DB_PROVIDER: "postgres"
       DB_CONNECTION_STRING: "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
       MAXMIND_LICENSE_KEY_FILE: "/app/data/${MAXMIND_LICENSE_KEY_FILE}"
@@ -39,7 +39,7 @@ services:
       LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
-      DOCKER_HOST: "tcp://0.0.0.0:2375"
+      DOCKER_HOST: "tcp://${LOCALHOST}:2375"
       DISABLE_CONTINUE: true
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
       OAUTH_AUTO_REDIRECT: generic
@@ -62,4 +62,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: tinyauth
-      proxy.#1.port: 10000
