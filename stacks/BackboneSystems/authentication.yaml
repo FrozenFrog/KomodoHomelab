@@ -6,8 +6,8 @@ services:
     container_name: pocketid
     environment:
       TZ: ${TZ}
-      PGID: ${PGID}
-      PUID: ${PUID}
+      PGID: 1
+      PUID: 1
       TRUST_PROXY: "true"
       ENCRYPTION_KEY: ${SECRET}
       APP_URL: "https://pocketid.${CF_DOMAIN}"
