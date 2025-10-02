@@ -38,6 +38,10 @@ services:
       QBIT_BASE: http://qbittorrent:8081
       RELEASE_TYPE: stable
       UPDATE_VT_CRON: 0 * * * *
+    ports:
+      - target: 8080
+        published: "8080"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
