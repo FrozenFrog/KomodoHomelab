@@ -50,6 +50,8 @@ additional_env_files = ["../../MainSystem/.env"]
 environment = """
 MEILI_MASTER_KEY=ask-tick-any-gavel
 NEXTAUTH_SECRET=storming-flapping-topped-maris
+KARAKEEP_OAUTH_CLIENT_ID=74edeb45-11b8-42d2-8dd6-d3ae3893972b
+KARAKEEP_OAUTH_CLIENT_SECRET=eI6LTbhnRnRqHgIpxEcnJ0vMl2lHuUJe
 """
 
 ##
@@ -103,6 +105,27 @@ XMLRPC_PORT=28000
 RUTORRENT_PORT=28080
 WEBDAV_PORT=29000
 RT_INC_PORT=50000
+"""
+
+##
+
+[[stack]]
+name = "newt"
+tags = ["system", "tools"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["newt.yaml"]
+env_file_path = "pangolin.env"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+PANGOLIN_ENDPOINT=https://pangolin.picityvietnam.com
+NEWT_ID=ud1dgd871vxgkeb
+NEWT_SECRET=f353w4vrpl41u3tksgltvkzvlv5j08qo17vqryg454z386ho
 """
 
 ##
