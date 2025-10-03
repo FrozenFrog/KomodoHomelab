@@ -41,10 +41,8 @@ services:
     container_name: traefik
     restart: unless-stopped
     environment:
-      CLOUDFLARE_DNS_API_TOKEN: "A1Aj-RhRtB3IdknqBtFkayr_7WS73mHQZM4IPzfg"
-
+      CLOUDFLARE_DNS_API_TOKEN: ${CLOUDFLARE_DNS_API_TOKEN}
     network_mode: service:gerbil # Ports appear on the gerbil service
-
     depends_on:
       pangolin:
         condition: service_healthy
