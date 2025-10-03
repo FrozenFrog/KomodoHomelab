@@ -1,7 +1,7 @@
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: bridge #"container:gluetun_pf"
+    network_mode: "container:gluetun_pf"
     container_name: qbittorrent
     environment:
       PGID: ${PGID}
@@ -9,10 +9,6 @@ services:
       TZ: ${TZ}
       UMASK: "002"
       WEBUI_PORT: "8081"
-    ports:
-      - target: 8080
-        published: "8080"
-        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}"
@@ -26,32 +22,27 @@ services:
     restart: unless-stopped
     labels:
       proxy.exclude: true
-      #proxy.depends_on: |
-      #  gluetun_pf: service_healthy
+      proxy.depends_on: |
+        gluetun_pf: service_healthy
 
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
-    network_mode: bridge
+    network_mode: "container:gluetun_pf"
     container_name: vuetorrent-backend
     environment:
-      PORT: "8081"
-      QBIT_BASE: http://qbittorrent:8080
+      PORT: "8080"
+      QBIT_BASE: http://gluetun_pf:8081
       RELEASE_TYPE: stable
       UPDATE_VT_CRON: 0 * * * *
-    ports:
-      - target: 8081
-        published: "8081"
-        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${QBITTORRENT_CONFIG_PATH}/bankend-config"
         target: /config
     restart: unless-stopped
     labels:
-      proxy.aliases: torrent
-      proxy.#1.port: 8080
+      proxy.exclude: true
       proxy.depends_on: |
-        qbittorrent: service_healthy
+        gluetun_pf: service_healthy
 
   pyload:
     image: linuxserver/pyload-ng:latest
@@ -122,7 +113,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.exclude: true
-
-
-
-
