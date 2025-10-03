@@ -5,7 +5,7 @@ services:
     container_name: godoxy-frontend
     hostname: godoxy-frontend
     environment:
-      HOSTNAME: ${LOCALHOST}
+      HOSTNAME: 127.0.0.1
       PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
       GODOXY_API_ADDR: ${LOCALHOST}:8888
