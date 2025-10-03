@@ -21,7 +21,7 @@ APP_CONFIG_PATH=adguardhome-config
 name = "authentication"
 tags = ["system"]
 [stack.config]
-server = "HomeLab"
+server = "LinodeVPS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -33,14 +33,35 @@ additional_env_files = ["../../MainSystem/.env"]
 environment = """
 SECRET=buIAul6AlEKPsPZoUG2TrLhV1l4CW1YM
 APP_CONFIG_PATH=pocketid-config
+POSTGRES_CONFIG_PATH=postgresql-config
 POCKETID_DB_NAME=pocketid
 MAXMIND_LICENSE_KEY_FILE=MAXMIND_LICENSE_KEY_FILE
 USERS==mahdi:$$2a$$10$$vrupZJayw7eBI/QPU2SFBu21S.ixmQB4b0nf7QHV6wbamLtvBxgyS #mahdi:quadong
+LOCAL_VPS_IP=172.16.1.122 # local vps ip
+"""
+
+##
+
+[[stack]]
+name = "authorization"
+tags = ["system"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["authorization.yaml"]
+env_file_path = "authorization.env"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+SECRET=buIAul6AlEKPsPZoUG2TrLhV1l4CW1YM
 OAUTH_WHITELIST=jenny48074@gmail.com
 GITHUB_CLIENT_SECRET=d325f14eec6e851953699c0f60153e2224970da6
 GITHUB_CLIENT_ID=Ov23liu3zbXVTX9vdiLK
 GOOGLE_CLIENT_ID=82535139759-ss6palf2fr95p4g70445lasliiaod3m7.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=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
+GOOGLE_CLIENT_SECRET=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  # VARIABLE = value
 """
 
 ##
@@ -123,9 +144,9 @@ GODOXY_API_JWT_TOKEN_TTL=
 # Uncomment and configure these values to enable OIDC authentication.
 #
 GODOXY_OIDC_ISSUER_URL=https://pocketid.nextmeats.asia
-GODOXY_OIDC_CLIENT_ID=264ecfd6-5d55-45ce-adfb-8302067f7388
-GODOXY_OIDC_CLIENT_SECRET=KaIZXzRFdOoYpzMpnYmmmpjVYGGuhHzd
-GODOXY_OIDC_SCOPES=openid, profile, email, groups, offline_access # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
+GODOXY_OIDC_CLIENT_ID=cf1f9f04-67e0-4f02-8c00-3e947601e420
+GODOXY_OIDC_CLIENT_SECRET=CLyUDOQfXQk9EFsyt6Njei4NAKxwxr3G
+GODOXY_OIDC_SCOPES=openid, profile, email, groups, preferred_username, offline_access # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
 #
 # User definitions: Uncomment and configure these values to restrict access to specific users or groups.
 # These two fields act as a logical AND operator. For example, given the following membership:
@@ -133,9 +154,14 @@ GODOXY_OIDC_SCOPES=openid, profile, email, groups, offline_access # you may also
 #   user2, group1
 #   user3, group2
 #   user1, group2
+#
+# Comma-separated list of allowed users.
+#GODOXY_OIDC_ALLOWED_USERS=mahdi
+# Optional: Comma-separated list of allowed groups.
+#GODOXY_OIDC_ALLOWED_GROUPS=administrator
 # You can allow access to user3 AND all users of group1 by providing:
-#   # GODOXY_OIDC_ALLOWED_USERS=user3
-#   # GODOXY_OIDC_ALLOWED_GROUPS=group1
+GODOXY_OIDC_ALLOWED_USERS=mahdi
+GODOXY_OIDC_ALLOWED_GROUPS=administrators
 #
 # Comma-separated list of allowed users.
 #GODOXY_OIDC_ALLOWED_USERS=mahdi
@@ -209,6 +235,46 @@ env_file_path = "komodo.env"
 additional_env_files = ["../../../MainSystem/.env"]
 environment = """
 KOMODO_PASSKEY=FXF7ngw5yuf_vje2vnv
+"""
+
+##
+
+[[stack]]
+name = "newt"
+tags = ["system", "tools"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["newt.yaml"]
+env_file_path = "pangolin.env"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+PANGOLIN_ENDPOINT=https://pangolin.picityvietnam.com
+NEWT_ID=ud1dgd871vxgkeb
+NEWT_SECRET=f353w4vrpl41u3tksgltvkzvlv5j08qo17vqryg454z386ho
+"""
+
+##
+
+[[stack]]
+name = "pangolin"
+tags = ["system"]
+[stack.config]
+server = "LinodeVPS"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems/Pangolin"
+file_paths = ["pangolin.yaml"]
+env_file_path = "pangolin.env"
+additional_env_files = ["../../../MainSystem/.env"]
+environment = """
+CLOUDFLARE_DNS_API_TOKEN=A1Aj-RhRtB3IdknqBtFkayr_7WS73mHQZM4IPzfg
 """
 
 ##
