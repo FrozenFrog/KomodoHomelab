@@ -21,7 +21,7 @@ APP_CONFIG_PATH=adguardhome-config
 name = "authentication"
 tags = ["system"]
 [stack.config]
-server = "LinodeVPS"
+server = "LightnodeVPS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -264,7 +264,7 @@ NEWT_SECRET=f353w4vrpl41u3tksgltvkzvlv5j08qo17vqryg454z386ho
 name = "pangolin"
 tags = ["system"]
 [stack.config]
-server = "LinodeVPS"
+server = "LightnodeVPS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
