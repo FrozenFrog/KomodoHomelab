@@ -1,45 +1,4 @@
 services:
-  alist:
-    image: xhofe/alist:latest-aria2
-    network_mode: bridge
-    container_name: alist
-    hostname: alist
-    environment:
-      PGID: ${PGID}
-      PUID: ${PUID}
-      TZ: ${TZ}
-      UMASK: "022"
-    expose:
-      - 6800
-    ports:
-      - target: 5244
-        published: "5244"
-        protocol: tcp
-      - target: 5246
-        published: "5246"
-        protocol: tcp
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${ALIST_CONFIG_PATH}"
-        target: /opt/alist/data
-      - type: bind
-        source: "${INFUSE_MEDIA_STORAGE_PATH}"
-        target: /media
-      - type: bind
-        source: "${MISC_STORAGE_PATH}"
-        target: /storage
-      - type: bind
-        source: "${APPLICATION_STORAGE_PATH}"
-        target: /downloads
-    restart: unless-stopped
-    labels:
-      proxy.aliases: alist
-      proxy.#1.port: 5244
-      proxy.#1.homepage: |
-        name: "Alist"
-        icon: "@walkxcode/alist.svg"
-        category: "Storage"
-        
   rclone:
     image: rclone/rclone:latest
     network_mode: bridge
@@ -50,10 +9,7 @@ services:
       PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "022"
-    ports:
-      - target: 5572
-        published: "18572"
-        protocol: tcp
+    
     volumes:
       - type: bind
         source: "${BASEPATH}/${RClONE_CONFIG_PATH}"

@@ -1,0 +1,48 @@
+services:
+  backrest:
+    image: garethgeorge/backrest:latest
+    network_mode: bridge
+    container_name: backrest
+    hostname: backrest
+    environment:
+      BACKREST_DATA: /data
+      BACKREST_CONFIG: /config/config.json
+      XDG_CACHE_HOME: /cache
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+      UMASK: "022"
+    ports:
+      - target: 9898
+        published: "5858"
+        protocol: tcp
+    volumes:
+      # backrest config and data paths
+      - type: bind
+        source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/data"
+        target: /data
+      - type: bind
+        source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/config"
+        target: /config
+      - type: bind
+        source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/cache"
+        target: /cache
+      - type: bind
+        source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/tmp"
+        target: /tmp
+      - type: bind  
+        source: "${BASEPATH}/${RClONE_CONFIG_PATH}"
+        target: /root/.config/rclone
+      # data sources to beeng backed up
+      # komodo
+      - type: bind
+        source: "/etc/komodo/backups"
+        target: /backups/komodo
+      # application configs
+      - type: bind
+        source: "${BASEPATH}"
+        target: /backups/application-configs
+    restart: unless-stopped
+    labels:
+      proxy.aliases: backrest
+      proxy.#1.port: 5858
