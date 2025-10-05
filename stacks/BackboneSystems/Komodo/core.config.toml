@@ -192,7 +192,7 @@ jwt_ttl = "1-day"
 ## Enable logins with configured OIDC provider.
 ## Env: KOMODO_OIDC_ENABLED
 ## Default: false
-oidc_enabled = false
+oidc_enabled = true
 
 ## Give the provider address.
 ##
