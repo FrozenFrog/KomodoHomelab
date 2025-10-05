@@ -203,7 +203,7 @@ oidc_enabled = false
 ##
 ## Env: KOMODO_OIDC_PROVIDER
 ## Optional, no default.
-oidc_provider = "https://oidc.provider.internal/application/o/komodo"
+oidc_provider = "https://pocketid.nextmeats.asia"
 
 ## Configure OIDC user redirect host.
 ##
@@ -220,13 +220,13 @@ oidc_redirect_host = ""
 
 ## Set the OIDC Client ID.
 ## Env: KOMODO_OIDC_CLIENT_ID or KOMODO_OIDC_CLIENT_ID_FILE
-oidc_client_id = ""
+oidc_client_id = "590f8f9a-3844-479d-b7df-aa6924e7a1e6"
 
 ## Set the OIDC Client Secret.
 ## If the OIDC provider supports PKCE-only flow,
 ## the client secret is not necessary and can be ommitted or left empty.
 ## Env: KOMODO_OIDC_CLIENT_SECRET or KOMODO_OIDC_CLIENT_SECRET_FILE
-oidc_client_secret = ""
+oidc_client_secret = "Y3s0s7GaQCemg5ssouA5qP3Dicmu2Y3s"
 
 ## If true, use the full email for usernames.
 ## Otherwise, the @address will be stripped,
