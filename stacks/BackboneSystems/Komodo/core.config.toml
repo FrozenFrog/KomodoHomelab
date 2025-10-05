@@ -125,7 +125,7 @@ internet_interface = ""
 ##
 ## Env: KOMODO_LOCAL_AUTH
 ## Default: false
-local_auth = true
+local_auth = false
 
 ## Initialize the first admin user when starting up Komodo for the first time.
 ## Env: KOMODO_INIT_ADMIN_USERNAME or KOMODO_INIT_ADMIN_USERNAME_FILE
