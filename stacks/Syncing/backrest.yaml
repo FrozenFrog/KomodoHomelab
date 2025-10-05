@@ -46,3 +46,4 @@ services:
     labels:
       proxy.aliases: backrest
       proxy.#1.port: 5858
+      tinyauth.oauth.groups: administrators
