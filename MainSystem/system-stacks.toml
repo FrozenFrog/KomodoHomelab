@@ -233,9 +233,9 @@ run_directory = "stacks/BackboneSystems/Komodo"
 file_paths = ["komodo.yaml"]
 env_file_path = "komodo.env"
 additional_env_files = ["../../../MainSystem/.env"]
-environment = """
-KOMODO_PASSKEY=FXF7ngw5yuf_vje2vnv
-"""
+config_files = [
+  { path = "core.config.toml", services = ["core"], requires = "Restart" }
+]
 
 ##
 
@@ -273,6 +273,11 @@ run_directory = "stacks/BackboneSystems/Pangolin"
 file_paths = ["pangolin.yaml"]
 env_file_path = "pangolin.env"
 additional_env_files = ["../../../MainSystem/.env"]
+config_files = [
+  { path = "config/config.yml", services = ["gerbil", "pangolin", "traefik"], requires = "Redeploy" },
+  { path = "config/traefik/traefik_config.yml", services = ["traefik"], requires = "Redeploy" },
+  { path = "config/traefik/dynamic_config.yml", services = ["traefik"], requires = "Redeploy" }
+]
 environment = """
 CLOUDFLARE_DNS_API_TOKEN=A1Aj-RhRtB3IdknqBtFkayr_7WS73mHQZM4IPzfg
 """
