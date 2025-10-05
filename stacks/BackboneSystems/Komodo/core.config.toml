@@ -299,7 +299,7 @@ resource_poll_interval = "1-hr"
 ## Enable HTTPS server using the given key and cert.
 ## Env: KOMODO_SSL_ENABLED
 ## Default: false
-ssl_enabled = true
+ssl_enabled = false
 
 ## Path to the ssl key.
 ## Env: KOMODO_SSL_KEY_FILE
