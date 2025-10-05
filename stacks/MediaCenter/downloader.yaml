@@ -65,7 +65,7 @@ services:
         source: "${BASEPATH}/${PYLOAD_CONFIG_PATH}"
         target: /config
       - type: bind
-        source: "${DATA_STORAGE_PATH}/Downloads"
+        source: "${MISC_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
     labels:
@@ -89,7 +89,7 @@ services:
         protocol: tcp
     volumes:
       - type: bind
-        source: "${DATA_STORAGE_PATH}/Downloads"
+        source: "${MISC_STORAGE_PATH}/Downloads"
         target: /downloads
     restart: unless-stopped
     labels:
