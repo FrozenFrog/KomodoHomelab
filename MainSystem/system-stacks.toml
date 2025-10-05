@@ -234,7 +234,8 @@ file_paths = ["komodo.yaml"]
 env_file_path = "komodo.env"
 additional_env_files = ["../../../MainSystem/.env"]
 config_files = [
-  { path = "core.config.toml", services = ["core"], requires = "Restart" }
+  { path = "core.config.toml", services = ["core"], requires = "Restart" },
+  { path = "periphery.config.toml", requires = "Redeploy" }
 ]
 
 ##
