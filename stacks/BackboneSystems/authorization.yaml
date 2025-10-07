@@ -8,7 +8,6 @@ services:
       TZ: ${TZ}
       PORT: 10000
       COOKIE_SECURE: "true"
-      LOG_LEVEL: 0
       APP_TITLE: "OSCE HomeLab"
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
       DOCKER_HOST: "tcp://${LOCALHOST}:2375"
