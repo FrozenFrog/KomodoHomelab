@@ -9,7 +9,10 @@ services:
       PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "022"
-    
+    ports:
+      - target: 5572
+        published: "2572"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${RClONE_CONFIG_PATH}"
@@ -56,3 +59,6 @@ services:
         limits:
           memory: "7212105728"
     restart: unless-stopped
+    labels:
+      proxy.aliases: rclone
+      proxy.#1.port: 2572
