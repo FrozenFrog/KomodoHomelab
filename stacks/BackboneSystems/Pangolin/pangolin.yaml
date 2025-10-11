@@ -4,6 +4,8 @@ services:
     image: docker.io/fosrl/pangolin:1.10.3
     container_name: pangolin
     restart: unless-stopped
+    environment:
+      TZ: ${TZ}
     volumes:
       - ./config:/app/config
       - pangolin-data:/var/certificates
