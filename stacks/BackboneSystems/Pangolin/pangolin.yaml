@@ -8,6 +8,9 @@ services:
       - ./config:/app/config
       - pangolin-data:/var/certificates
       - pangolin-data:/var/dynamic
+      - type: bind
+        source: "${BASEPATH}/${PANGOLIN_CONFIG_PATH}/db/db.sqlite"
+        target: /app/config/db/db.sqlite
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/api/v1/"]
       interval: "10s"
