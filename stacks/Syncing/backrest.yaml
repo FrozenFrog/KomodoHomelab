@@ -25,6 +25,9 @@ services:
         source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/config"
         target: /config
       - type: bind
+        source: "./backrest-config.json"
+        target: /config/config.json
+      - type: bind
         source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/cache"
         target: /cache
       - type: bind
