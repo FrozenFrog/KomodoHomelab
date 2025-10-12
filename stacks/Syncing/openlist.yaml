@@ -6,8 +6,6 @@ services:
     hostname: alist
     user: '${PUID}:${PGID}' # Please replace `0:0` with the actual user ID and group ID you want to use to run OpenList.
     environment:
-      PGID: ${PGID}
-      PUID: ${PUID}
       TZ: ${TZ}
       UMASK: "022"
     expose:
