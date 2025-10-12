@@ -26,7 +26,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: jellyfin
-      proxy.idle_timeout: 45m
 
   ombi:
     image: lscr.io/linuxserver/ombi:latest
@@ -103,7 +102,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: plex
-      proxy.idle_timeout: 45m
       proxy.#1.port: 32400
 
   tautulli:
