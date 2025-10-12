@@ -9,6 +9,7 @@ services:
       PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
       GODOXY_API_ADDR: ${GODOXY_API_ADDR}
+      GODOXY_DEBUG: true
     restart: unless-stopped
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
@@ -88,6 +89,7 @@ services:
       GODOXY_OIDC_SCOPES: ${GODOXY_OIDC_SCOPES}
       GODOXY_OIDC_ALLOWED_USERS: ${GODOXY_OIDC_ALLOWED_USERS}
       GODOXY_OIDC_ALLOWED_GROUPS: ${GODOXY_OIDC_ALLOWED_GROUPS}
+      GODOXY_DEBUG: true
       TZ: ${TZ}
     volumes:
       - ${BASEPATH}/${APP_CONFIG_PATH}/config:/app/config
