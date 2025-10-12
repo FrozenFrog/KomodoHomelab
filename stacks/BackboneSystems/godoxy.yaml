@@ -74,7 +74,7 @@ services:
   #     - /var/run/docker.sock:/var/run/docker.sock
   #     - ${BASEPATH}/${APP_CONFIG_PATH}/agents:/app/data
   app:
-    image: ghcr.io/yusing/godoxy:0.18.6
+    image: ghcr.io/yusing/godoxy:v0.18.6
     network_mode: host # do not change this
     container_name: godoxy-proxy
     hostname: godoxy-proxy
