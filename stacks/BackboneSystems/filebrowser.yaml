@@ -23,4 +23,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: file
+      proxy.#1.port: 1480
       proxy.idle_timeout: 5m
