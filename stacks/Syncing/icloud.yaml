@@ -1,0 +1,26 @@
+services:
+  icloud:
+    image: mandarons/icloud-drive
+    network_mode: bridge
+    container_name: icloud-drive
+    hostname: icloud-drive
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      ENV_CONFIG_FILE_PATH: /config/config.yaml
+      TZ: ${TZ}
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${ICLOUD_CONFIG_PATH}/config"
+        target: /config
+      - type: bind
+        source: "${BASEPATH}/${ICLOUD_CONFIG_PATH}/icloud"
+        target: /icloud
+      - type: bind
+        source: "${BASEPATH}/${ICLOUD_CONFIG_PATH}/keyring" # Optional: Persist keyring for credentials (no password re-entry on container recreation)
+        target: /home/abc/.local
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    labels:
+      proxy.exclude: true
+    
