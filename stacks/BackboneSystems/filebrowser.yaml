@@ -2,8 +2,8 @@ services:
   filebrowser:
     image: gtstef/filebrowser:beta-slim
     network_mode: bridge
-    container_name: filebrowser
-    hostname: filebrowser
+    container_name: file
+    hostname: file
     mem_limit: 512m   # RAM tối đa
     cpus: "0.3"       # Tối đa 50% CPU
     environment:
