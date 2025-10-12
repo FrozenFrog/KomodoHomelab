@@ -1,4 +1,31 @@
 [[stack]]
+name = "backrest-vps"
+tags = ["system", "data"]
+[stack.config]
+server = "LightnodeVPS"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/Syncing"
+file_paths = ["backrest.yaml"]
+env_file_path = "backrest-vps.env"
+additional_env_files = ["../../MainSystem/.env"]
+config_files = [
+  { path = "../../../../rclone.conf", requires = "Redeploy" }
+]
+environment = """
+BACKREST_CONFIG_PATH=backrest-config
+RClONE_CONFIG_PATH=../../../etc/komodo/
+OPENLIST_CONFIG_PATH=openlist-config
+INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
+APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
+MISC_STORAGE_PATH=/mnt/Storage
+"""
+
+##
+
+[[stack]]
 name = "blackbox"
 tags = ["tools", "data"]
 [stack.config]
@@ -84,7 +111,8 @@ run_directory = "stacks/Syncing"
 file_paths = [
   "openlist.yaml",
   "rclone.yaml",
-  "backrest.yaml"
+  "backrest.yaml",
+  "icloud.yaml"
 ]
 env_file_path = "syncing.env"
 additional_env_files = ["../../MainSystem/.env"]
@@ -92,6 +120,7 @@ environment = """
 OPENLIST_CONFIG_PATH=openlist-config
 RClONE_CONFIG_PATH=rclone-config
 BACKREST_CONFIG_PATH=backrest-config
+ICLOUD_CONFIG_PATH=icloud-config
 INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
 APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
