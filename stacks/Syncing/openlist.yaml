@@ -4,7 +4,7 @@ services:
     network_mode: bridge
     container_name: alist # aliases for switching from alist to openlist
     hostname: alist
-    user: '0:0' # Please replace `0:0` with the actual user ID and group ID you want to use to run OpenList.
+    user: '${PUID}:${PGID}' # Please replace `0:0` with the actual user ID and group ID you want to use to run OpenList.
     environment:
       PGID: ${PGID}
       PUID: ${PUID}
