@@ -1,16 +1,42 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  openlist:
+    image: 'openlistteam/openlist:latest-aria2'
+    network_mode: bridge
+    container_name: alist # aliases for switching from alist to openlist
+    hostname: alist
+    user: '0:0' # Please replace `0:0` with the actual user ID and group ID you want to use to run OpenList.
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+      UMASK: "022"
+    expose:
+      - 6800
+    ports:
+      - target: 5244
+        published: "5244"
+        protocol: tcp
+      - target: 5246
+        published: "5246"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${OPENLIST_CONFIG_PATH}"
+        target: /opt/openlist/data
+      - type: bind
+        source: "${INFUSE_MEDIA_STORAGE_PATH}"
+        target: /media
+      - type: bind
+        source: "${MISC_STORAGE_PATH}"
+        target: /storage
+      - type: bind
+        source: "${APPLICATION_STORAGE_PATH}"
+        target: /downloads
+    restart: unless-stopped
+    labels:
+      proxy.aliases: alist
+      proxy.#1.port: 5244
+      proxy.#1.homepage: |
+        name: "Alist"
+        icon: "@walkxcode/alist.svg"
+        category: "Storage"
