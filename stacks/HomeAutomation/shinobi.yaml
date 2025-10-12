@@ -34,4 +34,4 @@ services:
         target: /home/Shinobi/plugins
     restart: unless-stopped
     labels:
-      proxy.aliases: shinobi, shinobi.picityvietnam.com
+      proxy.aliases: shinobi

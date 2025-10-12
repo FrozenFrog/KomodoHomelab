@@ -102,7 +102,7 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.aliases: plex, plex.picityvietnam.com
+      proxy.aliases: plex
       proxy.idle_timeout: 45m
       proxy.#1.port: 32400
       proxy.#2.port: 32400

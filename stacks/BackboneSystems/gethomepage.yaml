@@ -5,7 +5,7 @@ services:
     container_name: homepage
     hostname: homepage
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: picityvietnam.com,nextmeats.asia
+      HOMEPAGE_ALLOWED_HOSTS: nextmeats.asia
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
