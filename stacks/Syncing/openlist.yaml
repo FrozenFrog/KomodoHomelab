@@ -8,8 +8,6 @@ services:
     environment:
       TZ: ${TZ}
       UMASK: "022"
-    expose:
-      - 6800
     ports:
       - target: 5244
         published: "5244"
@@ -17,6 +15,9 @@ services:
       - target: 5246
         published: "5246"
         protocol: tcp
+      - target: 6800
+        published: "5248"  #expose aria2
+        protocol: tcp      
     volumes:
       - type: bind
         source: "${BASEPATH}/${OPENLIST_CONFIG_PATH}"
