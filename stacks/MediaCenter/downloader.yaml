@@ -72,6 +72,19 @@ services:
       proxy.aliases: pyload
       proxy.#1.port: 8000
       proxy.idle_timeout: 1h30m
+  
+  telegram-bot:
+    image:
+    network_mode: bridge
+    container_name: telegram-bot
+    hostname: telegram-bot
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+    restart: unless-stopped
+    labels:
+      proxy.exclude: true
       
   metube:
     image: ghcr.io/alexta69/metube
