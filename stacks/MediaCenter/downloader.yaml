@@ -74,7 +74,7 @@ services:
       proxy.idle_timeout: 1h30m
   
   telegram-bot:
-    image:
+    image: anasty17/mltb:latest
     network_mode: bridge
     container_name: telegram-bot
     hostname: telegram-bot
