@@ -15,3 +15,6 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: bot
+networks:
+  pangolin:
+    external: true
