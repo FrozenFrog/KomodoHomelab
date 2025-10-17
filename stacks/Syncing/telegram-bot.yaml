@@ -1,8 +1,7 @@
 services:
   telegram-bot:
     image: ghcr.io/frozenfrog/telegram-bot:latest
-    networks: 
-      - pangolin
+    network_mode: host
     container_name: telegram-bot
     hostname: telegram-bot
     environment:
@@ -16,6 +15,3 @@ services:
     restart: unless-stopped
     labels:
       proxy.aliases: bot
-networks:
-  pangolin:
-    external: true
