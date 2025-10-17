@@ -74,7 +74,7 @@ services:
       proxy.idle_timeout: 1h30m
   
   telegram-bot:
-    image: docker.io/library/telegram-bot:latest
+    image: ghcr.io/frozenfrog/telegram-bot:latest
     network_mode: bridge
     container_name: telegram-bot
     hostname: telegram-bot
