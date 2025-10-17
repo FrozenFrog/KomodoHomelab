@@ -72,24 +72,7 @@ services:
       proxy.aliases: pyload
       proxy.#1.port: 8000
       proxy.idle_timeout: 1h30m
-  
-  telegram-bot:
-    image: ghcr.io/frozenfrog/telegram-bot:latest
-    network_mode: host
-    container_name: telegram-bot
-    hostname: telegram-bot
-    environment:
-      PGID: ${PGID}
-      PUID: ${PUID}
-      TZ: ${TZ}
-    ports:
-      - target: 5248
-        published: "5248"
-        protocol: tcp
-    restart: unless-stopped
-    labels:
-      proxy.aliases: bot
-      
+
   metube:
     image: ghcr.io/alexta69/metube
     network_mode: bridge
