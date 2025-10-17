@@ -1,6 +1,6 @@
 services:
   telegram-bot:
-    image: ghcr.io/frozenfrog/telegram-bot:1.0.2
+    image: ghcr.io/frozenfrog/telegram-bot:latest
     networks: pangolin
     container_name: telegram-bot
     hostname: telegram-bot
