@@ -12,6 +12,10 @@ services:
       - target: 5248
         published: "5248"
         protocol: tcp
+    volumes:
+      - type: bind  
+        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
+        target: /usr/src/app/rclone.conf
     restart: unless-stopped
     labels:
       proxy.aliases: bot
