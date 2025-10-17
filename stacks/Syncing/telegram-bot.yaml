@@ -8,10 +8,6 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
-    ports:
-      - target: 5248
-        published: "5248"
-        protocol: tcp
     volumes:
       - type: bind  
         source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
