@@ -82,10 +82,17 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
-      DATABASE_URL: "mongodb://${BOT_DB:-mongodb}:${BOT_DB:-mongodb}@${LOCALHOST:-127.0.0.1}:${MONGODB_PORT:-27017}"
+    ports:
+      - target: 5248
+        published: "5248"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${RClONE_CONFIG_PATH}"
+        target: /usr/src/app
     restart: unless-stopped
     labels:
-      proxy.exclude: true
+      proxy.aliases: bot
       
   metube:
     image: ghcr.io/alexta69/metube
