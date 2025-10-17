@@ -31,7 +31,7 @@ services:
         source: "${BASEPATH}/${BACKREST_CONFIG_PATH}/tmp"
         target: /tmp
       - type: bind  
-        source: "${BASEPATH}/${RClONE_CONFIG_PATH}"
+        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/"
         target: /root/.config/rclone
       # data sources to beeng backed up
       # komodo
