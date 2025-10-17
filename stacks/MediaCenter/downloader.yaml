@@ -75,7 +75,7 @@ services:
   
   telegram-bot:
     image: ghcr.io/frozenfrog/telegram-bot:latest
-    network_mode: bridge
+    network_mode: host
     container_name: telegram-bot
     hostname: telegram-bot
     environment:
