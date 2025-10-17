@@ -14,10 +14,7 @@ services:
         protocol: tcp
       - target: 5246
         published: "5246"
-        protocol: tcp
-      - target: 6800
-        published: "5248"  #expose aria2
-        protocol: tcp      
+        protocol: tcp 
     volumes:
       - type: bind
         source: "${BASEPATH}/${OPENLIST_CONFIG_PATH}"
