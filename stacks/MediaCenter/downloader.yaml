@@ -82,12 +82,16 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
+      YTDL_OPTIONS: {"cookiefile": "/cookies/cookies.txt", "format": "best", "exec": "ffmpeg -i %(filepath)q -c:v libx264 -c:a aac %(filepath)q.h264.mp4"}
       DELETE_FILE_ON_TRASHCAN: true
     ports:
       - target: 8081
         published: "12081"
         protocol: tcp
     volumes:
+      - type: bind
+        source: "${BASEPATH}/${METUBE_CONFIG_PATH}/cookies"
+        target: /cookies
       - type: bind
         source: "${MISC_STORAGE_PATH}/Downloads"
         target: /downloads
