@@ -82,7 +82,7 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
-      YTDL_OPTIONS: {"cookiefile": "/cookies/cookies.txt", "format": "best", "exec": "ffmpeg -i %(filepath)q -c:v libx264 -c:a aac %(filepath)q.h264.mp4"}
+      YTDL_OPTIONS: '{"cookiefile": "/cookies/cookies.txt", "format": "best", "exec": "ffmpeg -i %(filepath)q -c:v libx264 -c:a aac %(filepath)q.h264.mp4"}'
       DELETE_FILE_ON_TRASHCAN: true
     ports:
       - target: 8081
