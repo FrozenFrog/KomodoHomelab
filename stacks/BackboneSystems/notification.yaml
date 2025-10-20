@@ -1,0 +1,16 @@
+services:
+  gotify:
+    image: gotify/server
+    network_mode: bridge
+    container_name: gotify
+    hostname: gotify
+    ports:
+      - 15080:80
+    environment:
+      GOTIFY_DEFAULTUSER_PASS: 'admin'
+      TZ: ${TZ}
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}/data"
+        target: /app/data
+    restart: unless-stopped
