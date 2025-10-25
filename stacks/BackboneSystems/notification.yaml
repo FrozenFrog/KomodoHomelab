@@ -13,4 +13,7 @@ services:
       - type: bind
         source: "${BASEPATH}/${APP_CONFIG_PATH}/data"
         target: /app/data
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}/config"
+        target: /etc/gotify
     restart: unless-stopped
