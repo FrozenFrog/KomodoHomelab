@@ -15,9 +15,6 @@ services:
       - all
     depends_on:
       - app
-    labels:
-      proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}
-      proxy.#1.port: ${GODOXY_FRONTEND_PORT:-3000}
       # proxy.#1.middlewares.cidr_whitelist: |
       #   status: 403
       #   message: IP not allowed
@@ -72,7 +69,7 @@ services:
   #     - ${BASEPATH}/${APP_CONFIG_PATH}/agents:/app/data
   app:
     image: ghcr.io/yusing/godoxy:${TAG:-latest}
-    network_mode: bridge
+    network_mode: host
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
