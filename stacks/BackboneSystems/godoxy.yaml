@@ -1,12 +1,10 @@
 services:
   frontend:
     image: ghcr.io/yusing/godoxy-frontend:${TAG:-latest}
-    network_mode: host # do not change this
+    network_mode: bridge # do not change this
     container_name: godoxy-frontend
     hostname: godoxy-frontend
     environment:
-      HOSTNAME: 127.0.0.1
-      PORT: ${GODOXY_FRONTEND_PORT}
       TZ: ${TZ}
       GODOXY_API_ADDR: ${GODOXY_API_ADDR}
     restart: unless-stopped
@@ -75,7 +73,7 @@ services:
   #     - ${BASEPATH}/${APP_CONFIG_PATH}/agents:/app/data
   app:
     image: ghcr.io/yusing/godoxy:${TAG:-latest}
-    network_mode: host # do not change this
+    network_mode: bridge
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
