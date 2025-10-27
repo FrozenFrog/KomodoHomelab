@@ -1,7 +1,7 @@
 services:
   frontend:
     image: ghcr.io/yusing/godoxy-frontend:${TAG:-latest}
-    network_mode: brigde
+    network_mode: bridge
     container_name: godoxy-frontend
     hostname: godoxy-frontend
     environment:
