@@ -1,11 +1,12 @@
 services:
   frontend:
     image: ghcr.io/yusing/godoxy-frontend:${TAG:-latest}
-    network_mode: bridge # do not change this
+    network_mode: host # do not change this
     container_name: godoxy-frontend
     hostname: godoxy-frontend
     environment:
       TZ: ${TZ}
+      GODOXY_API_ADDR: ${GODOXY_API_ADDR}
     restart: unless-stopped
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
@@ -69,12 +70,10 @@ services:
   #     - ${BASEPATH}/${APP_CONFIG_PATH}/agents:/app/data
   app:
     image: ghcr.io/yusing/godoxy:${TAG:-latest}
-    network_mode: host
+    network_mode: host # do not change this
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
-      GOTRACEBACK: all
-      GODOXY_DEBUG: true
       DOCKER_HOST: "tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}"
       LEGO_DISABLE_CNAME_SUPPORT: 1
       GODOXY_API_JWT_SECRET: ${GODOXY_API_JWT_SECRET}
