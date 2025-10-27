@@ -73,6 +73,7 @@ services:
     network_mode: host # do not change this
     container_name: godoxy-proxy
     hostname: godoxy-proxy
+    command: "GOTRACEBACK=all"
     environment:
       GOTRACEBACK: all
       GODOXY_DEBUG: true
