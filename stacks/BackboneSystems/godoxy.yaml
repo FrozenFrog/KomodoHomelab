@@ -74,7 +74,7 @@ services:
     container_name: godoxy-proxy
     hostname: godoxy-proxy
     environment:
-      GOTRACEBACK: GOTRACEBACK
+      GOTRACEBACK: all
       GODOXY_DEBUG: true
       DOCKER_HOST: "tcp://${SOCKET_PROXY_LISTEN_ADDR:-127.0.0.1:2375}"
       LEGO_DISABLE_CNAME_SUPPORT: 1
@@ -101,3 +101,4 @@ services:
       - all
     cap_add:
       - NET_BIND_SERVICE
+GOTRACEBACK
