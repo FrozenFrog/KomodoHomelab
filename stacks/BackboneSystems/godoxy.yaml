@@ -101,4 +101,3 @@ services:
       - all
     cap_add:
       - NET_BIND_SERVICE
-GOTRACEBACK
