@@ -6,9 +6,10 @@ services:
     hostname: godoxy-frontend
     environment:
       TZ: ${TZ}
-      GODOXY_API_ADDR: ${GODOXY_API_ADDR}
     restart: unless-stopped
-    # user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
+    labels:
+      proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}
+    user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
     security_opt:
       - no-new-privileges:true
