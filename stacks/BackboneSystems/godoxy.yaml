@@ -94,7 +94,7 @@ services:
       - ${BASEPATH}/${APP_CONFIG_PATH}/data:/app/data
       - ${BASEPATH}/${APP_CONFIG_PATH}/certs:/app/certs
     restart: always
-    user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
+    #user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     security_opt:
       - no-new-privileges:true
     cap_drop:
