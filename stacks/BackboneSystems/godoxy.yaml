@@ -6,6 +6,8 @@ services:
     hostname: godoxy-frontend
     environment:
       TZ: ${TZ}
+    tmpfs:
+      - /app/.next/cache # next image caching
     restart: unless-stopped
     labels:
       proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}
