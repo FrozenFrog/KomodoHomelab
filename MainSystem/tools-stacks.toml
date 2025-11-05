@@ -97,6 +97,7 @@ AUDIOBOOKSHELF_CONFIG_PATH=audiobookshelf-config
 CALIBRE_CONFIG_PATH=calibre-config
 PYLOAD_CONFIG_PATH=pyload-config
 RTORRENT_CONFIG_PATH=rtorrent-config
+METUBE_CONFIG_PATH=metube-config
 QBITTORRENT_CONFIG_PATH=qbittorrent-config
 RECYCLARR_CONFIG_PATH=recyclarr-config
 UNPACKERR_CONFIG_PATH=unpackerr-config
