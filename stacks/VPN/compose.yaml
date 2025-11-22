@@ -51,14 +51,11 @@ services:
       HEALTH_VPN_DURATION_ADDITION: 20s
       FIREWALL_OUTBOUND_SUBNETS: "192.168.9.0/24,192.168.1.0/24"
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
-      VPN_PORT_FORWARDING_UP_COMMAND: "/bin/sh -c '/usr/bin/wget -O- --retry-connrefused --post-data \"json={\\\"listen_port\\\":{{PORTS}}}\" http://127.0.0.1:8081/api/v2/app/setPreferences 2>&1'"
+      # VPN_PORT_FORWARDING_UP_COMMAND: "/bin/sh -c '/usr/bin/wget -O- --retry-connrefused --post-data \"json={\\\"listen_port\\\":{{PORTS}}}\" http://127.0.0.1:8081/api/v2/app/setPreferences 2>&1'"
       TZ: ${TZ}
     ports:
-      - target: 8081
-        published: "8081"
-        protocol: tcp
-      - target: 8080
-        published: "10080"
+      - target: 8888
+        published: "8885"
         protocol: tcp
       - target: 8000
         published: "17888"
@@ -73,9 +70,12 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
-      proxy.aliases: torrent
-      proxy.#1.port: 10080
-      proxy.#1.middlewares.forwardauth.bypass: path /v1/* | path /api/*
+      proxy.aliases: gluetun_singapore
+      proxy.#1.port: 8885
+      proxy.#1.homepage: |
+        name: "Gluetun Singapore"
+        icon: "@selfhst/gluetun.svg"
+        category: "Networking"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
