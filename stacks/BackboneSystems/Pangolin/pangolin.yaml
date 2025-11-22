@@ -63,7 +63,6 @@ services:
       - type: bind
         source: "${BASEPATH}/${PANGOLIN_CONFIG_PATH}/letsencrypt"
         target: /letsencrypt
-        read_only: true # Volume to store the Let's Encrypt certificates
       - type: bind
         source: "${BASEPATH}/${PANGOLIN_CONFIG_PATH}/traefik/logs"
         target: /var/log/traefik  # Volume to store Traefik logs
