@@ -14,7 +14,6 @@ services:
       - target: 53242
         published: "53242"
         protocol: tcp
-    ports:
       - target: 53242
         published: "53242"
         protocol: udp
