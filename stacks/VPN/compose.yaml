@@ -1,4 +1,6 @@
 networks:
+  torrent-networks:
+    external: true
   vpn:
     name: proxy_vpn
     driver: bridge
@@ -15,16 +17,19 @@ services:
     environment:
       TZ: ${TZ}
     ports:
-      - target: 30000
-        published: "30000"
+      - target: 53242
+        published: "53242"
         protocol: tcp
+      - target: 53242
+        published: "53242"
+        protocol: udp
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
     networks:
-      vpn:
-        ipv4_address: 192.168.3.99
-    command: "-L :30000 -F ss://chacha20-ietf-poly1305:password@192.168.3.100:8388"
+      - torrent-networks:
+        ipv4_address: 192.168.4.100
+    command: "-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F ss://chacha20-ietf-poly1305:26072004@flivietnam.com:53242"
 
   gluetun_pf:
     image: qmcgaw/gluetun:latest
