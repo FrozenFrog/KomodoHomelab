@@ -22,7 +22,7 @@ services:
     networks:
       torrent-networks:
         ipv4_address: 192.168.4.100
-    command: "-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay://admin:26072004@38.54.17.235:29999"
+    command: "-L socks5://torrent:torrent@:1237 -L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay://admin:26072004@38.54.17.235:29999"
     labels:
       proxy.exclude: true
 
