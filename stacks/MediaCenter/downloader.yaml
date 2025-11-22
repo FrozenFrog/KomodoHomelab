@@ -2,7 +2,7 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     networks: 
-     - torrent-networks:
+      torrent-networks:
         ipv4_address: 192.168.4.2
     container_name: qbittorrent
     environment:
@@ -35,7 +35,7 @@ services:
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
     networks: 
-     - torrent-networks:
+      torrent-networks:
         ipv4_address: 192.168.4.3
     container_name: vuetorrent-backend
     environment:
