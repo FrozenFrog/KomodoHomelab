@@ -29,7 +29,7 @@ services:
     networks:
       torrent-networks:
         ipv4_address: 192.168.4.100
-    command: "-L rtcp://:53243/192.168.4.2:53242 -L rudp://:53243/192.168.4.2:53242 -F ss://chacha20-ietf-poly1305:26072004@flivietnam.com:53242"
+    command: "-L rtcp://:53243/192.168.4.2:53242 -L rudp://:53243/192.168.4.2:53242 -F ss://chacha20-ietf-poly1305:26072004@flivietnam.com:29999"
 
   gluetun_pf:
     image: qmcgaw/gluetun:latest
