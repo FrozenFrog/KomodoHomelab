@@ -2,7 +2,7 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     networks: 
-     - proxy_vpn
+     - torrent-networks
     container_name: qbittorrent
     environment:
       PGID: ${PGID}
@@ -27,7 +27,7 @@ services:
   vuetorrent-backend:
     image: ghcr.io/vuetorrent/vuetorrent-backend:latest
     networks: 
-     - proxy_vpn
+     - torrent-networks
     container_name: vuetorrent-backend
     environment:
       PORT: "8080"
@@ -123,5 +123,6 @@ services:
       proxy.exclude: true
 
 networks:
-  proxy_vpn:
-    external: true
+  torrent-networks:
+    name: torrent-networks
+    driver: bridge
