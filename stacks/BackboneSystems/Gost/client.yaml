@@ -1,8 +1,8 @@
 services:
   gost:
     image: "gogost/gost:latest"
-    container_name: gost
-    hostname: gost
+    container_name: gost-client
+    hostname: gost-client
     environment:
       TZ: ${TZ}
     restart: unless-stopped
