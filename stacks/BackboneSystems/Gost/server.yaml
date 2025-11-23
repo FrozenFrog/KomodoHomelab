@@ -9,6 +9,6 @@ services:
     cap_add:
       - NET_ADMIN
     network_mode: host
-    command: -L mwss://user_v3:pass_v3@0.0.0.0:8445/0.0.0.0:8888
+    command: -L relay://user_v3:pass_v34@0.0.0.0:8445?bind=true
     labels:
       proxy.exclude: true
