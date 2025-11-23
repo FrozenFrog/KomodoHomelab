@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
-    network_mode: host
-    command: -L rtcp://12900:/192.168.1.3:8890 -L rudp://:12900/192.168.1.3:8890 -F relay://user:pass123@38.54.17.235:8445
+    network_mode: bridge
+    command: -L rtcp://12900:/192.168.1.3:8890 -L rudp://:12900/192.168.1.3:8890 -F relay://admin:26072004@38.54.17.235:29999
     labels:
       proxy.exclude: true
