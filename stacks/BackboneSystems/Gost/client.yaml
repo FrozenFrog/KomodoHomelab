@@ -8,6 +8,6 @@ services:
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
-    command: -L rtcp://:8890/192.168.1.3:8890 -F relay://user:pass123@1.2.3.4:8445
+    command: -L rtcp://:8890/192.168.1.3:8890 -F relay://user:pass123@38.54.17.235:8445
     labels:
       proxy.exclude: true
