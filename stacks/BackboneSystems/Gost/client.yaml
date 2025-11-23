@@ -9,6 +9,6 @@ services:
     cap_add:
       - NET_ADMIN
     network_mode: host
-    command: -L tcp://127.0.0.1:9999 -F mwss://user_tunnel:pass_tunnel@38.54.17.235:8445
+    command: -L tcp://127.0.0.1:8890 -F mwss://user_v3:pass_v3@38.54.17.235:8445
     labels:
       proxy.exclude: true
