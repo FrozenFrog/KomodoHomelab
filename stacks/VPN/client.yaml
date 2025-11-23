@@ -1,0 +1,19 @@
+networks:
+  torrent-networks:
+    external: true
+services:
+  gost:
+    image: "gogost/gost:latest"
+    container_name: gost
+    hostname: gost
+    environment:
+      TZ: ${TZ}
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    networks:
+      torrent-networks:
+        ipv4_address: 192.168.4.100
+    command: "-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay://admin:26072004@38.54.17.235:29999"
+    labels:
+      proxy.exclude: true
