@@ -1,0 +1,14 @@
+services:
+  gost:
+    image: "gogost/gost:latest"
+    container_name: gost
+    hostname: gost
+    environment:
+      TZ: ${TZ}
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    network_mode: host
+    command: -L mwss://user_tunnel:pass_tunnel@:8445?tcp://0.0.0.0:9999
+    labels:
+      proxy.exclude: true
