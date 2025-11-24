@@ -23,3 +23,6 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}"
         target: /app/data
     restart: unless-stopped
+    labels:
+      proxy.aliases: pocketid
+      proxy.#1.port: 1411
