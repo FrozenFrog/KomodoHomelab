@@ -32,8 +32,9 @@ services:
         target: /downloads
     restart: unless-stopped
     labels:
-      proxy.aliases: alist
+      proxy.aliases: alist, alist.picityvietnam.com
       proxy.#1.port: 5244
+      proxy.#2.port: 5244
       proxy.#1.homepage: |
         name: "Alist"
         icon: "@walkxcode/alist.svg"
