@@ -48,6 +48,7 @@ APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
+BACKREST_PROXY_ALIAS=backrest.picityvietnam.com
 """
 
 ##
@@ -133,6 +134,7 @@ INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
 APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
 RUN_ARIA2=true
+BACKREST_PROXY_ALIAS=backrest
 """
 
 ##
