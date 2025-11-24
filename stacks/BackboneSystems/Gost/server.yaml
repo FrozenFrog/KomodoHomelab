@@ -9,6 +9,6 @@ services:
     cap_add:
       - NET_ADMIN
     network_mode: host
-    command: -L relay://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
+    command: ${GOST_CLIENT_CMD}
     labels:
       proxy.exclude: true
