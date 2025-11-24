@@ -67,6 +67,33 @@ GOOGLE_CLIENT_SECRET=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  # VARIABLE = value
 ##
 
 [[stack]]
+name = "backrest-vps"
+tags = ["system", "data"]
+[stack.config]
+server = "LightnodeVPS"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/Syncing"
+file_paths = ["backrest.yaml"]
+env_file_path = "backrest-vps.env"
+additional_env_files = ["../../MainSystem/.env"]
+config_files = [
+  { path = "../../../../rclone.conf", requires = "Redeploy" }
+]
+environment = """
+BACKREST_CONFIG_PATH=backrest-config
+RClONE_CONFIG_PATH=../../../etc/komodo/
+OPENLIST_CONFIG_PATH=openlist-config
+INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
+APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
+MISC_STORAGE_PATH=/mnt/Storage
+"""
+
+##
+
+[[stack]]
 name = "cloudflared"
 tags = ["system"]
 [stack.config]
@@ -116,6 +143,7 @@ APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
+BACKREST_PROXY_ALIAS=backrest.picityvietnam.com
 """
 
 ##
@@ -237,6 +265,29 @@ GODOXY_DEBUG=true
 ##
 
 [[stack]]
+name = "godoxy-agent"
+tags = ["system"]
+[stack.config]
+server = "HomeLab"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems/Godoxy"
+file_paths = [
+  "agent.yaml",
+  "../Gost/client.yaml"
+]
+env_file_path = "agent.env"
+additional_env_files = ["../../../MainSystem/.env"]
+environment = """
+APP_CONFIG_PATH=godoxy-config
+GOST_CLIENT_CMD=-L rtcp://:8890/192.168.1.3:8890 -F relay://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@38.54.17.235:12446
+"""
+
+##
+
+[[stack]]
 name = "homepage"
 tags = ["system"]
 [stack.config]
@@ -292,6 +343,25 @@ environment = """
 PANGOLIN_ENDPOINT=https://pangolin.picityvietnam.com
 NEWT_ID=ud1dgd871vxgkeb
 NEWT_SECRET=f353w4vrpl41u3tksgltvkzvlv5j08qo17vqryg454z386ho
+"""
+
+##
+
+[[stack]]
+name = "notification"
+tags = ["system", "tools", "automation"]
+[stack.config]
+server = "LightnodeVPS"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "Komodo-Github"
+run_directory = "stacks/BackboneSystems"
+file_paths = ["notification.yaml"]
+env_file_path = "notification.env"
+additional_env_files = ["../../MainSystem/.env"]
+environment = """
+APP_CONFIG_PATH=gotify-config
 """
 
 ##
