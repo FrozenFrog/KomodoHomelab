@@ -17,3 +17,6 @@ services:
         source: "${BASEPATH}/${APP_CONFIG_PATH}/config"
         target: /etc/gotify
     restart: unless-stopped
+    labels:
+      proxy.aliases: notif.picityvietnam.com
+      proxy.#1.port: 15080

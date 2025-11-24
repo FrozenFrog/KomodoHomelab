@@ -44,6 +44,6 @@ services:
         target: /backups/application-configs
     restart: unless-stopped
     labels:
-      proxy.aliases: backrest
+      proxy.aliases: ${BACKREST_PROXY_ALIAS}
       proxy.#1.port: 5858
       tinyauth.oauth.groups: administrators
