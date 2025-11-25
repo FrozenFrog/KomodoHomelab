@@ -18,3 +18,7 @@ services:
     labels:
       proxy.#1.port: 10380
       proxy.idle_timeout: 45m
+      proxy.#1.middlewares.forward_auth: |
+        route: tinyauth
+        auth_endpoint: /api/auth/traefik
+        headers: Remote-User, Remote-Name, Remote-Email, Remote-Groups
