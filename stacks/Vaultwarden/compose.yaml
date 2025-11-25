@@ -22,4 +22,4 @@ services:
         route: tinyauth
         auth_endpoint: /api/auth/traefik
         headers: Remote-User, Remote-Name, Remote-Email, Remote-Groups
-        bypass: path glob(/api/**) && path glob(/identity/**)
+        bypass: path glob(/api/**) & path glob(/identity/**)
