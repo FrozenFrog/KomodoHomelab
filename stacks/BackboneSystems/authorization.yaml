@@ -10,7 +10,7 @@ services:
       COOKIE_SECURE: "true"
       APP_TITLE: "OSCE HomeLab"
       APP_URL: "https://tinyauth.${CF_DOMAIN}"
-      DOCKER_HOST: "tcp://${LOCALHOST}:2375"
+      DOCKER_HOST: "tcp://127.0.0.1:2375"
       DISABLE_CONTINUE: true
       OAUTH_WHITELIST: ${OAUTH_WHITELIST}
       OAUTH_AUTO_REDIRECT: generic
