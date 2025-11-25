@@ -34,3 +34,4 @@ services:
     labels:
       proxy.aliases: tinyauth
       proxy.#1.port: 10000
+      proxy.#1.middlewares.cidr_whitelist.allow: 127.0.0.1, 10.0.0.0/16, 192.168.0.0/16, 172.17.0.0/12
