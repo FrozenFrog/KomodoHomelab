@@ -32,5 +32,5 @@ services:
         protocol: tcp
     restart: unless-stopped
     labels:
-      proxy.aliases: tinyauth, tinyauth.picityvietnam.com
+      proxy.aliases: tinyauth
       proxy.#1.port: 10000
