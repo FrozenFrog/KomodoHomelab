@@ -21,4 +21,3 @@ services:
       proxy.aliases: notif, notif.picityvietnam.com
       proxy.#1.port: 15080
       proxy.#2.port: 15080
-      proxy.#2.middlewares.forward_auth.bypass: path glob(/*)
