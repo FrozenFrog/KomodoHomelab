@@ -55,7 +55,7 @@ services:
     container_name: plex
     hostname: plex
     environment:
-      ADVERTISE_IP: "http://${LOCALHOST}:32400"
+      ADVERTISE_IP: "https://plex.picityvietnam.com:32400"
       PGID: ${PGID}
       PLEX_CLAIM: ${PLEX_CLAIM}
       PUID: "13010"
@@ -101,9 +101,8 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.aliases: plex, plex.picityvietnam.com
+      proxy.aliases: plex.picityvietnam.com
       proxy.#1.port: 32400
-      proxy.#2.port: 32400
 
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
