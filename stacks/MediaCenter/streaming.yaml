@@ -101,8 +101,9 @@ services:
         target: /data
     restart: unless-stopped
     labels:
-      proxy.aliases: plex.picityvietnam.com
+      proxy.aliases: plex, plex.picityvietnam.com
       proxy.#1.port: 32400
+      proxy.#2.port: 32400
 
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
