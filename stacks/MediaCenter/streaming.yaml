@@ -55,7 +55,7 @@ services:
     container_name: plex
     hostname: plex
     environment:
-      ADVERTISE_IP: "https://plex.${CF_DOMAIN}"
+      ADVERTISE_IP: "https://plex.picityvietnam.com"
       PGID: ${PGID}
       PLEX_CLAIM: ${PLEX_CLAIM}
       PUID: "13010"
