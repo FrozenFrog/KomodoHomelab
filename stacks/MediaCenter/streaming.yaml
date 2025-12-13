@@ -55,7 +55,7 @@ services:
     container_name: plex
     hostname: plex
     environment:
-      ADVERTISE_IP: "http://${LOCALHOST}:32400"
+      ADVERTISE_IP: "https://plex.${CF_DOMAIN}:32400"
       PGID: ${PGID}
       PLEX_CLAIM: ${PLEX_CLAIM}
       PUID: "13010"
