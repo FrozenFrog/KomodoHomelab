@@ -27,6 +27,5 @@ services:
         target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
-      proxy.aliases: bot, rclone2.nextmeats.asia
+      proxy.aliases: bot
       proxy.#1.port: 15248
-      proxy.#2.port: 19080
