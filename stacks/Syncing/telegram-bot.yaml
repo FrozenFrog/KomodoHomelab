@@ -13,7 +13,7 @@ services:
         source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
         target: /usr/src/app/rclone.conf
       - type: bind  
-        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/cookies.txt"
+        source: "${BASEPATH}/${METUBE_CONFIG_PATH}/cookies/cookies.txt"
         target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
