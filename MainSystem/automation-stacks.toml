@@ -29,7 +29,7 @@ SHINOBI_STORAGE_PATH=/mnt/Storage/IPC
 name = "notification"
 tags = ["system", "tools", "automation"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
