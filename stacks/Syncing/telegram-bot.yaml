@@ -1,30 +1,13 @@
-networks:
-  torrent-networks:
-    external: true
 services:
   telegram-bot:
     image: ghcr.io/frozenfrog/telegram-bot:latest
-    network_mode: bridge
+    network_mode: host
     container_name: telegram-bot
     hostname: telegram-bot
     environment:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
-    ports:
-      - target: 15248
-        published: "15248"
-        protocol: tcp
-      - target: 19080
-        published: "19080"
-        protocol: tcp
-    volumes:
-      - type: bind  
-        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
-        target: /usr/src/app/rclone.conf
-      - type: bind  
-        source: "${BASEPATH}/${METUBE_CONFIG_PATH}/cookies/cookies.txt"
-        target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
-      proxy.exclude: true
+      proxy.aliases: bot
