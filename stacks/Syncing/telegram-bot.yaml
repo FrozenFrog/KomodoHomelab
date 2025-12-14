@@ -11,6 +11,13 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
+    ports:
+      - target: 15248
+        published: "15248"
+        protocol: tcp
+      - target: 19080
+        published: "19080"
+        protocol: tcp
     volumes:
       - type: bind  
         source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
@@ -20,4 +27,6 @@ services:
         target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
-      proxy.aliases: bot
+      proxy.aliases: bot, rclone2
+      proxy.#1.port: 15248
+      proxy.#2.port: 19080
