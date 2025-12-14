@@ -18,6 +18,5 @@ services:
         target: /etc/gotify
     restart: unless-stopped
     labels:
-      proxy.aliases: notif, notif.picityvietnam.com
+      proxy.aliases: notif
       proxy.#1.port: 15080
-      proxy.#2.port: 15080
