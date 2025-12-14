@@ -27,5 +27,4 @@ services:
         target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
-      proxy.aliases: bot
-      proxy.#1.port: 15248
+      proxy.exclude: true
