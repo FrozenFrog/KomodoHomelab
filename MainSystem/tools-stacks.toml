@@ -113,7 +113,7 @@ RT_INC_PORT=50000
 name = "notification"
 tags = ["system", "tools", "automation"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -164,5 +164,5 @@ docker container restart qbittorrent vuetorrent-backend
 """
 environment = """
 GLUETUN_CONFIG_PATH=/gluetun-config
-GOST_CLIENT_CMD=-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@38.54.17.235:12446?insecure=true
+GOST_CLIENT_CMD=-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@38.60.192.136:12446?insecure=true
 """
