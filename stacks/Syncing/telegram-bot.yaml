@@ -4,8 +4,7 @@ networks:
 services:
   telegram-bot:
     image: ghcr.io/frozenfrog/telegram-bot:latest
-    networks:
-      torrent-networks
+    network_mode: bridge
     container_name: telegram-bot
     hostname: telegram-bot
     environment:
