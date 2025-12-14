@@ -21,7 +21,7 @@ APP_CONFIG_PATH=adguardhome-config
 name = "authentication"
 tags = ["system"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -46,7 +46,7 @@ LOCAL_VPS_IP=172.16.1.122 # local vps ip
 name = "authorization"
 tags = ["system"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -145,16 +145,13 @@ APP_CONFIG_PATH=filebrowser-config
 name = "godoxy"
 tags = ["system"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
-file_paths = [
-  "Godoxy/godoxy.yaml",
-  "Gost/server.yaml"
-]
+file_paths = ["Godoxy/godoxy.yaml"]
 env_file_path = "godoxy.env"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
@@ -235,7 +232,7 @@ GODOXY_FRONTEND_ALIASES=godoxy
 # Docker socket
 # /var/run/podman/podman.sock for podman
 DOCKER_SOCKET=/var/run/docker.sock
-SOCKET_PROXY_LISTEN_ADDR=0.0.0.0:2375
+SOCKET_PROXY_LISTEN_ADDR=192.168.1.3:2375
 # Debug mode
 GODOXY_DEBUG=true
 """
@@ -256,7 +253,7 @@ file_paths = [
   "Godoxy/agent.yaml",
   "Gost/client.yaml"
 ]
-env_file_path = "agent.env"
+env_file_path = "Godoxy/agent.env"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
 APP_CONFIG_PATH=godoxy-config
@@ -308,7 +305,7 @@ config_files = [
 name = "notification"
 tags = ["system", "tools", "automation"]
 [stack.config]
-server = "LightnodeVPS"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
