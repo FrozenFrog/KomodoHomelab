@@ -1,7 +1,11 @@
+networks:
+  torrent-networks:
+    external: true
 services:
   telegram-bot:
     image: ghcr.io/frozenfrog/telegram-bot:latest
-    network_mode: host
+    networks:
+      torrent-networks
     container_name: telegram-bot
     hostname: telegram-bot
     environment:
