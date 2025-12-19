@@ -99,7 +99,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Syncing"
 file_paths = [
   "telegram-bot.yaml",
-  "../Database/mongodb.yaml"
+  "../Database/mongodb.yaml",
+  "../BackboneSystems/Gost/server.yaml",
+  "../BackboneSystems/Godoxy/agent.yaml"
 ]
 env_file_path = "data-station.env"
 additional_env_files = ["../../MainSystem/.env"]
@@ -107,11 +109,13 @@ environment = """
 BACKREST_CONFIG_PATH=backrest-config
 RClONE_CONFIG_PATH=../../../etc/komodo
 OPENLIST_CONFIG_PATH=openlist-config
+APP_CONFIG_PATH=godoxy-config
 INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
 APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
+GOST_CLIENT_CMD=-L socks5://admin:26072004@0.0.0.0:1237?udp=true -L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
 """
 
 ##
@@ -237,7 +241,6 @@ GODOXY_DEBUG=true
 name = "godoxy-agent"
 tags = ["system"]
 [stack.config]
-server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
