@@ -42,7 +42,7 @@ services:
       HEALTH_VPN_DURATION_ADDITION: 20s
       FIREWALL_OUTBOUND_SUBNETS: "192.168.4.0/24,192.168.1.0/24"
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
-      VPN_PORT_FORWARDING_UP_COMMAND: "/bin/sh -c '/usr/bin/wget -O- --retry-connrefused --post-data \"json={\\\"listen_port\\\":{{PORTS}}}\" http://192.168.4.2:8080/api/v2/app/setPreferences 2>&1'"
+      VPN_PORT_FORWARDING_UP_COMMAND: "/gluetun/up_script.sh {{PORTS}}"
       TZ: ${TZ}
     ports:
       - target: 8888
@@ -55,6 +55,9 @@ services:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
+      - type: bind
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}/pf_script.sh"
+        target: /gluetun/pf_script.sh
     restart: on-failure:10
     cap_add:
       - NET_ADMIN
