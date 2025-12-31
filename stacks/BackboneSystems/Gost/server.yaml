@@ -9,6 +9,6 @@ services:
     cap_add:
       - NET_ADMIN
     network_mode: host
-    command: -L relay://user:pass123@0.0.0.0:8445?bind=true
+    command: ${GOST_CLIENT_CMD}
     labels:
       proxy.exclude: true

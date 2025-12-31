@@ -97,7 +97,6 @@ AUDIOBOOKSHELF_CONFIG_PATH=audiobookshelf-config
 CALIBRE_CONFIG_PATH=calibre-config
 PYLOAD_CONFIG_PATH=pyload-config
 RTORRENT_CONFIG_PATH=rtorrent-config
-METUBE_CONFIG_PATH=metube-config
 QBITTORRENT_CONFIG_PATH=qbittorrent-config
 RECYCLARR_CONFIG_PATH=recyclarr-config
 UNPACKERR_CONFIG_PATH=unpackerr-config
@@ -111,8 +110,8 @@ RT_INC_PORT=50000
 ##
 
 [[stack]]
-name = "newt"
-tags = ["system", "tools"]
+name = "notification"
+tags = ["system", "tools", "automation"]
 [stack.config]
 server = "HomeLab"
 poll_for_updates = true
@@ -120,13 +119,11 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
-file_paths = ["newt.yaml"]
-env_file_path = "pangolin.env"
+file_paths = ["notification.yaml"]
+env_file_path = "notification.env"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
-PANGOLIN_ENDPOINT=https://pangolin.picityvietnam.com
-NEWT_ID=ud1dgd871vxgkeb
-NEWT_SECRET=f353w4vrpl41u3tksgltvkzvlv5j08qo17vqryg454z386ho
+APP_CONFIG_PATH=gotify-config
 """
 
 ##
@@ -159,10 +156,13 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/VPN"
+file_paths = ["client.yaml", "gluetun.yaml"]
+env_file_path = "vpn.env"
 additional_env_files = ["../../MainSystem/.env"]
 post_deploy.command = """
 docker container restart qbittorrent vuetorrent-backend
 """
 environment = """
 GLUETUN_CONFIG_PATH=/gluetun-config
+GOST_CLIENT_CMD=-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@38.60.192.136:12446?insecure=true
 """

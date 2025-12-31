@@ -18,6 +18,10 @@ services:
       DISABLE_PASSWORD_AUTH: true
       DISABLE_SIGNUPS: true
       OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: true
+      OPENAI_BASE_URL: https://generativelanguage.googleapis.com/v1beta
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      INFERENCE_TEXT_MODEL: gemini-2.0-flash
+      INFERENCE_IMAGE_MODEL: gemini-2.0-flash
       # OPENAI_API_KEY: ...
 
       # You almost never want to change the value of the DATA_DIR variable.

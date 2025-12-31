@@ -8,13 +8,6 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
-    volumes:
-      - type: bind  
-        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/rclone.conf"
-        target: /usr/src/app/rclone.conf
-      - type: bind  
-        source: "${BASEPATH}/${RClONE_CONFIG_PATH}/cookies.txt"
-        target: /usr/src/app/cookies.txt
     restart: unless-stopped
     labels:
       proxy.aliases: bot

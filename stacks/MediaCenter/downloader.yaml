@@ -58,7 +58,6 @@ services:
     labels:
       proxy.aliases: torrent
       proxy.#1.port: 10080
-      proxy.#1.middlewares.forwardauth.bypass: path /v1/* | path /api/*
 
   pyload:
     image: linuxserver/pyload-ng:latest
