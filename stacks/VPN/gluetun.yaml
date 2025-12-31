@@ -42,7 +42,7 @@ services:
       HEALTH_VPN_DURATION_ADDITION: 20s
       FIREWALL_OUTBOUND_SUBNETS: "192.168.4.0/24,192.168.1.0/24"
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
-      VPN_PORT_FORWARDING_UP_COMMAND: "/gluetun/up_script.sh {{PORTS}}"
+      VPN_PORT_FORWARDING_UP_COMMAND: "/gluetun/pf_script.sh {{PORTS}}"
       TZ: ${TZ}
     ports:
       - target: 8888
