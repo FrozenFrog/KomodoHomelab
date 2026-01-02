@@ -79,6 +79,7 @@ services:
         icon: "@selfhst/gluetun.svg"
         category: "Networking"
       proxy.#1.healthcheck.use_get: true
+      proxy.#1.healthcheck.path: "/v1/vpn/status"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
