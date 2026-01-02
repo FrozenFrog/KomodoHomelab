@@ -13,12 +13,13 @@ services:
   gost_pf:
     image: "gogost/gost:latest"
     container_name: gost_pf
-    hostname: gost_pf
     environment:
       TZ: ${TZ}
     restart: unless-stopped
     network_mode: "service:gluetun_pf"
     command: "-L rtcp://:53243/192.168.4.2:53242 -L rudp://:53243/192.168.4.2:53242"
+    labels:
+      proxy.exclude: true
   gluetun_pf:
     image: qmcgaw/gluetun:latest
     networks:
