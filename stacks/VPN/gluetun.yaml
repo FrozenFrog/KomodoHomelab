@@ -38,20 +38,21 @@ services:
       HTTPPROXY_PASSWORD: "qbittorrent"
       VPN_SERVICE_PROVIDER: custom
       VPN_TYPE: wireguard
-      WIREGUARD_ENDPOINT_IP: 173.239.247.145
+      WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
       WIREGUARD_ENDPOINT_PORT: 1337
-      WIREGUARD_ADDRESSES: 10.17.251.123
-      WIREGUARD_PRIVATE_KEY: 0INIiZ20z+F/SJaH5N2gT0f9C0/PIQR52U7CKK/0DEc=
-      WIREGUARD_PUBLIC_KEY: vIUmWUn8QnyQhkNyzKUShFv4KRPwCVsN3jW0B+gXeAc=
+      WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
+      WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+      WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       VPN_PORT_FORWARDING: on
       VPN_PORT_FORWARDING_PROVIDER: "private internet access"
-      VPN_PORT_FORWARDING_USERNAME: "p8001972"
-      VPN_PORT_FORWARDING_PASSWORD: "e8*Vu8GeMFZBS*"
-      SERVER_NAMES: "vietnam403"
+      VPN_PORT_FORWARDING_USERNAME: ${VPN_PORT_FORWARDING_USERNAME}
+      VPN_PORT_FORWARDING_PASSWORD: ${VPN_PORT_FORWARDING_PASSWORD}
+      SERVER_NAMES: ${SERVER_NAMES}
       HEALTH_SUCCESS_WAIT_DURATION: 180s
       HEALTH_VPN_DURATION_ADDITION: 20s
       FIREWALL_OUTBOUND_SUBNETS: "192.168.4.0/24,192.168.1.0/24"
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
+      VPN_PORT_FORWARDING_UP_COMMAND: "/bin/sh -c '/usr/bin/wget -O- --retry-connrefused --post-data \"json={\\\"listen_port\\\":{{PORTS}}}\" http://192.168.4.2:8080/api/v2/app/setPreferences 2>&1'"
       TZ: ${TZ}
     ports:
       - target: 8888
@@ -64,9 +65,6 @@ services:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
-      - type: bind
-        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}/pf_script.sh"
-        target: /gluetun/pf_script.sh
     restart: on-failure:10
     cap_add:
       - NET_ADMIN
