@@ -78,7 +78,7 @@ services:
         name: "Gluetun Singapore"
         icon: "@selfhst/gluetun.svg"
         category: "Networking"
-      proxy.#1.healthcheck.disable: true
+      proxy.#1.healthcheck.use_get: true
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
