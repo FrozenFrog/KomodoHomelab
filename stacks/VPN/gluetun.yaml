@@ -72,7 +72,12 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
-      proxy.exclude: true
+      proxy.aliases: gluetun_singapore
+      proxy.#1.port: 8885
+      proxy.#1.homepage: |
+        name: "Gluetun Singapore"
+        icon: "@selfhst/gluetun.svg"
+        category: "Networking"
 
   SurfsharkTokyo:
     image: qmcgaw/gluetun:latest
