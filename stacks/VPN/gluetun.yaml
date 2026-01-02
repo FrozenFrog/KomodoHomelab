@@ -34,6 +34,8 @@ services:
       HTTPPROXY_LOG: "on"
       HTTPPROXY_LISTENING_ADDRESS: ":8888"
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      HTTPPROXY_USER: "qbittorrent"
+      HTTPPROXY_PASSWORD: "qbittorrent"
       VPN_SERVICE_PROVIDER: custom
       VPN_TYPE: wireguard
       WIREGUARD_ENDPOINT_IP: 173.239.247.145
