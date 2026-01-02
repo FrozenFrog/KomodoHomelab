@@ -72,6 +72,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     labels:
+      proxy.healthcheck.disable: true
       proxy.exclude: true
 
   SurfsharkTokyo:
