@@ -32,6 +32,7 @@ services:
     environment:
       HTTPPROXY: "on"
       HTTPPROXY_LOG: "on"
+      HTTP_CONTROL_SERVER_AUTH_CONFIG_FILEPATH: "/gluetun/auth/config.toml"
       HTTPPROXY_LISTENING_ADDRESS: ":8888"
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       HTTPPROXY_USER: "qbittorrent"
