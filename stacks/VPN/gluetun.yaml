@@ -17,8 +17,6 @@ services:
     environment:
       TZ: ${TZ}
     restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
     network_mode: "service:gluetun_pf"
     command: "-L rtcp://:53243/192.168.4.2:53242 -L rudp://:53243/192.168.4.2:53242"
   gluetun_pf:
