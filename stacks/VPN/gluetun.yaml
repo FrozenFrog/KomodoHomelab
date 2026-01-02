@@ -17,7 +17,7 @@ services:
       TZ: ${TZ}
     restart: unless-stopped
     network_mode: "service:gluetun_pf"
-    command: "-L rtcp://:53243/192.168.4.2:53242 -L rudp://:53243/192.168.4.2:53242"
+    command: ${GOST_CLIENT_CMD}
     labels:
       proxy.exclude: true
   gluetun_pf:
