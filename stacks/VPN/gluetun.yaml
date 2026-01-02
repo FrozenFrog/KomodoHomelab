@@ -34,8 +34,6 @@ services:
       HTTPPROXY_LOG: "on"
       HTTPPROXY_LISTENING_ADDRESS: ":8888"
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      HTTPPROXY_USER: "qbittorrent"
-      HTTPPROXY_PASSWORD: "qbittorrent"
       VPN_SERVICE_PROVIDER: custom
       VPN_TYPE: wireguard
       WIREGUARD_ENDPOINT_IP: 173.239.247.145
@@ -52,7 +50,6 @@ services:
       HEALTH_VPN_DURATION_ADDITION: 20s
       FIREWALL_OUTBOUND_SUBNETS: "192.168.4.0/24,192.168.1.0/24"
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
-      # VPN_PORT_FORWARDING_UP_COMMAND: "/gluetun/pf_script.sh {{PORTS}}"
       TZ: ${TZ}
     ports:
       - target: 8888
