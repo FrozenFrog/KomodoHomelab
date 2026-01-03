@@ -10,18 +10,18 @@ networks:
         - subnet: 192.168.3.0/24
 
 services:
-  gost_pf:
-    image: "gogost/gost:latest"
-    container_name: gost_pf
-    environment:
-      TZ: ${TZ}
-    restart: unless-stopped
-    network_mode: "service:gluetun_pf"
-    command: ${GOST_CLIENT_CMD}
-    labels:
-      proxy.exclude: true
+  #gost_pf:
+    #image: "gogost/gost:latest"
+    #container_name: gost_pf
+    #environment:
+    #  TZ: ${TZ}
+    #restart: unless-stopped
+    #network_mode: "service:gluetun_pf"
+    #command: ${GOST_CLIENT_CMD}
+    #labels:
+    #  proxy.exclude: true
   gluetun_pf:
-    image: qmcgaw/gluetun:latest
+    image: reopenpilot/gluetun-socks5:latest
     networks:
       torrent-networks:
         ipv4_address: 192.168.4.150
@@ -62,12 +62,9 @@ services:
       - target: 8000
         published: "17888"
         protocol: tcp
-      - target: 1080
+      - target: 9999
         published: "1080"
         protocol: tcp
-      - target: 1080
-        published: "1080"
-        protocol: udp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
