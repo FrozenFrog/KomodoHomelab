@@ -17,7 +17,7 @@ services:
       TZ: ${TZ}
     restart: unless-stopped
     network_mode: "service:gluetun_pf"
-    command: "-L socks5://:1080?bind=true&udp=true"
+    command: ${GOST_CLIENT_CMD}
     labels:
       proxy.exclude: true
   gluetun_pf:
@@ -62,12 +62,6 @@ services:
       - target: 8000
         published: "17888"
         protocol: tcp
-      - target: 1080
-        published: "1080"
-        protocol: tcp
-      - target: 1080
-        published: "1080"
-        protocol: udp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
