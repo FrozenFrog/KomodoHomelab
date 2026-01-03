@@ -25,8 +25,8 @@ services:
     networks:
       torrent-networks:
         ipv4_address: 192.168.4.150
-      #vpn:
-        #ipv4_address: 192.168.3.150
+      vpn:
+        ipv4_address: 192.168.3.150
     container_name: gluetun_pf
     hostname: gluetun_pf
     environment:
