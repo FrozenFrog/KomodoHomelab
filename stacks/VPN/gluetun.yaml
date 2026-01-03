@@ -62,6 +62,12 @@ services:
       - target: 8000
         published: "17888"
         protocol: tcp
+      - target: 1080
+        published: "1080"
+        protocol: tcp
+      - target: 1080
+        published: "1080"
+        protocol: udp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
