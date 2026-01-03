@@ -30,13 +30,13 @@ services:
     container_name: gluetun_pf
     hostname: gluetun_pf
     environment:
-      HTTPPROXY: "off"
+      HTTPPROXY: "on"
       HTTPPROXY_LOG: "on"
       #HTTP_CONTROL_SERVER_AUTH_CONFIG_FILEPATH: "/gluetun/auth/config.toml"
       HTTPPROXY_LISTENING_ADDRESS: ":8888"
-      #HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      #HTTPPROXY_USER: "qbittorrent"
-      #HTTPPROXY_PASSWORD: "qbittorrent"
+      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      HTTPPROXY_USER: "qbittorrent"
+      HTTPPROXY_PASSWORD: "qbittorrent"
       VPN_SERVICE_PROVIDER: custom
       VPN_TYPE: wireguard
       WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
@@ -61,9 +61,6 @@ services:
         protocol: tcp
       - target: 8000
         published: "17888"
-        protocol: tcp
-      - target: 9999
-        published: "1080"
         protocol: tcp
     volumes:
       - type: bind
