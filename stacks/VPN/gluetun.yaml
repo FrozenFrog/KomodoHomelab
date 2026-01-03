@@ -66,7 +66,7 @@ services:
         published: "1080"
         protocol: tcp
       - target: 1080
-        published: 080
+        published: "1080"
         protocol: udp
     volumes:
       - type: bind
