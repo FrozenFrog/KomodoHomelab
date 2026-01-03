@@ -17,7 +17,7 @@ services:
       TZ: ${TZ}
     restart: unless-stopped
     network_mode: "service:gluetun_pf"
-    command: ${GOST_CLIENT_CMD}
+    command: "-L socks5://:1080?bind=true&udp=true"
     labels:
       proxy.exclude: true
   gluetun_pf:
