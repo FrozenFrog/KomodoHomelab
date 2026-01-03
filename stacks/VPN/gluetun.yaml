@@ -21,7 +21,7 @@ services:
     #labels:
     #  proxy.exclude: true
   gluetun_pf:
-    image: reopenpilot/gluetun-socks5:latest
+    image: ghcr.io/reopenpilot/gluetun-socks5:latest
     networks:
       torrent-networks:
         ipv4_address: 192.168.4.150
