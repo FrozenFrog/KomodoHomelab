@@ -1,6 +1,6 @@
 services:
   gotify:
-    image: gotify/server
+    image: gotify/server:2.7.3
     network_mode: bridge
     container_name: gotify
     hostname: gotify
