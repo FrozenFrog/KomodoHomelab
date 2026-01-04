@@ -22,7 +22,7 @@ name = "data-station"
 description = "For VPS download data (telegram bot) and backrest"
 tags = ["system", "data"]
 [stack.config]
-server = "LightnodeVPS"
+server = "UpcloudSingapore"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -38,11 +38,14 @@ environment = """
 BACKREST_CONFIG_PATH=backrest-config
 RClONE_CONFIG_PATH=../../../etc/komodo
 OPENLIST_CONFIG_PATH=openlist-config
+AGENT_NAME=Lightnode-Singapore
+APP_CONFIG_PATH=godoxy-config
 INFUSE_MEDIA_STORAGE_PATH=/mnt/Data/Infuse/media
 APPLICATION_STORAGE_PATH=/mnt/Application/Downloads
 MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
+GOST_CLIENT_CMD=-L socks5://admin:26072004@0.0.0.0:1237?udp=true -L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
 """
 
 ##
@@ -97,6 +100,7 @@ MEILI_MASTER_KEY=ask-tick-any-gavel
 NEXTAUTH_SECRET=storming-flapping-topped-maris
 KARAKEEP_OAUTH_CLIENT_ID=74edeb45-11b8-42d2-8dd6-d3ae3893972b
 KARAKEEP_OAUTH_CLIENT_SECRET=eI6LTbhnRnRqHgIpxEcnJ0vMl2lHuUJe
+OPENAI_API_KEY=AIzaSyBNmCReS1WUe5g0k8I73piDC95-yz-xscY
 """
 
 ##
