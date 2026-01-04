@@ -2,8 +2,8 @@ services:
   gluetun_pf:
     image: qmcgaw/gluetun:latest
     networks: 
-      - torrent-network:
-          ipv4_address: 192.168.4.150
+      torrent-networks:
+        ipv4_address: 192.168.4.150
     container_name: gluetun_pf
     hostname: gluetun_pf
     environment:
