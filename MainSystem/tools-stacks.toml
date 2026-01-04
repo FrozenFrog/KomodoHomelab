@@ -52,6 +52,7 @@ MEILI_MASTER_KEY=ask-tick-any-gavel
 NEXTAUTH_SECRET=storming-flapping-topped-maris
 KARAKEEP_OAUTH_CLIENT_ID=74edeb45-11b8-42d2-8dd6-d3ae3893972b
 KARAKEEP_OAUTH_CLIENT_SECRET=eI6LTbhnRnRqHgIpxEcnJ0vMl2lHuUJe
+OPENAI_API_KEY=AIzaSyBNmCReS1WUe5g0k8I73piDC95-yz-xscY
 """
 
 ##
@@ -156,7 +157,7 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/VPN"
-file_paths = ["client.yaml", "gluetun.yaml"]
+file_paths = ["gluetun.yaml"]
 env_file_path = "vpn.env"
 additional_env_files = ["../../MainSystem/.env"]
 post_deploy.command = """
@@ -164,5 +165,12 @@ docker container restart qbittorrent vuetorrent-backend
 """
 environment = """
 GLUETUN_CONFIG_PATH=/gluetun-config
-GOST_CLIENT_CMD=-L rtcp://:53242/192.168.4.2:53242 -L rudp://:53242/192.168.4.2:53242 -F relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@38.60.192.136:12446?insecure=true
+GOST_CLIENT_CMD=-L tcp://:56245/192.168.4.2:56245 -L udp://:56245/192.168.4.2:56245
+WIREGUARD_ENDPOINT_IP=173.239.247.145
+WIREGUARD_ADDRESSES=10.17.251.123
+WIREGUARD_PRIVATE_KEY=0INIiZ20z+F/SJaH5N2gT0f9C0/PIQR52U7CKK/0DEc=
+WIREGUARD_PUBLIC_KEY=vIUmWUn8QnyQhkNyzKUShFv4KRPwCVsN3jW0B+gXeAc=
+VPN_PORT_FORWARDING_USERNAME=p8001972
+VPN_PORT_FORWARDING_PASSWORD=e8*Vu8GeMFZBS*
+SERVER_NAMES=vietnam403
 """
