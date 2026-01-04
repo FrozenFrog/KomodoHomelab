@@ -37,6 +37,9 @@ services:
       - target: 8080
         published: "10080"
         protocol: tcp
+      - target: 8081
+        published: "8081"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
