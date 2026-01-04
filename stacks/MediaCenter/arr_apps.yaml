@@ -93,6 +93,8 @@ services:
         source: "${BASEPATH}/${PROWLARR_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
+    labels: 
+      proxy.aliases: prowlarr
           
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
