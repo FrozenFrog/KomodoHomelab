@@ -49,10 +49,6 @@ services:
     labels:
       proxy.aliases: torrent
       proxy.#1.port: 10080
-      proxy.#1.homepage: |
-        name: "Qbitorrent"
-        icon: "@walkxcode/qbittorrent"
-        category: "Media"
       
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
