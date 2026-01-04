@@ -93,8 +93,6 @@ services:
         source: "${BASEPATH}/${PROWLARR_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
-    labels:
-      proxy.idle_timeout: 45m
           
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
