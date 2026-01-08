@@ -10,7 +10,7 @@ services:
       - /app/.next/cache # next image caching
     restart: unless-stopped
     labels:
-      proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}
+      proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}, godoxy.picityvietnam.com
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
     read_only: true
     security_opt:
