@@ -42,16 +42,9 @@ services:
       VERSION: true
       VOLUMES: false
     volumes:
-<<<<<<< HEAD
-       - /var/run/docker.sock:/var/run/docker.sock
-       - ${BASEPATH}/${APP_CONFIG_PATH}/agents:/app/data
-
-    
-=======
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
       - type: bind
         source: ${BASEPATH}/${APP_CONFIG_PATH}/agents
         target: /app/data
->>>>>>> 7566e7bb43aa3763a1e6cb19b2796b90f6649c3c
