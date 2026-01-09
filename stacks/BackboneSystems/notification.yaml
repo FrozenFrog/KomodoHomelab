@@ -20,4 +20,3 @@ services:
     labels:
       proxy.aliases: notif.picityvietnam.com
       proxy.#1.port: 15080
-      proxy.#2.port: 15080
