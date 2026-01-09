@@ -1,6 +1,6 @@
 services:
   tinyauth:
-    image: ghcr.io/steveiliop56/tinyauth:v3
+    image: ghcr.io/steveiliop56/tinyauth:v4
     network_mode: bridge
     hostname: tinyauth
     container_name: tinyauth
@@ -30,6 +30,10 @@ services:
       - target: 10000
         published: 10000
         protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        target: /data
     restart: unless-stopped
     labels:
       proxy.aliases: tinyauth
