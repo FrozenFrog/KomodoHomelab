@@ -9,7 +9,7 @@ services:
       PGID: ${PGID}
       PUID: ${PUID}
       TRUST_PROXY: "true"
-      INTERNAL_APP_URL: "${LOCALHOST}:1411"
+      INTERNAL_APP_URL: "http://${LOCALHOST}:1411"
       ENCRYPTION_KEY: ${SECRET}
       APP_URL: "https://pocketid.${CF_DOMAIN}"
       DB_CONNECTION_STRING: data/pocket-id.db # "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCAL_VPS_IP}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
