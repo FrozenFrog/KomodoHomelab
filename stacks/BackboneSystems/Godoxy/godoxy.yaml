@@ -55,11 +55,6 @@ services:
       - ${BASEPATH}/${APP_CONFIG_PATH}/certs:/app/certs
     restart: always
     user: ${GODOXY_UID:-1000}:${GODOXY_GID:-1000}
-    labels:
-      proxy.godoxy-proxy.rules: |
-        - name: Block robots.txt
-          on: method GET & path /robots.txt
-          do: error 403 "Forbidden"
     security_opt:
       - no-new-privileges:true
     cap_drop:
