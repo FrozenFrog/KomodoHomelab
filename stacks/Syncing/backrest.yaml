@@ -38,6 +38,7 @@ services:
       - type: bind
         source: "/etc/komodo/backups"
         target: /backups/komodo
+      # crowdsec
       - type: bind
         source: "/etc/crowdsec"
         target: /backups/etc/crowdsec
