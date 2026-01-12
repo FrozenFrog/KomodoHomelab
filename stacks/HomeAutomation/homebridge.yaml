@@ -1,13 +1,14 @@
 services:
   homebridge:
     image: homebridge/homebridge:latest
-    network_mode: bridge
+    network_mode: host
     container_name: homebridge
     hostname: homebridge
     environment:
       TZ: ${TZ}
     expose:
       - 8581
+      - 41182
     volumes:
       - type: bind
         source: "${BASEPATH}/${HOMEBRIDGE_CONFIG_PATH}"
@@ -15,9 +16,3 @@ services:
     restart: always
     labels:
       proxy.#1.port: 8581
-      proxy.#1.rules: |
-        - name: websocket upgrade
-          on: |
-            header Connection Upgrade
-            header Upgrade websocket
-          do: pass
