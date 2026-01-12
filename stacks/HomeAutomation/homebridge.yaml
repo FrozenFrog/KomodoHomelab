@@ -8,7 +8,6 @@ services:
       TZ: ${TZ}
     expose:
       - 8581
-      - 41182
     volumes:
       - type: bind
         source: "${BASEPATH}/${HOMEBRIDGE_CONFIG_PATH}"
