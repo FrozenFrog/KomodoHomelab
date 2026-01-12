@@ -1,7 +1,7 @@
 services:
   homebridge:
     image: homebridge/homebridge:latest
-    network_mode: host
+    network_mode: bridge
     container_name: homebridge
     hostname: homebridge
     environment:
