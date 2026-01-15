@@ -7,7 +7,7 @@ services:
     hostname: vaultwarden
     environment:
       TZ: ${TZ}
-      ADMIN_TOKEN: ADMIN_TOKEN
+      ADMIN_TOKEN: "${ADMIN_TOKEN}"
       DATABASE_URL: "postgresql://${VAULTWARDEN_DB_NAME}:${VAULTWARDEN_DB_NAME}@${LOCALHOST}:${POSTGRES_PORT}/${VAULTWARDEN_DB_NAME}"
       DOMAIN: "https://vaultwarden.${CF_DOMAIN}"
     ports:
