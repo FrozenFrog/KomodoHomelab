@@ -29,7 +29,7 @@ services:
       #     - 172.16.0.0/12
 
   app:
-    image: ghcr.io/frozenfrog/godoxy:v1.crowdsec
+    image: ghcr.io/frozenfrog/godoxy:latest
     network_mode: host # do not change this
     container_name: godoxy-proxy
     hostname: godoxy-proxy
