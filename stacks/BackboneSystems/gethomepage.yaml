@@ -22,6 +22,6 @@ services:
         target: /mnt
     restart: unless-stopped
     labels:
-      proxy.alias: homepage.picityvietnam.com
+      proxy.aliases: homepage.picityvietnam.com
       proxy.#1.port: 3020
       
