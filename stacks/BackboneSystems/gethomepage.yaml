@@ -5,7 +5,7 @@ services:
     container_name: homepage
     hostname: homepage
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: nextmeats.asia
+      HOMEPAGE_ALLOWED_HOSTS: nextmeats.asia, picityvietnam.com
       PGID: ${PGID}
       PUID: ${PUID}
       TZ: ${TZ}
@@ -22,5 +22,5 @@ services:
         target: /mnt
     restart: unless-stopped
     labels:
-      proxy.exclude: true
+      proxy.alias: homepage.picityvietnam.com
       
