@@ -23,4 +23,5 @@ services:
     restart: unless-stopped
     labels:
       proxy.alias: homepage.picityvietnam.com
+      proxy.#1.port: 3020
       
