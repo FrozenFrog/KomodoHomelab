@@ -49,12 +49,7 @@ services:
       vpn:
         ipv4_address: 192.168.3.100
     labels:
-      proxy.aliases: gluetun_tokyo
-      proxy.#1.port: 8886
-      proxy.#1.homepage: |
-        name: "Gluetun Tokyo"
-        icon: "@selfhst/gluetun.svg"
-        category: "Networking"
+      proxy.exclude: true
 
   SurfsharkHongKong:
     image: qmcgaw/gluetun:latest
