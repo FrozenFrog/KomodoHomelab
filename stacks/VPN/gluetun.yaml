@@ -8,10 +8,10 @@ networks:
         - subnet: 192.168.3.0/24
 
 services:
-  SurfsharkTokyo:
+  SurfsharkUS:
     image: qmcgaw/gluetun:latest
-    container_name: gluetun_tokyo
-    hostname: gluetun_tokyo
+    container_name: gluetun_US
+    hostname: gluetun_US
     environment:
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       HTTPPROXY: "on"
