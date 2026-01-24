@@ -46,7 +46,7 @@ LOCAL_VPS_IP=172.16.1.122 # local vps ip
 name = "authorization"
 tags = ["system"]
 [stack.config]
-server = "HomeLab"
+server = "BKNS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -63,6 +63,7 @@ GITHUB_CLIENT_ID=Ov23liu3zbXVTX9vdiLK
 GOOGLE_CLIENT_ID=82535139759-ss6palf2fr95p4g70445lasliiaod3m7.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
 LOCALHOST=127.0.0.1
+APP_CONFIG_PATH=tinyauth-config
 """
 
 ##
@@ -91,7 +92,7 @@ name = "data-station"
 description = "For VPS download data (telegram bot) and backrest"
 tags = ["system", "data"]
 [stack.config]
-server = "UpcloudSingapore"
+server = "BKNS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -99,7 +100,7 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Syncing"
 file_paths = [
   "telegram-bot.yaml",
-  "../Database/mongodb.yaml"
+  "backrest.yaml"
 ]
 env_file_path = "data-station.env"
 additional_env_files = ["../../MainSystem/.env"]
@@ -115,6 +116,7 @@ MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
 GOST_CLIENT_CMD=-L socks5://admin:26072004@0.0.0.0:1237?udp=true -L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
+BACKREST_PROXY_ALIAS=backrest.picityvietnam.com
 """
 
 ##
@@ -142,7 +144,7 @@ APP_CONFIG_PATH=filebrowser-config
 name = "godoxy"
 tags = ["system"]
 [stack.config]
-server = "HomeLab"
+server = "BKNS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -154,7 +156,7 @@ additional_env_files = ["../../MainSystem/.env"]
 environment = """
 # docker image tag (latest, nightly)
 TAG=latest
-GOST_CLIENT_CMD=-L socks5://admin:26072004@0.0.0.0:1237?udp=true -L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
+GOST_CLIENT_CMD=-L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
 APP_CONFIG_PATH=godoxy-config
 # container uid and gid (must match the owner of mounted directories)
 GODOXY_UID=1000
@@ -172,8 +174,8 @@ GODOXY_API_JWT_TOKEN_TTL=
 
 # API/WebUI user password login credentials (optional)
 # These fields are not required for OIDC authentication
-# GODOXY_API_USER=admin
-# GODOXY_API_PASSWORD=password
+#GODOXY_API_USER=admin
+#GODOXY_API_PASSWORD=password
 
 # OIDC Configuration (optional)
 # Uncomment and configure these values to enable OIDC authentication.
@@ -229,7 +231,7 @@ GODOXY_FRONTEND_ALIASES=godoxy
 # Docker socket
 # /var/run/podman/podman.sock for podman
 DOCKER_SOCKET=/var/run/docker.sock
-SOCKET_PROXY_LISTEN_ADDR=192.168.1.3:2375
+SOCKET_PROXY_LISTEN_ADDR=127.0.0.1:2375
 # Debug mode
 GODOXY_DEBUG=true
 """
@@ -240,7 +242,7 @@ GODOXY_DEBUG=true
 name = "godoxy-agent"
 tags = ["system"]
 [stack.config]
-server = "UpcloudSingapore"
+server = "HomeLab"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -251,7 +253,8 @@ env_file_path = "Godoxy/agent.env"
 additional_env_files = ["../../MainSystem/.env"]
 environment = """
 APP_CONFIG_PATH=godoxy-config
-AGENT_NAME=Lightnode-Hanoi
+AGENT_NAME=HomeLab
+GOST_CLIENT_CMD=-L rtcp://:8890/192.168.1.3:8890 -F relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@103.121.91.215:12446?insecure=true
 """
 
 ##
