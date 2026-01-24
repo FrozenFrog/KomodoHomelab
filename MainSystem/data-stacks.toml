@@ -22,7 +22,7 @@ name = "data-station"
 description = "For VPS download data (telegram bot) and backrest"
 tags = ["system", "data"]
 [stack.config]
-server = "UpcloudSingapore"
+server = "BKNS"
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
@@ -30,7 +30,7 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Syncing"
 file_paths = [
   "telegram-bot.yaml",
-  "../Database/mongodb.yaml"
+  "backrest.yaml"
 ]
 env_file_path = "data-station.env"
 additional_env_files = ["../../MainSystem/.env"]
@@ -46,6 +46,7 @@ MISC_STORAGE_PATH=/mnt/Storage
 MONGODB_CONFIG_PATH=mongodb-config
 LOCALHOST=127.0.0.1
 GOST_CLIENT_CMD=-L socks5://admin:26072004@0.0.0.0:1237?udp=true -L relay+quic://tunnel:8bf87c19b6a2a32492a0a65a5f795219936355bb@0.0.0.0:12446?bind=true
+BACKREST_PROXY_ALIAS=backrest.picityvietnam.com
 """
 
 ##
