@@ -15,7 +15,7 @@ services:
     environment:
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       HTTPPROXY: "on"
-      SERVER_COUNTRIES: Japan
+      SERVER_COUNTRIES: United States
       VPN_SERVICE_PROVIDER: surfshark
       VPN_TYPE: wireguard
       WIREGUARD_ADDRESSES: 10.14.0.2/16
