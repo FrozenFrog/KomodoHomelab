@@ -45,8 +45,6 @@ services:
     restart: on-failure:10
     cap_add:
       - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
     labels:
       proxy.aliases: torrent
       proxy.#1.port: 10080
