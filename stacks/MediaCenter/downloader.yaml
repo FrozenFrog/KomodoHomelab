@@ -91,7 +91,7 @@ services:
       proxy.exclude: true
 
   pyload:
-    image: linuxserver/pyload-ng:latest
+    image: lscr.io/linuxserver/pyload-ng:latest
     network_mode: bridge
     container_name: pyload
     hostname: pyload
