@@ -7,7 +7,8 @@ services:
     environment:
       TZ: ${TZ}
     tmpfs:
-      - /app/.next/cache # next image caching
+      - /tmp:rw
+      - /app/node_modules/.cache:rw
     restart: unless-stopped
     labels:
       proxy.aliases: ${GODOXY_FRONTEND_ALIASES:-godoxy}
