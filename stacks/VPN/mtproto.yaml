@@ -12,6 +12,8 @@ services:
       OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
       SERVER_COUNTRIES: ${SERVER_COUNTRIES}
       TZ: ${TZ}
+    devices:
+      - /dev/net/tun:/dev/net/tun
     ports:
       - target: 443
         published: "8443"
