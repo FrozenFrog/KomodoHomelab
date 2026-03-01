@@ -37,7 +37,6 @@ services:
     working_dir: /run/telemt
     # Use the gluetun_mt network so telemt's traffic goes through the VPN
     network_mode: "service:gluetun_mt"
-    restart: unless-stopped
     tmpfs:
       - /run/telemt:rw,mode=1777,size=1m
     volumes:
@@ -48,7 +47,6 @@ services:
     environment:
       RUST_LOG: info
     # Uncomment this line if you want to use host network for IPv6, but bridge is default and usually better
-    network_mode: "service:gluetun_mt"
     cap_drop:
       - all
     cap_add:
