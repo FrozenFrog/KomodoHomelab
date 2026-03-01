@@ -1,0 +1,62 @@
+services:
+  gluetun_mt:
+    image: qmcgaw/gluetun:latest
+    network_mode: bridge
+    container_name: gluetun_mt
+    hostname: gluetun_mt
+    environment:
+      HTTPPROXY: "off"
+      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      VPN_SERVICE_PROVIDER: expressvpn
+      OPENVPN_USER: ${OPENVPN_USER}
+      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+      SERVER_COUNTRIES: ${SERVER_COUNTRIES}
+      TZ: ${TZ}
+    ports:
+      - target: 443
+        published: "8443"
+        protocol: tcp
+      - target: 8000
+        published: "17888"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+        target: /gluetun
+    restart: on-failure:10
+    cap_add:
+      - NET_ADMIN
+    labels:
+      proxy.exclude: true
+  telemt:
+    image: ghcr.io/telemt/telemt:latest
+    container_name: telemt
+    build: .
+    restart: unless-stopped
+    # Allow caching 'proxy-secret' in read-only container
+    working_dir: /run/telemt
+    # Use the gluetun_mt network so telemt's traffic goes through the VPN
+    network_mode: "service:gluetun_mt"
+    restart: unless-stopped
+    tmpfs:
+      - /run/telemt:rw,mode=1777,size=1m
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${MTPROTO_CONFIG_PATH}/config.toml"
+        target: /run/telemt/config.toml
+        read_only: true
+    environment:
+      RUST_LOG: info
+    # Uncomment this line if you want to use host network for IPv6, but bridge is default and usually better
+    network_mode: "service:gluetun_mt"
+    cap_drop:
+      - all
+    cap_add:
+      - NET_BIND_SERVICE # allow binding to port 443
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
