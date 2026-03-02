@@ -1,39 +1,39 @@
 services:
-  gluetun_mt:
-    image: qmcgaw/gluetun:latest
-    network_mode: bridge
-    container_name: gluetun_mt
-    hostname: gluetun_mt
-    environment:
-      HTTPPROXY: "off"
-      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      # VPN_SERVICE_PROVIDER: custom
-      VPN_SERVICE_PROVIDER: expressvpn
-      OPENVPN_USER: ${OPENVPN_USER}
-      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
-      #VPN_TYPE: wireguard
-      #WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
-      #WIREGUARD_ENDPOINT_PORT: 1337
-      #WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
-      #WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
-      #WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
-      TZ: ${TZ}
-    ports:
-      - target: 443
-        published: "8443"
-        protocol: tcp
-      - target: 8000
-        published: "17888"
-        protocol: tcp
-    volumes:
-      - type: bind
-        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
-        target: /gluetun
-    restart: on-failure:10
-    cap_add:
-      - NET_ADMIN
-    labels:
-      proxy.exclude: true
+  # gluetun_mt:
+  #   image: qmcgaw/gluetun:latest
+  #   network_mode: bridge
+  #   container_name: gluetun_mt
+  #   hostname: gluetun_mt
+  #   environment:
+  #     HTTPPROXY: "off"
+  #     HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+  #     # VPN_SERVICE_PROVIDER: custom
+  #     VPN_SERVICE_PROVIDER: expressvpn
+  #     OPENVPN_USER: ${OPENVPN_USER}
+  #     OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+  #     #VPN_TYPE: wireguard
+  #     #WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
+  #     #WIREGUARD_ENDPOINT_PORT: 1337
+  #     #WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
+  #     #WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+  #     #WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
+  #     TZ: ${TZ}
+  #   ports:
+  #     - target: 443
+  #       published: "8443"
+  #       protocol: tcp
+  #     - target: 8000
+  #       published: "17888"
+  #       protocol: tcp
+  #   volumes:
+  #     - type: bind
+  #       source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+  #       target: /gluetun
+  #   restart: on-failure:10
+  #   cap_add:
+  #     - NET_ADMIN
+  #   labels:
+  #     proxy.exclude: true
   telemt:
     image: ghcr.io/telemt/telemt:latest
     container_name: telemt
@@ -41,8 +41,12 @@ services:
     restart: unless-stopped
     # Allow caching 'proxy-secret' in read-only container
     working_dir: /run/telemt
+    ports:
+      - target: 24443
+        published: "24443"
+        protocol: tcp
     # Use the gluetun_mt network so telemt's traffic goes through the VPN
-    network_mode: "service:gluetun_mt"
+    # network_mode: "service:gluetun_mt"
     tmpfs:
       - /run/telemt:rw,mode=1777,size=1m
     volumes:
@@ -64,3 +68,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+    labels:
+      proxy.aliases: mtg.picityvietnam.com
+      proxy.#1.port: 24443
