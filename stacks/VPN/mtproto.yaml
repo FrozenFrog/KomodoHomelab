@@ -71,3 +71,4 @@ services:
     labels:
       proxy.aliases: mtg.picityvietnam.com
       proxy.#1.port: 24443
+      proxy.#1.no_tls_verify: true
