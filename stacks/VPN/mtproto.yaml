@@ -19,8 +19,8 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      - target: 24443
-        published: "24443"
+      - target: 443
+        published: "993"
         protocol: tcp
       - target: 8000
         published: "17888"
@@ -34,7 +34,7 @@ services:
       - NET_ADMIN
     labels:
       proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.port: 24443
+      proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
   telemt:
     image: ghcr.io/telemt/telemt:latest
