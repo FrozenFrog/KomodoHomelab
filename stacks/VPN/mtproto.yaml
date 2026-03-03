@@ -38,7 +38,7 @@ services:
         protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
-      SERVER: ${SERVER_COUNTRIES} #SERVER: smart
+      SERVER: smart #SERVER: ${SERVER_COUNTRIES} 
       PROTOCOL: wireguard
       ALLOW_LAN: false
       METRICS_PROMETHEUS: off
