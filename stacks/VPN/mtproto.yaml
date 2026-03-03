@@ -39,7 +39,7 @@ services:
         protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
-      SERVER: smart #SERVER: ${SERVER_COUNTRIES} 
+      SERVER: singapore #SERVER: ${SERVER_COUNTRIES} 
       PROTOCOL: wireguard
       ALLOW_LAN: false
       METRICS_PROMETHEUS: off
@@ -55,8 +55,6 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_PTRACE
-    devices:
-      - /dev/net/tun
     stdin_open: true
     tty: true
     command: /bin/bash
