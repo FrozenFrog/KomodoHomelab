@@ -39,7 +39,7 @@ services:
         protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
-      SERVER: "vietnam" #SERVER: ${SERVER_COUNTRIES} 
+      SERVER: "smart" #SERVER: ${SERVER_COUNTRIES} 
       PROTOCOL: lightwayudp
       ALLOW_LAN: false
       METRICS_PROMETHEUS: off
