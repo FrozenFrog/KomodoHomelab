@@ -32,6 +32,7 @@ services:
     image: misioslav/expressvpn:latest
     container_name: expressvpn
     restart: unless-stopped
+    network_mode: bridge
     ports:
       - target: 443
         published: "993"
