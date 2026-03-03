@@ -39,8 +39,8 @@ services:
         protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
-      SERVER: vietnam #SERVER: ${SERVER_COUNTRIES} 
-      PROTOCOL: wireguard
+      SERVER: "vietnam" #SERVER: ${SERVER_COUNTRIES} 
+      PROTOCOL: lightwayudp
       ALLOW_LAN: false
       METRICS_PROMETHEUS: off
       CONTROL_SERVER: off
