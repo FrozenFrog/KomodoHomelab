@@ -32,10 +32,6 @@ services:
     image: misioslav/expressvpn:latest
     container_name: expressvpn
     restart: unless-stopped
-    ports:
-      - target: 443
-        published: "993"
-        protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
       SERVER: ${SERVER_COUNTRIES} #SERVER: smart
