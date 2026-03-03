@@ -33,6 +33,10 @@ services:
     container_name: expressvpn
     network_mode: bridge
     restart: unless-stopped
+    ports:
+      - target: 443
+        published: "993"
+        protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
       SERVER: ${SERVER_COUNTRIES} #SERVER: smart
@@ -55,7 +59,10 @@ services:
     tty: true
     command: /bin/bash
     labels:
-      proxy.exclude: true
+      proxy.aliases: mtg.picityvietnam.com
+      proxy.#1.port: 993
+      proxy.#1.no_tls_verify: true
+    
   telemt:
     image: ghcr.io/telemt/telemt:latest
     container_name: telemt
@@ -72,10 +79,6 @@ services:
         source: "${BASEPATH}/${MTPROTO_CONFIG_PATH}/config.toml"
         target: /run/telemt/config.toml
         read_only: true
-    ports:
-      - target: 443
-        published: "993"
-        protocol: tcp
     environment:
       RUST_LOG: info
     # Uncomment this line if you want to use host network for IPv6, but bridge is default and usually better
@@ -91,6 +94,4 @@ services:
         soft: 65536
         hard: 65536
     labels:
-      proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.port: 993
-      proxy.#1.no_tls_verify: true
+      proxy.exclude: true
