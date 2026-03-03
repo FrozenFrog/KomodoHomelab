@@ -11,7 +11,6 @@ services:
       OPENVPN_USER: ${OPENVPN_USER}
       OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
       SERVER_COUNTRIES: ${SERVER_COUNTRIES}
-      SERVER_CITIES: ${SERVER_CITIES}
       # VPN_SERVICE_PROVIDER: custom
       # VPN_TYPE: wireguard
       # WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
@@ -32,6 +31,8 @@ services:
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
     restart: on-failure:10
+    devices:
+      - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
     labels:
