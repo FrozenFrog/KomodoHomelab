@@ -5,27 +5,20 @@ services:
     container_name: gluetun_mt
     hostname: gluetun_mt
     environment:
-      HTTPPROXY: "off"
-      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      VPN_SERVICE_PROVIDER: expressvpn
-      OPENVPN_USER: ${OPENVPN_USER}
-      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
-      # VPN_SERVICE_PROVIDER: custom
-      # VPN_TYPE: wireguard
-      # WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
-      # WIREGUARD_ENDPOINT_PORT: 1337
-      # WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
-      # WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
-      # WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
+      # HTTPPROXY: "off"
+      # HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      # VPN_SERVICE_PROVIDER: expressvpn
+      # OPENVPN_USER: ${OPENVPN_USER}
+      # OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+      VPN_SERVICE_PROVIDER: custom
+      VPN_TYPE: wireguard
+      WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
+      WIREGUARD_ENDPOINT_PORT: 1337
+      WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
+      WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+      WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       SERVER_COUNTRIES: ${SERVER_COUNTRIES}
       TZ: ${TZ}
-    ports:
-      - target: 443
-        published: "993"
-        protocol: tcp
-      - target: 8000
-        published: "17888"
-        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
@@ -34,9 +27,38 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.port: 993
-      proxy.#1.no_tls_verify: true
+      proxy.exclude: true
+  expressvpn:
+    image: misioslav/expressvpn:latest
+    container_name: expressvpn
+    restart: unless-stopped
+    ports:
+      - target: 443
+        published: "993"
+        protocol: tcp
+    environment:
+      CODE: ${ACTIVATION_CODE}
+      SERVER: ${SERVER_COUNTRIES} #SERVER: smart
+      PROTOCOL: wireguard
+      ALLOW_LAN: false
+      METRICS_PROMETHEUS: off
+      CONTROL_SERVER: off
+      SOCKS: off
+      # Optional healthcheck/IP validation
+      # - DDNS=yourDdnsDomain
+      # - IP=yourStaticIp
+      # - BEARER=ipInfoAccessToken
+      # - HEALTHCHECK=healthchecks.ioId
+      # Optional DNS whitelist
+      # - WHITELIST_DNS=192.168.1.1,1.1.1.1
+    cap_add:
+      - NET_ADMIN
+      - SYS_PTRACE
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    labels:
+      proxy.exclude: true
   telemt:
     image: ghcr.io/telemt/telemt:latest
     container_name: telemt
@@ -44,8 +66,8 @@ services:
     restart: unless-stopped
     # Allow caching 'proxy-secret' in read-only container
     working_dir: /run/telemt
-    # Use the gluetun_mt network so telemt's traffic goes through the VPN
-    network_mode: "service:gluetun_mt"
+    # Use the gluetun_mt or expressvpn network so telemt's traffic goes through the VPN
+    network_mode: "service:${VPN_PROVIDER}"
     tmpfs:
       - /run/telemt:rw,mode=1777,size=1m
     volumes:
@@ -53,6 +75,10 @@ services:
         source: "${BASEPATH}/${MTPROTO_CONFIG_PATH}/config.toml"
         target: /run/telemt/config.toml
         read_only: true
+    ports:
+      - target: 443
+        published: "993"
+        protocol: tcp
     environment:
       RUST_LOG: info
     # Uncomment this line if you want to use host network for IPv6, but bridge is default and usually better
@@ -67,3 +93,7 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+    labels:
+      proxy.aliases: mtg.picityvietnam.com
+      proxy.#1.port: 993
+      proxy.#1.no_tls_verify: true
