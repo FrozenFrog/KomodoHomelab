@@ -39,8 +39,8 @@ services:
         protocol: tcp
     environment:
       CODE: ${ACTIVATION_CODE}
-      SERVER: "smart" #SERVER: ${SERVER_COUNTRIES} 
-      PROTOCOL: lightwayudp
+      SERVER: "singapore" #SERVER: ${SERVER_COUNTRIES} 
+      PROTOCOL: wireguard
       ALLOW_LAN: false
       METRICS_PROMETHEUS: off
       CONTROL_SERVER: off
