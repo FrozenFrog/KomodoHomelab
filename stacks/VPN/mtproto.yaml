@@ -38,37 +38,6 @@ services:
       proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
     
-  expressvpn:
-    image: misioslav/expressvpn:latest
-    container_name: expressvpn
-    restart: unless-stopped
-    network_mode: bridge
-    environment:
-      CODE: ${ACTIVATION_CODE}
-      SERVER: "smart" #SERVER: ${SERVER_COUNTRIES} 
-      PROTOCOL: wireguard
-      ALLOW_LAN: false
-      METRICS_PROMETHEUS: off
-      CONTROL_SERVER: off
-      SOCKS: off
-      # Optional healthcheck/IP validation
-      # - DDNS=yourDdnsDomain
-      # - IP=yourStaticIp
-      # - BEARER=ipInfoAccessToken
-      # - HEALTHCHECK=healthchecks.ioId
-      # Optional DNS whitelist
-      # - WHITELIST_DNS=192.168.1.1,1.1.1.1
-    cap_add:
-      - NET_ADMIN
-      - SYS_PTRACE
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    stdin_open: true
-    tty: true
-    command: /bin/bash
-    labels:
-      proxy.exclude: true
-    
   telemt:
     image: ghcr.io/telemt/telemt:latest
     container_name: telemt
