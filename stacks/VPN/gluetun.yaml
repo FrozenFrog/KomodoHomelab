@@ -19,6 +19,7 @@ services:
       VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
       VPN_PORT_FORWARDING: on
+      VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
       WIREGUARD_PRIVATE_KEY: WDwZqhBOJV9KAzi6uYxVQe6ykbdtM0aZdhyfDPRLAkQ=
       TZ: ${TZ}
     ports:
@@ -34,7 +35,7 @@ services:
         target: /gluetun
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}/proton_forwarded_port"
-        target: /gluetun/forwarded_port
+        target: /gluetun/proton_forwarded_port
     restart: on-failure
     cap_add:
       - NET_ADMIN
