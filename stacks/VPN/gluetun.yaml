@@ -23,10 +23,10 @@ services:
       TZ: ${TZ}
     ports:
       - target: 8888
-        published: "8885"
+        published: "8884"
         protocol: tcp
       - target: 8000
-        published: "16805"
+        published: "16804"
         protocol: tcp
     volumes:
       - type: bind
