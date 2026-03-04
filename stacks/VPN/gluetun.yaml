@@ -32,6 +32,9 @@ services:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
+      - type: bind
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}/proton_forwarded_port"
+        target: /gluetun/forwarded_port
     restart: on-failure
     cap_add:
       - NET_ADMIN
