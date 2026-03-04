@@ -32,8 +32,8 @@ services:
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
     restart: on-failure:10
-    devices:
-      - /dev/net/tun:/dev/net/tun
+    #devices:
+    #  - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
     labels:
