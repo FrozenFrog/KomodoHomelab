@@ -20,7 +20,7 @@ services:
       VPN_TYPE: wireguard
       VPN_PORT_FORWARDING: on
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
-      WIREGUARD_PRIVATE_KEY: NfKOMtk2fuDycbQXv36yk5mfdgDA8/8SN6amCdFrKxQ=
+      WIREGUARD_PRIVATE_KEY: qIMN9wJukLRmDKyBx17QUHy4bPPDLi7SYFpzx1+A5mo=
       TZ: ${TZ}
     ports:
       - target: 8888
@@ -36,8 +36,6 @@ services:
     restart: on-failure
     cap_add:
       - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
     networks:
       vpn:
         ipv4_address: 192.168.3.102
