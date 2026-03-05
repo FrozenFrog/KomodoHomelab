@@ -36,6 +36,8 @@ services:
     restart: on-failure
     cap_add:
       - NET_ADMIN
+    device:
+      - /dev/net/tun:/dev/net/tun
     networks:
       vpn:
         ipv4_address: 192.168.3.102
