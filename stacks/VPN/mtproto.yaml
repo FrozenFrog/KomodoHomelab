@@ -36,7 +36,7 @@ services:
       - NET_ADMIN
     labels:
       proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.port: 443:993
+      proxy.port: 443:993
       proxy.#1.no_tls_verify: true
     
   telemt:
