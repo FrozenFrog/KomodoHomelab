@@ -21,9 +21,9 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      - target: 443
-        published: "993"
-        protocol: tcp
+      # - target: 443
+      #   published: "993"
+      #   protocol: tcp
       - target: 8000
         published: "17898"
         protocol: tcp
@@ -36,8 +36,7 @@ services:
       - NET_ADMIN
     labels:
       proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.host: localhost
-      proxy.#1.port: 993
+      proxy.#1.port: 443:993
       proxy.#1.no_tls_verify: true
     
   telemt:
