@@ -10,7 +10,7 @@ services:
       VPN_TYPE: wireguard
       # VPN_SERVICE_PROVIDER: protonvpn
       # SERVER_COUNTRIES: Vietnam
-      # VPN_PORT_FORWARDING: on
+      VPN_PORT_FORWARDING: on
       WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
       # start pia
       VPN_SERVICE_PROVIDER: custom
