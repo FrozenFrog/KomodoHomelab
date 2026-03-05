@@ -20,7 +20,7 @@ services:
       VPN_TYPE: wireguard
       VPN_PORT_FORWARDING: on
       VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
-      WIREGUARD_PRIVATE_KEY: mIxD/NFP/fkGDOozPkWhjsgrjxJ2CRTOGoolrYnLfG8=
+      WIREGUARD_PRIVATE_KEY: GBfA0leAxl5bt1LbdZcu6PfpxePORZnpXjUTNgrJxEA=
       TZ: ${TZ}
     ports:
       - target: 8888
