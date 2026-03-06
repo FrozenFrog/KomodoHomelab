@@ -36,6 +36,8 @@ services:
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
     restart: on-failure
+    devices:
+      - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
     networks:
