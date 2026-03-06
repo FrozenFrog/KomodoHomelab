@@ -15,7 +15,7 @@ services:
     environment:
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       HTTPPROXY: "on"
-      SERVER_COUNTRIES: Hong Kong
+      SERVER_COUNTRIES: "Hong Kong"
       VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
       # OPENVPN_USER: ybIgKZiI4Tr4DHmM+pmp
