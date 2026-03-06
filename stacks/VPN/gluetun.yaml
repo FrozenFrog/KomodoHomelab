@@ -14,7 +14,7 @@ services:
     hostname: gluetun_vn
     environment:
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      HTTPPROXY: "on"
+      HTTPPROXY: "off"
       SERVER_COUNTRIES: "Hong Kong"
       VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
@@ -44,7 +44,12 @@ services:
       vpn:
         ipv4_address: 192.168.3.102
     labels:
-      proxy.exclude: true
+      proxy.aliases: pf
+      proxy.#1.port: 16804
+      proxy.#1.homepage: |
+        name: "Gluetun HongKong"
+        icon: "@selfhst/gluetun.svg"
+        category: "Networking"
 
   SurfsharkUS:
     image: qmcgaw/gluetun:latest
