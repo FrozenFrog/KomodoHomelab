@@ -24,9 +24,9 @@ services:
       - target: 443
         published: "993"
         protocol: tcp
-      # - target: 8000
-      #   published: "17898"
-      #   protocol: tcp
+      - target: 8000
+        published: "17898"
+        protocol: tcp
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
