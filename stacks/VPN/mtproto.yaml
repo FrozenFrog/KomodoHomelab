@@ -58,7 +58,7 @@ services:
         target: /run/telemt/config.toml
         read_only: true
     environment:
-      RUST_LOG: debug
+      RUST_LOG: info
       TZ: ${TZ}
     # Uncomment this line if you want to use host network for IPv6, but bridge is default and usually better
     cap_drop:
