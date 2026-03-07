@@ -41,10 +41,6 @@ services:
       proxy.#1.scheme: tcp
       proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
-      proxy.#1.rules: |
-        default {
-          proxy "tcp://gluetun_mt:993"
-        }
     
   telemt:
     image: ghcr.io/telemt/telemt:latest
