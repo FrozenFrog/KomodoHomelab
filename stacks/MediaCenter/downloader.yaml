@@ -1,6 +1,6 @@
 services:
   gluetun_pf:
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:3.41
     network_mode: bridge
     container_name: gluetun_pf
     hostname: gluetun_pf
@@ -11,7 +11,6 @@ services:
       VPN_SERVICE_PROVIDER: protonvpn
       SERVER_COUNTRIES: Vietnam
       VPN_PORT_FORWARDING: on
-      VPN_PORT_FORWARDING_LISTENING_PORT: 64821
       WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
       # start pia
       # VPN_SERVICE_PROVIDER: custom
