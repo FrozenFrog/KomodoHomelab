@@ -121,7 +121,7 @@ services:
         target: /tv
     restart: unless-stopped
     labels:
-      proxy.idle_timeout: 45m
+      proxy.idle_timeout: 40m
           
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:latest
