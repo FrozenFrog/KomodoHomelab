@@ -41,11 +41,11 @@ services:
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
-    # labels:
-    #   proxy.aliases: mtg.picityvietnam.com
-    #   proxy.#1.scheme: tcp
-    #   proxy.#1.port: 443
-    #   proxy.#1.no_tls_verify: true
+    labels:
+      proxy.aliases: mtg.picityvietnam.com
+      proxy.#1.scheme: tcp
+      proxy.#1.port: 993
+      proxy.#1.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
     
   telemt:
@@ -80,7 +80,4 @@ services:
         soft: 65536
         hard: 65536
     labels:
-      proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.scheme: https
-      proxy.#1.port: 443
-      proxy.#1.no_tls_verify: true
+      proxy.exclude: true
