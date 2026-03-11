@@ -21,9 +21,9 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      # - target: 993
-      #   published: "993"
-      #   protocol: tcp
+      - target: 993
+        published: "993"
+        protocol: tcp
       - target: 8000
         published: "17898"
         protocol: tcp
