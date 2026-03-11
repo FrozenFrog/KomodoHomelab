@@ -8,6 +8,7 @@ services:
       HTTPPROXY: "on"
       HTTPPROXY_USER: "telemt"
       HTTPPROXY_PASSWORD: "telemt"
+      HTTPPROXY_LOG: "on"
       # HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       # VPN_SERVICE_PROVIDER: expressvpn
       # OPENVPN_USER: ${OPENVPN_USER}
