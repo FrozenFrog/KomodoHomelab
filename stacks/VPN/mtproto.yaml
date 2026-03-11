@@ -5,7 +5,9 @@ services:
     container_name: gluetun_mt
     hostname: gluetun_mt
     environment:
-      HTTPPROXY: "off"
+      HTTPPROXY: "on"
+      HTTPPROXY_USER: "telemt"
+      HTTPPROXY_PASSWORD: "telemt"
       # HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       # VPN_SERVICE_PROVIDER: expressvpn
       # OPENVPN_USER: ${OPENVPN_USER}
@@ -24,8 +26,8 @@ services:
       - target: 993
         published: "993"
         protocol: tcp
-      - target: 8000
-        published: "17898"
+      - target: 8888
+        published: "17888"
         protocol: tcp
     volumes:
       - type: bind
@@ -40,6 +42,7 @@ services:
       proxy.aliases: mtg.picityvietnam.com
       proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
+      proxy.#1.relay_proxy_protocol_header: true
     
   telemt:
     image: ghcr.io/telemt/telemt:latest
