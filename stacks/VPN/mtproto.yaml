@@ -25,7 +25,7 @@ services:
         published: "993"
         protocol: tcp
       - target: 8000
-        published: "17898"
+        published: "17888"
         protocol: tcp
     volumes:
       - type: bind
