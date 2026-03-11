@@ -40,6 +40,7 @@ services:
       - NET_ADMIN
     labels:
       proxy.aliases: mtg.picityvietnam.com
+      proxy.#1.scheme: tcp
       proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
       proxy.#1.relay_proxy_protocol_header: true
