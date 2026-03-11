@@ -42,10 +42,10 @@ services:
       - NET_ADMIN
     labels:
       proxy.aliases: mtg.picityvietnam.com
-      proxy.#1.scheme: tcp
-      proxy.#1.port: 442:993
-      proxy.#1.no_tls_verify: true
-      proxy.#1.relay_proxy_protocol_header: true
+      # proxy.#1.scheme: tcp
+      # proxy.#1.port: 442:993
+      # proxy.#1.no_tls_verify: true
+      # proxy.#1.relay_proxy_protocol_header: true
     
   telemt:
     image: ghcr.io/telemt/telemt:latest
