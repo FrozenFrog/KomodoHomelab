@@ -1,16 +1,40 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  ddns-updater:
+    image: ghcr.io/qdm12/ddns-updater:latest
+    container_name: ddns-updater
+    hostname: ddns-updater
+    network_mode: bridge
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+      # Cấu hình DDNS
+      PERIOD: 5m
+      UPDATE_COOLDOWN_PERIOD: 5m
+      PUBLICIP_FETCHERS: all
+      PUBLICIP_HTTP_PROVIDERS: all
+      PUBLICIPV4_HTTP_PROVIDERS: all
+      PUBLICIPV6_HTTP_PROVIDERS: all
+      PUBLICIP_DNS_PROVIDERS: all
+      PUBLICIP_DNS_TIMEOUT: 3s
+      HTTP_TIMEOUT: 10s
+      # Giao diện Web (Web UI)
+      LISTENING_ADDRESS: ":8000"
+      ROOT_URL: "/"
+      # Sao lưu (Backup)
+      BACKUP_PERIOD: 0
+      BACKUP_DIRECTORY: /updater/data
+      # Nhật ký & Thông báo
+      LOG_LEVEL: info
+    ports:
+      - target: 8000
+        published: "1288"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${DDNS_CONFIG_PATH}"
+        target: /updater/data
+    restart: unless-stopped
+    labels:
+      proxy.aliases: ddns
+      proxy.#1.port: 1288
