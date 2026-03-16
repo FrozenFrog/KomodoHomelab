@@ -36,5 +36,5 @@ services:
         target: /updater/data
     restart: unless-stopped
     labels:
-      proxy.aliases: ddns
+      proxy.aliases: ddns-updater
       proxy.#1.port: 1288
