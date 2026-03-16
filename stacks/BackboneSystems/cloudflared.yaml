@@ -10,7 +10,7 @@ services:
       - 14333
     volumes:
       - type: bind
-        source: "${BASEPATH}/${APP_CONFIG_PATH}"
+        source: "${BASEPATH}/${CLOUDFLARED_CONFIG_PATH}"
         target: /config
     restart: unless-stopped
     labels:
