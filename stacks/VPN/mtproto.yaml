@@ -48,7 +48,7 @@ services:
       # proxy.#1.relay_proxy_protocol_header: true
     
   telemt:
-    image: ghcr.io/telemt/telemt:v3.3.28
+    image: telemt/telemt:v3.3.28
     container_name: telemt
     restart: unless-stopped
     # Allow caching 'proxy-secret' in read-only container
