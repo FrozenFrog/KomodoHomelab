@@ -50,7 +50,6 @@ services:
   telemt:
     image: ghcr.io/telemt/telemt:latest
     container_name: telemt
-    build: .
     restart: unless-stopped
     # Allow caching 'proxy-secret' in read-only container
     working_dir: /run/telemt
