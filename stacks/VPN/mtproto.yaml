@@ -1,6 +1,6 @@
 services:
   gluetun_mt:
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:3.4
     network_mode: bridge
     container_name: gluetun_mt
     hostname: gluetun_mt
