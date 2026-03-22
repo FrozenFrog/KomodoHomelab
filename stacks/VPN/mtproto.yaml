@@ -42,8 +42,9 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: mtg.picityvietnam.com
+      proxy.aliases: mtg.picityvietnam.com, signal.picityvietnam.com
       proxy.#1.port: 993
+      proxy.#2.port: 17888
       proxy.#1.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
     
