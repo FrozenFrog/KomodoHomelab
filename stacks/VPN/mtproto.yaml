@@ -27,7 +27,7 @@ services:
       TZ: ${TZ}
     ports:
       - target: 4433
-        published: "17443"
+        published: "4433"
         protocol: tcp
       - target: 993
         published: "993"
@@ -47,7 +47,7 @@ services:
     labels:
       proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
       proxy.#1.port: 993
-      proxy.#2.port: 17443
+      proxy.#2.port: 4433
       proxy.#1.no_tls_verify: true
      # proxy.#2.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
