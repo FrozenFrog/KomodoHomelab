@@ -26,7 +26,7 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      - target: 443
+      - target: 4433
         published: "17443"
         protocol: tcp
       - target: 993
@@ -47,7 +47,7 @@ services:
     labels:
       proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
       proxy.#1.port: 993
-      proxy.#2.port: 17888
+      proxy.#2.port: 17443
       proxy.#1.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
     
@@ -94,5 +94,9 @@ services:
       - type: bind
         source: "${BASEPATH}/${GODOXY_CONFIG_PATH}/certs/picityvietnam.com.crt"
         target: /etc/letsencrypt/picityvietnam.com.crt
+        read_only: true
+      - type: bind
+        source: "${BASEPATH}/${GODOXY_CONFIG_PATH}/certs/picityvietnam.com.key"
+        target: /etc/letsencrypt/picityvietnam.com.key
         read_only: true
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /usr/sbin/nginx -s reload; done & /usr/sbin/nginx -c /usr/conf.d/${NGINX_RELAY_CONFIG:-nginx.conf} -g \"daemon off;\"'"
