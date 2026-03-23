@@ -84,9 +84,12 @@ services:
     labels:
       proxy.exclude: true
 
-  signal:
+  signal-proxy:
     image: nginx:stable-alpine@sha256:67c129e5545fd0c5fdbaf8e7039b8925d472679e94bd65f2a423578469e16718
     restart: unless-stopped
+    container_name: signal-proxy
+    hostname: signal-proxy
+    network_mode: "service:${VPN_PROVIDER}"
     volumes:
       - type: bind
         source: "${BASEPATH}/${SIGNAL_CONFIG_PATH}/nginx-relay"
@@ -100,3 +103,5 @@ services:
         target: /etc/letsencrypt/picityvietnam.com.key
         read_only: true
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /usr/sbin/nginx -s reload; done & /usr/sbin/nginx -c /usr/conf.d/${NGINX_RELAY_CONFIG:-nginx.conf} -g \"daemon off;\"'"
+    labels:
+      proxy.exclude: true
