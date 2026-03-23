@@ -26,6 +26,9 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
+      - traffic: 443
+        published: "17443"
+        protocol: tcp
       - target: 993
         published: "993"
         protocol: tcp
@@ -42,9 +45,9 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: mtg.picityvietnam.com, signal.picityvietnam.com
+      proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
       proxy.#1.port: 993
-      proxy.#2.port: 17888
+      proxy.#2.port: 17443
       proxy.#1.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
     
