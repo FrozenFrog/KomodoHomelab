@@ -86,7 +86,7 @@ services:
       proxy.exclude: true
 
   signal-proxy:
-    image: nginx:stable-alpine@sha256:67c129e5545fd0c5fdbaf8e7039b8925d472679e94bd65f2a423578469e16718
+    image: nginx:stable-alpine
     restart: unless-stopped
     container_name: signal-proxy
     network_mode: "service:${VPN_PROVIDER}"
