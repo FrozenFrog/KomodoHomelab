@@ -26,7 +26,7 @@ services:
       WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      - traffic: 443
+      - target: 443
         published: "17443"
         protocol: tcp
       - target: 993
