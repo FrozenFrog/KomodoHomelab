@@ -45,10 +45,12 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: mtg.picityvietnam.com
+      proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
       proxy.#1.port: 993
       proxy.#1.no_tls_verify: true
-      proxy.#2.port: sn.picityvietnam.com
+      #proxy.#2.port: sn.picityvietnam
+      #proxy.#2.relay_proxy_protocol_header: true
+
      # proxy.#2.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
     
