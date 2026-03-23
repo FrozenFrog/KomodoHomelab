@@ -83,3 +83,16 @@ services:
         hard: 65536
     labels:
       proxy.exclude: true
+
+  signal:
+    image: nginx:stable-alpine@sha256:67c129e5545fd0c5fdbaf8e7039b8925d472679e94bd65f2a423578469e16718
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${SIGNAL_CONFIG_PATH}/nginx-relay"
+        target: /usr/conf.d
+      - type: bind
+        source: "${BASEPATH}/${GODOXY_CONFIG_PATH}/certs/picityvietnam.com.crt"
+        target: /etc/letsencrypt/picityvietnam.com.crt
+        read_only: true
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /usr/sbin/nginx -s reload; done & /usr/sbin/nginx -c /usr/conf.d/${NGINX_RELAY_CONFIG:-nginx.conf} -g \"daemon off;\"'"
