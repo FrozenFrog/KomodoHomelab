@@ -45,9 +45,8 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
+      proxy.aliases: mtg.picityvietnam.com
       proxy.#1.port: 993
-      proxy.#2.port: 4433
       proxy.#1.no_tls_verify: true
      # proxy.#2.no_tls_verify: true
       # proxy.#1.relay_proxy_protocol_header: true
@@ -104,4 +103,4 @@ services:
         read_only: true
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /usr/sbin/nginx -s reload; done & /usr/sbin/nginx -c /usr/conf.d/${NGINX_RELAY_CONFIG:-nginx.conf} -g \"daemon off;\"'"
     labels:
-      proxy.exclude: true
+      proxy.alias: sn.picityvietnam.com
