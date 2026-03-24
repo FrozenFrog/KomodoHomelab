@@ -8,10 +8,10 @@ networks:
         - subnet: 192.168.3.0/24
 
 services:
-  ProtonPF:
+  ProtonTor:
     image: qmcgaw/gluetun:latest
-    container_name: gluetun_vn
-    hostname: gluetun_vn
+    container_name: gluetun_tor
+    hostname: gluetun_tor
     environment:
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
       HTTPPROXY: "off"
@@ -20,9 +20,9 @@ services:
       VPN_TYPE: wireguard
       # OPENVPN_USER: ybIgKZiI4Tr4DHmM+pmp
       # OPENVPN_PASSWORD: Zi27kAAp1MDW1biWqd85Uu7gAnsaUKBX
-      VPN_PORT_FORWARDING: on
-      VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
-      WIREGUARD_PRIVATE_KEY: yJ9CBYul1ZtyRLjlIWBFDRQivsyf70DW6tNSKW0A20Y=
+      TOR_ONLY: true
+      #VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
+      WIREGUARD_PRIVATE_KEY: ePzzA8rusbRrElXTTb+RfdaNrHZExRaURDmpm9D0pXk=
       TZ: ${TZ}
     ports:
       - target: 8888
@@ -36,8 +36,6 @@ services:
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
         target: /gluetun
     restart: on-failure
-    devices:
-      - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
     networks:
