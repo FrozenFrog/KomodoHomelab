@@ -89,7 +89,7 @@ services:
     container_name: microsocks
     environment:
       TZ: ${TZ}
-    command: ["-1", "-q", "-u", "$PROXY_USER", "-P", "$PROXY_PASSWORD", "-p", 4433]
+    command: ["-1", "-q", "-u", "$PROXY_USER", "-P", "$PROXY_PASSWORD", "-p", "4433"]
     labels:
       proxy.exclude: true
     
