@@ -6,26 +6,27 @@ services:
     hostname: gluetun_mt
     environment:
       HTTPPROXY: "on"
-      HTTPPROXY_USER: "telemt"
-      HTTPPROXY_PASSWORD: "telemt"
+      HTTPPROXY_USER: ${PROXY_USER}
+      HTTPPROXY_PASSWORD: ${PROXY_PASSWORD}
       HTTPPROXY_LOG: "on"
       HTTPPROXY_LISTENING_ADDRESS: ":8888"
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-      VPN_SERVICE_PROVIDER: protonvpn
+      HTTPPROXY_STEALTH: "on"
+      # VPN_SERVICE_PROVIDER: expressvpn
       # OPENVPN_USER: ${OPENVPN_USER}
       # OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
       SERVER_COUNTRIES: ${SERVER_COUNTRIES}
-      #VPN_SERVICE_PROVIDER: custom
+      VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
-      #WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
-      #WIREGUARD_ENDPOINT_PORT: ${WIREGUARD_ENDPOINT_PORT}
-      #WIREGUARD_PRESHARED_KEY: ${WIREGUARD_PRESHARED_KEY}
-      #WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
+      # WIREGUARD_ENDPOINT_IP: ${WIREGUARD_ENDPOINT_IP}
+      # WIREGUARD_ENDPOINT_PORT: ${WIREGUARD_ENDPOINT_PORT}
+      # WIREGUARD_PRESHARED_KEY: ${WIREGUARD_PRESHARED_KEY}
+      # WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
       WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
-      #WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
+      # WIREGUARD_PUBLIC_KEY: ${WIREGUARD_PUBLIC_KEY}
       TZ: ${TZ}
     ports:
-      - target: 4433
+      - traffic: 4433
         published: "4433"
         protocol: tcp
       - target: 993
@@ -46,8 +47,8 @@ services:
     labels:
       proxy.aliases: mtg.picityvietnam.com, sn.picityvietnam.com
       proxy.#1.port: 993
+      proxy.#2.port: 17443
       proxy.#1.no_tls_verify: true
-      proxy.#2.port: 4433
       # proxy.#1.relay_proxy_protocol_header: true
     
   telemt:
@@ -82,3 +83,14 @@ services:
         hard: 65536
     labels:
       proxy.exclude: true
+  
+  microsocks:
+    image: bibica/microsocks
+    network_mode: "service:${VPN_PROVIDER}"
+    container_name: microsocks
+    environment:
+      TZ: ${TZ}
+    command: ["-1", "-q", "-u", "$PROXY_USER", "-P", "$PROXY_PASSWORD", "-p", 4433]
+    labels:
+      proxy.exclude: true
+    
