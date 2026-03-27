@@ -82,7 +82,7 @@ services:
         hard: 65536
     labels:
       proxy.exclude: true
-  
+      
   microsocks:
     image: bibica/microsocks
     network_mode: "service:${VPN_PROVIDER}"
