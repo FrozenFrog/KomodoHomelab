@@ -4,31 +4,31 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw'
+      device: '/mnt/Application/config/zeroclaw/pen'
   pentagi-ssl:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw'
+      device: '/mnt/Application/config/zeroclaw/pen'
   pentagi-ollama:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw'
+      device: '/mnt/Application/config/zeroclaw/pen'
   scraper-ssl:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw'
+      device: '/mnt/Application/config/zeroclaw/pen'
   pentagi-postgres-data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw'
+      device: '/mnt/Application/config/zeroclaw/pen'
 
 services:
   gluetun_claw:
