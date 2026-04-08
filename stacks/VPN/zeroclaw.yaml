@@ -10,6 +10,7 @@ services:
       VPN_TYPE: wireguard
       WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
       FIREWALL_OUTBOUND_SUBNETS: "192.168.1.0/24"
+      ANTHROPIC_API_KEY: "sk-bee-007424b7304b41ceae1dc27e95e889a6"
       TZ: ${TZ}
     ports:
       - target: 42617
