@@ -4,13 +4,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw/pen'
+      device: '/mnt/Application/config/zeroclaw/pen/pentagi'
   pentagi-ssl:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw/pen'
+      device: '/mnt/Application/config/zeroclaw/pen/pentagi-ssl'
   pentagi-ollama:
     driver: local
     driver_opts:
@@ -22,7 +22,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw/pen'
+      device: '/mnt/Application/config/zeroclaw/pen/scaper'
   pentagi-postgres-data:
     driver: local
     driver_opts:
