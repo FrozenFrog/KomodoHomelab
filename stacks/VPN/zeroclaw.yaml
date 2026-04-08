@@ -68,8 +68,6 @@ services:
     image: ${PENTAGI_IMAGE:-vxcontrol/pentagi:latest}
     restart: unless-stopped
     container_name: pentagi
-    expose:
-      - 31443/tcp
     depends_on:
       pgvector:
         condition: service_started
