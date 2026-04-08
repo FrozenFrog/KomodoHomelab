@@ -230,7 +230,7 @@ services:
         max-size: 50m
         max-file: "7"
     volumes:
-      - pentagi-postgres-data:/var/lib/postgresql/data
+      - /mnt/Application/config/zeroclaw/pen/database:/var/lib/postgresql/data
     network_mode: "service:gluetun_claw"
 
   pgexporter:
