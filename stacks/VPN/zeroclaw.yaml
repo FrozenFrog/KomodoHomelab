@@ -24,8 +24,6 @@ services:
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
-    extra_hosts:
-      - "qlvb.local:123.30.143.217"
     labels:
       proxy.aliases: zeroclaw.picityvietnam.com
       proxy.#1.port: 42617
