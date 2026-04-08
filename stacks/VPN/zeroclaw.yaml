@@ -222,10 +222,7 @@ services:
   pgvector:
     image: vxcontrol/pgvector:latest
     restart: unless-stopped
-    container_name: pgvector
-    expose:
-      - 5432/tcp
-    environment:
+    container_name: pgvector    environment:
       POSTGRES_USER: ${PENTAGI_POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${PENTAGI_POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${PENTAGI_POSTGRES_DB:-pentagidb}
@@ -243,8 +240,6 @@ services:
     depends_on:
       - pgvector
     container_name: pgexporter
-    expose:
-      - 9187/tcp
     environment:
       - DATA_SOURCE_NAME=postgresql://${PENTAGI_POSTGRES_USER:-postgres}:${PENTAGI_POSTGRES_PASSWORD:-postgres}@pgvector:15432/${PENTAGI_POSTGRES_DB:-pentagidb}?sslmode=disable
     logging:
@@ -257,8 +252,6 @@ services:
     image: vxcontrol/scraper:latest
     restart: unless-stopped
     container_name: scraper
-    expose:
-      - 21443/tcp
     environment:
       - MAX_CONCURRENT_SESSIONS=${LOCAL_SCRAPER_MAX_CONCURRENT_SESSIONS:-10}
       - USERNAME=${LOCAL_SCRAPER_USERNAME:-someuser}
