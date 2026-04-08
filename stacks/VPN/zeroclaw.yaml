@@ -1,0 +1,52 @@
+services:
+  gluetun_claw:
+    image: qmcgaw/gluetun
+    network_mode: bridge
+    container_name: gluetun_claw
+    hostname: gluetun_claw
+    environment:
+      SERVER_COUNTRIES: ${SERVER_COUNTRIES}
+      VPN_SERVICE_PROVIDER: protonvpn
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+      TZ: ${TZ}
+    ports:
+      - target: 4433
+        published: "4433"
+        protocol: tcp
+      - target: 993
+        published: "993"
+        protocol: tcp
+      - target: 8888
+        published: "17888"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
+        target: /gluetun
+    restart: on-failure:10
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    labels:
+      proxy.exclude: true
+      # proxy.#1.relay_proxy_protocol_header: true
+    
+  zeroclaw:
+    image: ghcr.io/zeroclaw-labs/zeroclaw:latest
+    container_name: zeroclaw
+    restart: unless-stopped
+    network_mode: "service:gluetun_claw"
+    volumes:
+      - type: bind
+        source: "/mnt/Application/config/zeroclaw"
+        target: "/zeroclaw-data"
+    environment:
+      RUST_LOG: info
+      TZ: ${TZ}
+    labels:
+      proxy.exclude: true
+      
+
+    
