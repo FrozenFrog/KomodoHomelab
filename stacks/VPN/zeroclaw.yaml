@@ -40,6 +40,7 @@ services:
       - type: bind
         source: "/mnt/Application/config/zeroclaw"
         target: "/zeroclaw-data"
+    command: "zeroclaw gateway"
     environment:
       RUST_LOG: info
       TZ: ${TZ}
