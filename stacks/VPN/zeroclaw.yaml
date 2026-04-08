@@ -28,7 +28,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/Application/config/zeroclaw/pen'
+      device: '/mnt/Application/config/zeroclaw/pen/database'
 
 services:
   gluetun_claw:
