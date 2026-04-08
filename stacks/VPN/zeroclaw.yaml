@@ -222,7 +222,8 @@ services:
   pgvector:
     image: vxcontrol/pgvector:latest
     restart: unless-stopped
-    container_name: pgvector    environment:
+    container_name: pgvector    
+    environment:
       POSTGRES_USER: ${PENTAGI_POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${PENTAGI_POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${PENTAGI_POSTGRES_DB:-pentagidb}
