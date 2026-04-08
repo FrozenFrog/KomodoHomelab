@@ -60,7 +60,7 @@ services:
     cap_add:
       - NET_ADMIN
     labels:
-      proxy.aliases: zeroclaw.picityvietnam.com
+      proxy.aliases: zeroclaw
       proxy.#1.port: 31443
       # proxy.#1.relay_proxy_protocol_header: true
     
