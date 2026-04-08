@@ -15,6 +15,9 @@ services:
       - target: 42617
         published: "42617"
         protocol: tcp
+    extra_hosts:
+      - "qlvb.domain:123.30.143.217"
+
     volumes:
       - type: bind
         source: "${BASEPATH}/${GLUETUN_CONFIG_PATH}"
@@ -38,9 +41,6 @@ services:
       - type: bind
         source: "/mnt/Application/config/zeroclaw"
         target: "/zeroclaw-data"
-    extra_hosts:
-      - "qlvb.local:123.30.143.217"
-
     command: "channel start"
     environment:
       RUST_LOG: info
