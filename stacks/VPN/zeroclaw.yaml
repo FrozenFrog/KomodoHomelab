@@ -29,6 +29,8 @@ services:
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
+    extra_hosts:
+      - "qlvb.local:123.30.143.217"
     labels:
       proxy.exclude: true
       # proxy.#1.relay_proxy_protocol_header: true
