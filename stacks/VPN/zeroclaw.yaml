@@ -1,7 +1,7 @@
 services:
   gluetun_claw:
     image: qmcgaw/gluetun
-    network_mode: host
+    network_mode: bridge
     container_name: gluetun_claw
     hostname: gluetun_claw
     environment:
