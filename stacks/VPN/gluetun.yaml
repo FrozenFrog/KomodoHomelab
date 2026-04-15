@@ -22,7 +22,7 @@ services:
       # OPENVPN_PASSWORD: Zi27kAAp1MDW1biWqd85Uu7gAnsaUKBX
       TOR_ONLY: true
       #VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
-      WIREGUARD_PRIVATE_KEY: yJ9CBYul1ZtyRLjlIWBFDRQivsyf70DW6tNSKW0A20Y=
+      WIREGUARD_PRIVATE_KEY: cLy4QmXpkpQn6XizZaGDdXWr6HIHL0RhiGKAUFZrDU8=
       TZ: ${TZ}
     ports:
       - target: 8888
