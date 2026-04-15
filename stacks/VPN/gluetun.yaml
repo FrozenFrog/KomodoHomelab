@@ -20,7 +20,7 @@ services:
       VPN_TYPE: wireguard
       # OPENVPN_USER: ybIgKZiI4Tr4DHmM+pmp
       # OPENVPN_PASSWORD: Zi27kAAp1MDW1biWqd85Uu7gAnsaUKBX
-      TOR_ONLY: true
+      TOR_ONLY: "true"
       #VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
       # HB2Plays
       WIREGUARD_PRIVATE_KEY: cLy4QmXpkpQn6XizZaGDdXWr6HIHL0RhiGKAUFZrDU8=
