@@ -8,6 +8,21 @@ networks:
         - subnet: 192.168.3.0/24
 
 services:
+  wggeneration:
+    image: ghcr.io/frozenfrog/wggeneration-app:latest
+    container_name: wggeneration
+    hostname: wggeneration
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      PORT: 8080
+    ports:
+      - target: 8080
+        published: "23080"
+        protocol: tcp
+    labels:
+      proxy.aliases: wg
+      proxy.#1.port: 23080
+
   ProtonTor:
     image: qmcgaw/gluetun:latest
     container_name: gluetun_tor
