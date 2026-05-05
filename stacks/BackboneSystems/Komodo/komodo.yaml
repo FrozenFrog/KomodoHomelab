@@ -13,6 +13,7 @@ services:
     hostname: komodo
     container_name: komodo
     restart: unless-stopped
+    init: true
     ports:
       - target: "9120"
         published: "9122"
@@ -25,6 +26,7 @@ services:
       - /etc/komodo/backups:/backups
       ## Store sync files on server
       - /etc/komodo/syncs:/syncs
+      - /etc/komodo/keys:/config/keys
       ## Optionally mount a custom core.config.toml
       - ./core.config.toml:/config/config.toml
     ## Allows for systemd Periphery connection at
