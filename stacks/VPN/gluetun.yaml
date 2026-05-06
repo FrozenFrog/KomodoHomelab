@@ -42,7 +42,7 @@ services:
       TOR_ONLY: "true"
       #VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
       # HB2Plays
-      WIREGUARD_PRIVATE_KEY: cLy4QmXpkpQn6XizZaGDdXWr6HIHL0RhiGKAUFZrDU8=
+      WIREGUARD_PRIVATE_KEY: OAnrNxXk+oY6MBDykPlaFlEA5QW2gTxABvN9zHOm4Hk=
       TZ: ${TZ}
     ports:
       - target: 8888
