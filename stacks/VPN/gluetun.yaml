@@ -41,8 +41,8 @@ services:
       # OPENVPN_PASSWORD: Zi27kAAp1MDW1biWqd85Uu7gAnsaUKBX
       TOR_ONLY: "true"
       #VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/proton_forwarded_port"
-      # HB2Plays
-      WIREGUARD_PRIVATE_KEY: OAnrNxXk+oY6MBDykPlaFlEA5QW2gTxABvN9zHOm4Hk=
+      # lanamog2003
+      WIREGUARD_PRIVATE_KEY: Bz8wY2oE2PEJ8+6rEBmfLXDbEiIwrBt/YfS2AlQ3bw8=
       TZ: ${TZ}
     ports:
       - target: 8888
