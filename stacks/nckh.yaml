@@ -3,7 +3,7 @@ services:
     image: ghcr.io/frozenfrog/nckh:latest
     container_name: nckh
     hostname: nckh
-    network_mode: brigde
+    network_mode: bridge
     environment:
       DATABASE_URL: ${DATABASE_URL}
       PORT: 8080
