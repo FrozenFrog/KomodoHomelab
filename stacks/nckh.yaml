@@ -1,16 +1,17 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  nckh:
+    image: ghcr.io/frozenfrog/nckh:latest
+    container_name: nckh
+    hostname: nckh
+    networks: brigde
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      PORT: 8080
+    ports:
+      - target: 8080
+        published: "23180"
+        protocol: tcp
+    restart: on-failure
+    labels:
+      proxy.aliases: nckh
+      proxy.#1.port: 23180
