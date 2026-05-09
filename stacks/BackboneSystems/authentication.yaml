@@ -11,7 +11,7 @@ services:
       TRUST_PROXY: "true"
       ENCRYPTION_KEY: ${SECRET}
       APP_URL: "https://pocketid.${CF_DOMAIN}"
-      DB_CONNECTION_STRING: data/pocket-id.db # "postgresql://${POCKETID_DB_NAME}:${POCKETID_DB_NAME}@${LOCAL_VPS_IP}:${POSTGRES_PORT}/${POCKETID_DB_NAME}"
+      DB_CONNECTION_STRING: "postgresql://pocketid:pocketid@192.168.1.3:5432/pocketid?sslmode=disable" # data/pocket-id.db
       MAXMIND_LICENSE_KEY_FILE: "/app/data/${MAXMIND_LICENSE_KEY_FILE}"
     ports:
       - target: 1411
