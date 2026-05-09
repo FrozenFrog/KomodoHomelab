@@ -184,7 +184,7 @@ GODOXY_API_JWT_TOKEN_TTL=
 # OIDC Configuration (optional)
 # Uncomment and configure these values to enable OIDC authentication.
 #
-GODOXY_OIDC_ISSUER_URL=https://pocketid.nextmeats.asia
+GODOXY_OIDC_ISSUER_URL=https://pocketid.kysupi.com
 GODOXY_OIDC_CLIENT_ID=cf1f9f04-67e0-4f02-8c00-3e947601e420
 GODOXY_OIDC_CLIENT_SECRET=CLyUDOQfXQk9EFsyt6Njei4NAKxwxr3G
 GODOXY_OIDC_SCOPES=openid, profile, email, groups, preferred_username, offline_access # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
