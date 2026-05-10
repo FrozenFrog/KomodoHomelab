@@ -9,7 +9,7 @@
 
 services:
   core:
-    image: ghcr.io/moghtech/komodo-core:latest
+    image: ghcr.io/moghtech/komodo-core:2
     hostname: komodo
     container_name: komodo
     restart: unless-stopped
