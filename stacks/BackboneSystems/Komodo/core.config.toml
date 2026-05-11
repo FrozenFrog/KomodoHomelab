@@ -125,7 +125,7 @@ internet_interface = ""
 ##
 ## Env: KOMODO_LOCAL_AUTH
 ## Default: false
-local_auth = false
+local_auth = true
 
 ## Initialize the first admin user when starting up Komodo for the first time.
 ## Env: KOMODO_INIT_ADMIN_USERNAME or KOMODO_INIT_ADMIN_USERNAME_FILE
@@ -192,7 +192,7 @@ jwt_ttl = "1-day"
 ## Enable logins with configured OIDC provider.
 ## Env: KOMODO_OIDC_ENABLED
 ## Default: false
-oidc_enabled = true
+oidc_enabled = false
 
 ## Give the provider address.
 ##
@@ -226,7 +226,7 @@ oidc_client_id = "590f8f9a-3844-479d-b7df-aa6924e7a1e6"
 ## If the OIDC provider supports PKCE-only flow,
 ## the client secret is not necessary and can be ommitted or left empty.
 ## Env: KOMODO_OIDC_CLIENT_SECRET or KOMODO_OIDC_CLIENT_SECRET_FILE
-oidc_client_secret = "Y3s0s7GaQCemg5ssouA5qP3Dicmu2Y3s"
+oidc_client_secret = "J1leyAtuZLhWmSv2YMo9kUh5EcgL2EcJ"
 
 ## If true, use the full email for usernames.
 ## Otherwise, the @address will be stripped,

@@ -114,7 +114,7 @@ allowed_ips = []
 ## Env: PERIPHERY_PASSKEYS or PERIPHERY_PASSKEYS_FILE
 ## Default: empty, which will not require any passkey to be passed by core.
 passkeys = ["FXF7ngw5yuf_vje2vnv"]
-
+#core_public_keys = ["MCowBQYDK2VuAyEAzqiXPs1jMbYTCTnlgEB7pXbxEk5C6zqi7lEbz+VFax8="]
 ############
 # Security #
 ############
