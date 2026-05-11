@@ -10,7 +10,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Blackbox"
 file_paths = ["openbullet.yaml"]
 env_file_path = "openbullet.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=openbullet2-config
 """
@@ -33,7 +35,9 @@ file_paths = [
   "backrest.yaml"
 ]
 env_file_path = "data-station.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 BACKREST_CONFIG_PATH=backrest-config
 RClONE_CONFIG_PATH=../../../etc/komodo
@@ -69,7 +73,9 @@ file_paths = [
   "redis.yaml"
 ]
 env_file_path = "database.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 MONGO_INITDB_ROOT_PASSWORD=mongodb
 MONGO_INITDB_ROOT_USERNAME=mongodb
@@ -95,12 +101,14 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/Karakeep"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 MEILI_MASTER_KEY=ask-tick-any-gavel
 NEXTAUTH_SECRET=storming-flapping-topped-maris
 KARAKEEP_OAUTH_CLIENT_ID=74edeb45-11b8-42d2-8dd6-d3ae3893972b
-KARAKEEP_OAUTH_CLIENT_SECRET=eI6LTbhnRnRqHgIpxEcnJ0vMl2lHuUJe
+KARAKEEP_OAUTH_CLIENT_SECRET=Ijix5CrkrWahpk3rn5Dmyzljm6TU2TvI
 OPENAI_API_KEY=AIzaSyBNmCReS1WUe5g0k8I73piDC95-yz-xscY
 """
 
@@ -123,7 +131,9 @@ file_paths = [
   "icloud.yaml"
 ]
 env_file_path = "syncing.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 OPENLIST_CONFIG_PATH=openlist-config
 RClONE_CONFIG_PATH=rclone-config
@@ -149,7 +159,9 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/Vaultwarden"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=vaultwarden-config
 VAULTWARDEN_DB_NAME=vaultwarden
