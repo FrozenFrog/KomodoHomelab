@@ -10,7 +10,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/Blackbox"
 file_paths = ["openbullet.yaml"]
 env_file_path = "openbullet.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=openbullet2-config
 """
@@ -29,7 +31,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["filebrowser.yaml"]
 env_file_path = "filebrowser.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=filebrowser-config
 """
@@ -46,12 +50,14 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/Karakeep"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 MEILI_MASTER_KEY=ask-tick-any-gavel
 NEXTAUTH_SECRET=storming-flapping-topped-maris
 KARAKEEP_OAUTH_CLIENT_ID=74edeb45-11b8-42d2-8dd6-d3ae3893972b
-KARAKEEP_OAUTH_CLIENT_SECRET=eI6LTbhnRnRqHgIpxEcnJ0vMl2lHuUJe
+KARAKEEP_OAUTH_CLIENT_SECRET=Ijix5CrkrWahpk3rn5Dmyzljm6TU2TvI
 OPENAI_API_KEY=AIzaSyBNmCReS1WUe5g0k8I73piDC95-yz-xscY
 """
 
@@ -74,8 +80,8 @@ file_paths = [
 ]
 env_file_path = "mediacenter.env"
 additional_env_files = [
-  "../../MainSystem/.env",
-  "rtorrent-rutorrent.env"
+  { path = "../../MainSystem/.env", track = true },
+  { path = "rtorrent-rutorrent.env", track = true }
 ]
 environment = """
 ALIST_CONFIG_PATH=alist-config
@@ -110,7 +116,7 @@ RT_INC_PORT=50000
 GLUETUN_CONFIG_PATH=gluetun-config
 WIREGUARD_ENDPOINT_IP=173.239.247.157
 WIREGUARD_ADDRESSES=10.5.131.72
-WIREGUARD_PRIVATE_KEY=CD0oV/ZEerRJjs9FBCnvH/ygW4xk4mDU/oeMWF61Dns= #2BXDaa3iemJnZS2PuscXKMPTqZS5Tw2ps/GE749ycXk=
+WIREGUARD_PRIVATE_KEY=GOc9ynA8TO8NamSn2f/PBaPEjX6WufzlCaEl/FE4m0I= #HB2Plays
 WIREGUARD_PUBLIC_KEY=W4LD0Zu/lUuYdNNCfhM9sZLQAB6tvybuK8ACjFr1z2s=
 VPN_PORT_FORWARDING_USERNAME=p8001972
 VPN_PORT_FORWARDING_PASSWORD=e8*Vu8GeMFZBS*
@@ -131,7 +137,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/VPN"
 file_paths = ["mtproto.yaml"]
 env_file_path = "mtproto.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 GLUETUN_CONFIG_PATH=gluetun-config
 MTPROTO_CONFIG_PATH=mtproto-config
@@ -145,12 +153,12 @@ SERVER_COUNTRIES=Vietnam
 ACTIVATION_CODE=E2EZVX9TKJEQ548BGB78C2W
 VPN_PROVIDER=gluetun_mt
 //express wireguard account mayesam305@gmail.com
-WIREGUARD_ENDPOINT_IP=104.164.168.94
-WIREGUARD_ADDRESSES=10.142.0.2
-WIREGUARD_ENDPOINT_PORT=12943
-WIREGUARD_PRIVATE_KEY=05o683tp6a9WSM4e6RUKcYxv8rkaOsZ6uTeiRQN8jRE= #6Le2mg9H/7OWsvA2zDFgUBMP2HusBKVI/zgCuScp4Xk=
-WIREGUARD_PUBLIC_KEY=AWmcIpl87VOUFWXZZNd8mNsIX5Nk/jDss3E5rkd4iUU=
-WIREGUARD_PRESHARED_KEY=qTFJpkWBpdJszzn/lXfhDA21uELLcTiNrtVPsDKDwIo=
+WIREGUARD_ENDPOINT_IP=104.164.168.196
+WIREGUARD_ADDRESSES=10.171.0.26
+WIREGUARD_ENDPOINT_PORT=10579
+WIREGUARD_PRIVATE_KEY=TorchaPQtxXbmruNu2P/9vrFKp4dkTeNkGQ12pfHRug= #6Le2mg9H/7OWsvA2zDFgUBMP2HusBKVI/zgCuScp4Xk=
+WIREGUARD_PUBLIC_KEY=2jUVm2csL+wHeTDhtp/Sm/qmwzPjLTaz+I7BvC0lr0g=
+WIREGUARD_PRESHARED_KEY=fE/dCHhPhKyz/Ii+evABwbIfIv/MFCNWKeLghOTDn4M=
 """
 
 ##
@@ -167,7 +175,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["notification.yaml"]
 env_file_path = "notification.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=gotify-config
 """
@@ -184,7 +194,9 @@ auto_update = true
 auto_update_all_services = true
 linked_repo = "Komodo-Github"
 run_directory = "stacks/Vaultwarden"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=vaultwarden-config
 VAULTWARDEN_DB_NAME=vaultwarden
@@ -204,11 +216,15 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/VPN"
 file_paths = ["gluetun.yaml"]
 env_file_path = "vpn.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 post_deploy.command = """
 docker container restart qbittorrent vuetorrent-backend
 """
+post_deploy.shell_mode = false
 environment = """
 GOST_CLIENT_CMD=-L tcp://:56245/192.168.4.2:56245 -L udp://:56245/192.168.4.2:56245
 GLUETUN_CONFIG_PATH=gluetun-config
+DATABASE_URL=postgres://wireguardvpn:wireguardvpn@192.168.1.3:5432/wggeneration?sslmode=disable
 """
