@@ -50,6 +50,10 @@ services:
     hostname: chrome
     environment:
       TZ: ${TZ}
+    ports:
+      - target: "9222"
+        published: "9222"
+        protocol: tcp
     command:
       - --no-sandbox
       - --disable-gpu
