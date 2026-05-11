@@ -10,7 +10,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["adguard_home.yaml"]
 env_file_path = "adguardhome.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=adguardhome-config
 """
@@ -29,7 +31,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["authentication.yaml"]
 env_file_path = "authentication.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 SECRET=buIAul6AlEKPsPZoUG2TrLhV1l4CW1YM
 APP_CONFIG_PATH=pocketid-config
@@ -54,7 +58,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["authorization.yaml"]
 env_file_path = "authorization.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 SECRET=buIAul6AlEKPsPZoUG2TrLhV1l4CW1YM
 OAUTH_WHITELIST=jenny48074@gmail.com
@@ -83,7 +89,9 @@ file_paths = [
   "ddns-updater.yaml"
 ]
 env_file_path = "cloudflared.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 CLOUDFLARED_CONFIG_PATH=cloudflared-config
 DDNS_CONFIG_PATH=ddns-updater-config
@@ -107,7 +115,9 @@ file_paths = [
   "backrest.yaml"
 ]
 env_file_path = "data-station.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 BACKREST_CONFIG_PATH=backrest-config
 RClONE_CONFIG_PATH=../../../etc/komodo
@@ -137,7 +147,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["filebrowser.yaml"]
 env_file_path = "filebrowser.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=filebrowser-config
 """
@@ -156,7 +168,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["Godoxy/godoxy.yaml"]
 env_file_path = "godoxy.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 # docker image tag (latest, nightly)
 TAG=latest
@@ -186,7 +200,7 @@ GODOXY_API_JWT_TOKEN_TTL=
 #
 GODOXY_OIDC_ISSUER_URL=https://pocketid.kysupi.com
 GODOXY_OIDC_CLIENT_ID=cf1f9f04-67e0-4f02-8c00-3e947601e420
-GODOXY_OIDC_CLIENT_SECRET=CLyUDOQfXQk9EFsyt6Njei4NAKxwxr3G
+GODOXY_OIDC_CLIENT_SECRET=anYdMpBfIoMoQlZ2znxnQVGbVFrRDExa
 GODOXY_OIDC_SCOPES=openid, profile, email, groups, preferred_username, offline_access # you may also include `offline_access` if your Idp supports it (e.g. Authentik, Pocket ID)
 #
 # User definitions: Uncomment and configure these values to restrict access to specific users or groups.
@@ -254,7 +268,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["Godoxy/agent.yaml"]
 env_file_path = "Godoxy/agent.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=godoxy-config
 AGENT_NAME=HomeLab
@@ -275,7 +291,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["gethomepage.yaml"]
 env_file_path = "gethomepage.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=gethomepage-config
 """
@@ -294,7 +312,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems/Komodo"
 file_paths = ["komodo.yaml"]
 env_file_path = "komodo.env"
-additional_env_files = ["../../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../../MainSystem/.env", track = true }
+]
 config_files = [
   { path = "core.config.toml", services = ["core"], requires = "Restart" },
   { path = "periphery.config.toml", requires = "Redeploy" }
@@ -314,7 +334,9 @@ linked_repo = "Komodo-Github"
 run_directory = "stacks/BackboneSystems"
 file_paths = ["notification.yaml"]
 env_file_path = "notification.env"
-additional_env_files = ["../../MainSystem/.env"]
+additional_env_files = [
+  { path = "../../MainSystem/.env", track = true }
+]
 environment = """
 APP_CONFIG_PATH=gotify-config
 """
@@ -346,5 +368,5 @@ config.schedule = "Every day at 23:00"
 name = "Stage 1"
 enabled = true
 executions = [
-  { execution.type = "GlobalAutoUpdate", execution.params = {}, enabled = true }
+  { execution.type = "GlobalAutoUpdate", execution.params.skip_auto_update = false, enabled = true }
 ]
