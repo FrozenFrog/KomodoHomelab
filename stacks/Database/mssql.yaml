@@ -1,16 +1,20 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    network_mode: bridge
+    container_name: mssql
+    hostname: mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD}"
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+      UMASK: "002"
+    ports:
+      - "${MSSQL_PORT-1433}:1433"
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${MSSQL_CONFIG_PATH}/data"
+        target: /var/opt/mssql
+    restart: unless-stopped
