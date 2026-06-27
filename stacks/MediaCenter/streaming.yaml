@@ -148,6 +148,9 @@ services:
         source: "${BASEPATH}/${THREADFIN_CONFIG_PATH}/temp"
         target: /tmp/threadfin:rw
     restart: unless-stopped
+    labels:
+      proxy.aliases: threadfin
+      proxy.#1.port: 34400
   udpxy:
     image: lordpedal/udpxy
     container_name: UDPXY
