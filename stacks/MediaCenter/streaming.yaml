@@ -146,7 +146,7 @@ services:
         target: /home/threadfin/conf
       - type: bind
         source: "${BASEPATH}/${THREADFIN_CONFIG_PATH}/temp"
-        target: /tmp/threadfin:rw
+        target: /tmp/threadfin
     restart: unless-stopped
     labels:
       proxy.aliases: threadfin
