@@ -126,3 +126,32 @@ services:
     restart: unless-stopped
     depends_on: 
       - plex
+  #IPTV
+  threadfin:
+    image: fyb3roptik/threadfin
+    network_mode: bridge
+    container_name: threadfin
+    hostname: threadfin
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ}
+    ports:
+      - target: 34400
+        published: "34400"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: "${BASEPATH}/${THREADFIN_CONFIG_PATH}/conf"
+        target: /home/threadfin/conf
+      - type: bind
+        source: "${BASEPATH}/${THREADFIN_CONFIG_PATH}/temp"
+        target: /tmp/threadfin:rw
+    restart: unless-stopped
+  udpxy:
+    image: lordpedal/udpxy
+    container_name: UDPXY
+    network_mode: host
+    restart: always
+    labels:
+      proxy.exclude: true
