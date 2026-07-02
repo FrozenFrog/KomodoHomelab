@@ -92,6 +92,8 @@ services:
     environment:
       TZ: ${TZ}
     command: ["-1", "-q", "-u", "$PROXY_USER", "-P", "$PROXY_PASSWORD", "-p", "4433"]
+    depends_on:
+      - mtproto
     labels:
       proxy.exclude: true
     
