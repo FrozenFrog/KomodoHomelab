@@ -81,7 +81,8 @@ services:
         soft: 65536
         hard: 65536
     depends_on:
-      - mtproto
+      gluetun_mt:
+        condition: service_healthy
     labels:
       proxy.exclude: true
       
@@ -93,7 +94,8 @@ services:
       TZ: ${TZ}
     command: ["-1", "-q", "-u", "$PROXY_USER", "-P", "$PROXY_PASSWORD", "-p", "4433"]
     depends_on:
-      - mtproto
+      gluetun_mt:
+        condition: service_healthy
     labels:
       proxy.exclude: true
     
